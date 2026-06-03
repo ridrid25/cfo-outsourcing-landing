@@ -90,6 +90,16 @@ const shot = async (page, name) => {
     await page.close();
   }
 
+  // 4b) Тарифы и «что вскрывается на диагностике» (375)
+  for (const [sel, name] of [['#tariffs', 'tariffs-375'], ['#cases', 'scenarios-375'], ['#ai', 'ai-375']]) {
+    page = await open(375);
+    await page.locator(sel).scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
+    await page.locator(sel).screenshot({ path: resolve(outDir, `${name}.png`) });
+    console.log(`  → ${name}.png`);
+    await page.close();
+  }
+
   // 5) Активный бот-гид (1280): разбудить искрой, дать дойти и показать бабл
   page = await open(1280);
   await page.locator('#waker').click();

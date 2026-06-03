@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Экспресс-диагностика: где ваш бизнес теряет деньги. 2 минуты, разбор по вашему профилю, без заявки. Финансовый директор на аутсорсе — ключевые цифры в телефоне.">
-<title>Экспресс-диагностика: где ваш бизнес теряет деньги</title>
+<meta name="description" content="Татьяна Рид — финансовый директор на аутсорсе. 25 лет в реальном бизнесе: строительство, дорожная отрасль, тендеры (44-ФЗ/223-ФЗ), производство, экспорт. DipIFR · ACCA · CIMA. Бесплатная экспресс-диагностика: где теряются деньги. Ключевые цифры — в телефоне, система с AI.">
+<title>Татьяна Рид · CFO на аутсорсе — диагностика, где теряются деньги</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,6 +97,7 @@
     display:inline-flex;align-items:center;gap:9px;justify-content:center}
   .hp-ico{flex-shrink:0;color:var(--gold)}
   .hero .btn{min-width:300px}
+  @media(max-width:380px){.hero .btn{min-width:0;width:100%}}
   .scrolldown{margin-top:56px;font-size:11px;letter-spacing:.3em;color:var(--muted);
     text-transform:uppercase}
   .scrolldown span{display:block;width:1px;height:42px;margin:14px auto 0;
@@ -498,11 +499,39 @@
     #guide,#prog{display:none}
   }
 
+  /* ===== БРЕНД: персона, регалии, специализация ===== */
+  .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
+  .cred-exp{font-size:14.5px;color:var(--cream-dim);max-width:540px;line-height:1.5}
+  .cred-badges{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .cred-badges b{font-family:'Manrope';font-size:11px;font-weight:700;letter-spacing:.16em;
+    color:var(--gold);border:1px solid var(--line);border-radius:20px;padding:5px 13px}
+  .hero-spec{font-size:12px;color:var(--muted-2);max-width:560px;margin:22px auto 0;
+    letter-spacing:.03em;line-height:1.65}
+
+  /* ===== сценарии «что вскрывается на диагностике» ===== */
+  .scenario{border:1px solid var(--line);border-radius:4px;padding:24px;margin-bottom:13px;background:var(--ink)}
+  .scenario .case-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .scenario b{display:block;font-family:'Playfair Display';font-size:21px;margin:9px 0 14px;font-weight:700}
+  .scn-line{font-size:14.5px;color:var(--cream-dim);line-height:1.55;padding:11px 0;border-top:1px solid var(--line)}
+  .scn-line em{font-style:normal;font-weight:700;color:var(--gold);font-family:'Manrope';
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+  /* ===== тарифы: «от …» и бесплатно ===== */
+  .tier-price .from{font-family:'Manrope';font-size:15px;color:var(--muted);font-weight:600;margin-right:3px}
+  .tier-price .free{color:var(--plus)}
+  .tier-kind{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:6px 0 2px}
+
+  /* ===== AI-секция (2×2 на десктопе, 1 колонка на телефоне) ===== */
+  @media(min-width:561px){.ai-cards{grid-template-columns:repeat(2,1fr)}}
+  .tool .tag.ai{color:var(--gold-bright)}
+
+  .contacts-sep{margin:0 10px;color:var(--muted-2)}
+
   /* reduced-motion */
   @media(prefers-reduced-motion:reduce){
     #guide{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
-    .g-body,.hero-glow,.scrolldown span,.play-btn,.type,
+    .g-body,.hero-glow,.scrolldown span,.type,
     .g-ant::after,.g-eye{animation:none !important}
   }
 </style>
@@ -528,12 +557,16 @@
   <div class="grid-lines"></div>
   <div class="wrap">
     <div class="kick" style="justify-content:center">
-      Финансовый директор на аутсорсе
+      Татьяна Рид · CFO на аутсорсе
       <span class="waker" id="waker" role="button" tabindex="0"
         aria-label="Разбудить гида" title="нажми ✦">✦</span>
     </div>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
-    <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков.</p>
+    <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
+    <div class="hero-cred">
+      <span class="cred-exp">25 лет в реальном бизнесе — строительство, производство, тендеры</span>
+      <span class="cred-badges"><b>DipIFR</b><b>ACCA</b><b>CIMA</b></span>
+    </div>
     <p class="hero-pocket">
       <svg class="hp-ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
@@ -543,6 +576,7 @@
     </p>
     <a href="#core" class="btn">Пройти диагностику</a>
     <p class="micro">2 минуты · бесплатно · без заявки</p>
+    <p class="hero-spec">Строительство · дорожная отрасль · тендеры 44-ФЗ / 223-ФЗ · производство · экспорт · удалённо по всей России</p>
     <div class="scrolldown" aria-hidden="true">прокрутите<span></span></div>
   </div>
 </section>
@@ -616,10 +650,10 @@
         <div class="turn">
           <div class="turn-lbl">
             <span>Месячный оборот</span>
-            <b id="toVal">5 млн ₽</b>
+            <b id="toVal">15 млн ₽</b>
           </div>
-          <input type="range" id="turnover" min="1" max="150" value="5"
-            aria-label="Месячный оборот, млн рублей" aria-valuemin="1" aria-valuemax="150" aria-valuenow="5">
+          <input type="range" id="turnover" min="1" max="150" value="15"
+            aria-label="Месячный оборот, млн рублей" aria-valuemin="1" aria-valuemax="150" aria-valuenow="15">
         </div>
       </div>
 
@@ -661,13 +695,13 @@
 <!-- ====== КАК МЫ НАХОДИМ ДЕНЬГИ ====== -->
 <section id="how">
   <div class="wrap narrow">
-    <div class="kick">Как мы думаем</div>
+    <div class="kick">Как я работаю</div>
     <h2 class="serif reveal" data-rv="up"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
-      Бухгалтер закрывает прошлое. Мы смотрим вперёд
+      Бухгалтер закрывает прошлое. Я смотрю вперёд
     </h2>
     <p class="reveal" data-rv="up" style="color:var(--muted);max-width:600px;margin-bottom:36px">
-      Если у вас есть бухгалтер — отлично, он на своём месте. Финдиректор отвечает
+      Если у вас есть бухгалтер — отлично, он на своём месте. Как финдиректор я отвечаю
       за другое. Вот в чём разница.
     </p>
     <div class="vs reveal" data-rv="scale">
@@ -680,11 +714,11 @@
       </div>
       <div class="vs-mid" aria-hidden="true">vs</div>
       <div class="vs-col cfo">
-        <div class="role">Финдиректор</div>
-        <h4>Смотрит вперёд</h4>
+        <div class="role">Я — финдиректор</div>
+        <h4>Смотрю вперёд</h4>
         <p>Прогноз денег и прибыли на месяцы вперёд</p>
-        <p>Помогает вашим решениям и росту</p>
-        <p>Находит, где деньги задержались, и возвращает в оборот</p>
+        <p>Помогаю вашим решениям и росту</p>
+        <p>Нахожу, где деньги задержались, и возвращаю в оборот</p>
       </div>
     </div>
   </div>
@@ -699,8 +733,8 @@
       Не отчёты раз в месяц, а контроль под рукой
     </h2>
     <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
-      Если проблема повторяется, её лучше не держать в голове. Под конкретную задачу можно
-      внедрить небольшой прикладной инструмент — таблицу, мини-дашборд или простое
+      Если проблема повторяется, её лучше не держать в голове. Под конкретную задачу я
+      внедряю небольшой прикладной инструмент — таблицу, мини-дашборд или простое
       веб-приложение, которое показывает проблему вовремя.
     </p>
     <div class="cards reveal" data-rv="up">
@@ -766,9 +800,34 @@
     </div>
     <p class="pocket-note reveal" data-rv="up">
       Это <b>ключевые цифры и контроль конкретных зон</b> в телефоне — а не «весь учёт
-      в приложении на любой случай». Формат под задачу подбираем вместе; это практический
-      инструмент финдиректора, а не отдельный IT-сервис.
+      в приложении на любой случай». Формат под задачу подбираю вместе с вами; это мой
+      практический инструмент как финдиректора, а не отдельный IT-сервис.
     </p>
+  </div>
+</section>
+
+<!-- ====== AI-АВТОМАТИЗАЦИЯ ====== -->
+<section style="background:linear-gradient(180deg,var(--coal),var(--void))" id="ai">
+  <div class="wrap">
+    <div class="kick">AI-автоматизация</div>
+    <h2 class="serif reveal" data-rv="left"
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Систему строю с AI — она считает за вас
+    </h2>
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
+      Рутину забирает автоматизация: вы получаете не таблицы, а готовые выводы и
+      предупреждения — заранее, пока ещё можно повлиять.
+    </p>
+    <div class="cards ai-cards reveal" data-rv="up">
+      <div class="tool"><div class="tag ai">✦ прогноз</div><b>Кассовые разрывы за 2–4 недели</b>
+        <p>Модель сводит поступления и платежи и заранее показывает день, где денег может не хватить.</p></div>
+      <div class="tool"><div class="tag ai">✦ контроль</div><b>Дебиторка под присмотром</b>
+        <p>Кто должен, сколько, с какого срока и где риск просрочки — без ручного сведения отчётов.</p></div>
+      <div class="tool"><div class="tag ai">✦ отчёты</div><b>Умные отчёты собственнику</b>
+        <p>Не выгрузка цифр, а короткий вывод на человеческом языке: что важно именно сейчас.</p></div>
+      <div class="tool"><div class="tag ai">✦ сценарии</div><b>Сценарии «что если»</b>
+        <p>Подняли цену, взяли крупный контракт, отложили платёж — сразу видно, что будет с деньгами.</p></div>
+    </div>
   </div>
 </section>
 
@@ -807,35 +866,14 @@
     </h2>
     <div class="tl reveal" data-rv="up">
       <div class="tl-step"><b>Бесплатный разбор</b>
-        <p>30 минут. Смотрим вместе, где деньги задерживаются, даём первые цифры.</p></div>
+        <p>30 минут. Смотрю вместе с вами, где деньги задерживаются, даю первые цифры.</p></div>
       <div class="tl-step"><b>Порядок в цифрах</b>
-        <p>Собираем учёт, ДДС, P&amp;L, платёжный календарь.</p>
+        <p>Собираю учёт, ДДС, P&amp;L, платёжный календарь.</p>
         <span class="nda-badge">🔒 Данные под NDA</span></div>
       <div class="tl-step"><b>Отчётность и дашборд</b>
         <p>Каждый месяц — понятная картина бизнеса без хаоса.</p></div>
       <div class="tl-step"><b>Решения вместе с вами</b>
         <p>Куда расти, где аккуратнее, как дойти до цели по деньгам.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== ВИДЕО ====== -->
-<section id="video">
-  <div class="wrap narrow">
-    <div class="kick">За 90 секунд</div>
-    <h2 class="serif reveal" data-rv="right"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:28px">
-      Как мы наводим порядок
-    </h2>
-    <div class="video-wrap reveal" data-rv="scale" id="videoWrap"
-      role="button" tabindex="0" aria-label="Воспроизвести видео — загрузится по клику">
-      <div class="pin"><div>
-        <div class="play-btn" aria-hidden="true"></div>
-        <b class="serif" style="font-size:20px">Смотреть, как это работает</b>
-        <p style="color:var(--muted);font-size:13px;margin-top:6px">
-          Загрузится по клику · <span class="ph">[ССЫЛКА_НА_ВИДЕО]</span>
-        </p>
-      </div></div>
     </div>
   </div>
 </section>
@@ -848,82 +886,85 @@
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
       Сколько это стоит
     </h2>
-    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:560px;margin-bottom:38px">
-      Цены показываем здесь, когда вы уже видите свою картину. Если вы отметили зоны выше —
-      тарифы покажут, как ваша оценка соотносится со стоимостью работы. Спокойно, без давления.
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:560px;margin-bottom:30px">
+      Называю цены прямо. Точную стоимость определяю по итогам бесплатной диагностики —
+      она зависит от объёма работы и состояния учёта. Спокойно, без давления.
     </p>
 
     <p class="price-anchor reveal" data-rv="up">
-      Для сравнения — штатный финдиректор: от 250 000 ₽/мес (оклад + налоги + соцпакет)
+      Для сравнения — штатный финансовый директор обходится от 250 000 ₽/мес:
+      оклад, налоги и соцпакет.
     </p>
 
-    <!-- демо-цены в data-price (₽/мес) — ЗАМЕНИТЬ на реальные перед публикацией -->
     <div class="tiers reveal" data-rv="up">
-      <div class="tier" data-price="35000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">оценка покрыта</div>
-        <div class="tier-name">Старт</div>
-        <div class="tier-hook">Видите, куда уходят деньги — и управляете этим</div>
-        <div class="tier-price"><span class="amt"><span class="ph">35 000</span></span><small>₽/мес</small></div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <ul><li>Управленческий учёт</li><li>ДДС и P&amp;L</li><li>Ежемесячный отчёт</li></ul>
-        <div class="demo">демо-цена</div>
+      <div class="tier">
+        <div class="tier-name">Диагностика</div>
+        <div class="tier-kind">разовая встреча</div>
+        <div class="tier-price"><span class="free">бесплатно</span></div>
+        <div class="tier-hook">Смотрим, где теряются деньги, и с чего начать</div>
+        <ul><li>30 минут онлайн</li><li>Разбор по вашим зонам</li><li>Первые цифры и план действий</li></ul>
       </div>
-      <div class="tier best" data-price="65000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">Чаще всего выбирают</div>
-        <div class="tier-name">Бизнес</div>
-        <div class="tier-hook">Спокойствие по кассе и понятная картина каждый месяц</div>
-        <div class="tier-price"><span class="amt"><span class="ph">65 000</span></span><small>₽/мес</small></div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <ul><li>Всё из «Старт»</li><li>Платёжный календарь</li><li>Финансовый дашборд</li><li>Стратегические сессии</li></ul>
-        <div class="demo">демо-цена</div>
+      <div class="tier best">
+        <div class="tier-badge">Постоянное партнёрство</div>
+        <div class="tier-name">CFO на аутсорсе</div>
+        <div class="tier-kind">ежемесячно</div>
+        <div class="tier-price"><span class="from">от</span>200 000 <small>₽/мес</small></div>
+        <div class="tier-hook">Я отвечаю за ваши деньги и решения каждый месяц</div>
+        <ul><li>Управленческий учёт, ДДС и P&amp;L</li><li>Платёжный календарь и дашборд</li><li>Ежемесячный отчёт собственнику</li><li>AI-инструменты под ваши зоны</li><li>Стратегические решения вместе</li></ul>
       </div>
-      <div class="tier" data-price="120000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">оценка покрыта</div>
-        <div class="tier-name">Премиум</div>
-        <div class="tier-hook">Готовы к росту, инвестициям и масштабу</div>
-        <div class="tier-price"><span class="amt"><span class="ph">120 000</span></span><small>₽/мес</small></div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <ul><li>Всё из «Бизнес»</li><li>Бюджетирование, план-факт</li><li>Подготовка к инвестициям</li></ul>
-        <div class="demo">демо-цена</div>
+      <div class="tier">
+        <div class="tier-name">Система под ключ</div>
+        <div class="tier-kind">разовый проект · 1–3 мес</div>
+        <div class="tier-price"><span class="from">от</span>300 000 <small>₽</small></div>
+        <div class="tier-hook">Ставлю финансовую систему с нуля и передаю вам</div>
+        <ul><li>Учёт и отчётность с нуля</li><li>AI-автоматизация под ваши зоны</li><li>Обучение вашей команды</li><li>Готовая система на руках</li></ul>
       </div>
     </div>
 
     <p class="tier-foot reveal" data-rv="up">
-      Финальная стоимость зависит от размера бизнеса, числа направлений, качества данных
-      и глубины вовлечения. Первый разбор бесплатный — мы уверены в его пользе.
+      Точную стоимость называю по итогам бесплатной диагностики: зависит от размера бизнеса,
+      числа направлений, состояния учёта и глубины вовлечения. Первый разбор бесплатный —
+      я уверена в его пользе.
     </p>
   </div>
 </section>
 
-<!-- ====== КЕЙСЫ ====== -->
+<!-- ====== ЧТО ВСКРЫВАЕТСЯ НА ДИАГНОСТИКЕ ====== -->
 <section id="cases">
   <div class="wrap narrow">
-    <div class="kick">Похожие истории</div>
+    <div class="kick">Из практики</div>
     <h2 class="serif reveal" data-rv="right"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
-      Такие же собственники, тоже были уверены, что всё под контролем
+      Что обычно вскрывается на диагностике
     </h2>
-    <p class="reveal" data-rv="up" style="color:var(--muted);max-width:560px;margin-bottom:30px">
-      Узнаёте ситуацию? Нажмите, чтобы посмотреть, что было и что изменилось.
+    <p class="reveal" data-rv="up" style="color:var(--muted);max-width:580px;margin-bottom:30px">
+      Без выдуманных клиентов и красивых процентов — типовые ситуации из моей практики
+      по отраслям. Узнаёте свою?
     </p>
     <div class="reveal" data-rv="up">
-      <div class="case" data-case="0" tabindex="0" role="button" aria-label="Открыть историю: оптовая торговля">
-        <div class="case-tag ph">[Оптовая торговля]</div>
-        <b>Кассовый разрыв стал виден за 2 месяца до</b>
-        <span class="res">Сэкономлено <span class="ph">[X] ₽</span></span>
+      <div class="scenario">
+        <div class="case-tag">Строительство · дорожная отрасль</div>
+        <b>Деньги приходят гораздо позже, чем уходят</b>
+        <div class="scn-line"><em>Частый сценарий</em>Большой лаг между выполнением работ и оплатой,
+          кассовые разрывы между этапами, а скрытые расходы в контрактах тихо съедают маржу.</div>
+        <div class="scn-line"><em>Что я делаю</em>Строю платёжный календарь под этапы, считаю реальную
+          маржу контракта со всеми затратами и заранее показываю, где касса уйдёт в минус.</div>
       </div>
-      <div class="case" data-case="1" tabindex="0" role="button" aria-label="Открыть историю: производство">
-        <div class="case-tag ph">[Производство]</div>
-        <b>Убыточное направление, которое маскировалось</b>
-        <span class="res">+<span class="ph">[X]%</span> к прибыли</span>
+      <div class="scenario">
+        <div class="case-tag">Тендерный бизнес · 44-ФЗ / 223-ФЗ</div>
+        <b>Прибыль на бумаге есть, а денег в нужный день нет</b>
+        <div class="scn-line"><em>Частый сценарий</em>Разрывы между этапами, банковские гарантии
+          замораживают средства, спрос эластичный — экономику контракта надо считать аккуратно, до подачи.</div>
+        <div class="scn-line"><em>Что я делаю</em>Считаю экономику тендера с учётом гарантий и сроков оплаты,
+          планирую кассу под обязательства и показываю, какая цена ещё имеет смысл.</div>
       </div>
-      <div class="case" data-case="2" tabindex="0" role="button" aria-label="Открыть историю: розница">
-        <div class="case-tag ph">[Розница / Торговля]</div>
-        <b>Деньги, замороженные в складе</b>
-        <span class="res">Высвобождено <span class="ph">[X] ₽</span></span>
+      <div class="scenario">
+        <div class="case-tag">Производство</div>
+        <b>У каждого отдела своя правда, общей картины нет</b>
+        <div class="scn-line"><em>Частый сценарий</em>Непрозрачная себестоимость, скрытые потери,
+          и у каждого отдела своя версия цифр — ни одна не даёт полного понимания.</div>
+        <div class="scn-line"><em>Что я делаю</em>Собираю себестоимость по единой логике, нахожу, где
+          теряются деньги в процессе, и свожу всё в одну картину, понятную собственнику.</div>
       </div>
     </div>
   </div>
@@ -941,28 +982,29 @@
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>Вы не разбираетесь в моей отрасли?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Финансовая логика универсальна — денежный поток, маржа и кассовые разрывы
-          работают одинаково в любой нише. Специфику отрасли поднимаем на разборе. За
-          <span class="ph">[N]</span> лет работали с десятками ниш.</div>
+        <div class="faq-a">Глубоко работаю со строительством, дорожной отраслью, тендерами (44-ФЗ/223-ФЗ),
+          производством и экспортом. При этом финансовая логика универсальна — денежный поток, маржа
+          и кассовые разрывы работают одинаково в любой нише. Специфику вашей отрасли разбираю на встрече.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>Это дорого?</span><i aria-hidden="true">+</i></button>
         <div class="faq-a">Первый разбор бесплатный — посмотрите цифры и решите сами.
-          Дальше стоимость зависит от объёма работы; начать можно с малого формата.</div>
+          Точную стоимость я называю по итогам диагностики: есть постоянное партнёрство и
+          разовый проект «система под ключ». Дальше зависит от объёма работы и состояния учёта.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>Безопасно отдавать данные?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Работаем по NDA до начала любых работ. Доступы к системам вы выдаёте
+        <div class="faq-a">Работаю по NDA до начала любых работ. Доступы к системам вы выдаёте
           сами и отзываете в любой момент. Ни одна цифра не уходит третьим лицам.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>У меня есть бухгалтер — зачем финдир?</span><i aria-hidden="true">+</i></button>
         <div class="faq-a">Бухгалтер закрывает налоги и отчётность для государства — и хорошо,
-          если вы справлялись с этим сами. Финдиректор отвечает за другое: прибыль, деньги
-          и решения вперёд. Мы усиливаем бухгалтера, а не заменяем.</div>
+          если вы справлялись с этим сами. Как финдиректор я отвечаю за другое: прибыль, деньги
+          и решения вперёд. Я усиливаю бухгалтера, а не заменяю.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
@@ -978,19 +1020,19 @@
 <section class="final" id="final">
   <div class="wrap narrow">
     <span class="assure reveal" data-rv="scale">
-      Первый разбор бесплатный, потому что мы уверены в его ценности
+      Первый разбор бесплатный, потому что я уверена в его ценности
     </span>
     <h2 class="reveal" data-rv="up">Посмотрим на ваши цифры<br><em>вместе</em></h2>
     <p class="reveal" data-rv="up"
       style="color:var(--cream-dim);max-width:460px;margin:0 auto 30px">
-      Оставьте контакт — вернёмся в течение <span class="ph">[N]</span> часов
-      и назначим бесплатный разбор. Посмотрите, когда будет удобно.
+      Оставьте контакт — отвечу в течение рабочего дня и назначим бесплатный разбор.
+      Посмотрим, когда вам удобно.
     </p>
 
     <div class="form-wrap reveal" data-rv="scale">
       <form id="fields" onsubmit="submitForm();return false;" novalidate>
         <input id="fName" placeholder="Ваше имя" autocomplete="given-name" aria-label="Ваше имя" required>
-        <input id="fPhone" type="tel" placeholder="Телефон" autocomplete="tel" aria-label="Телефон" required>
+        <input id="fPhone" type="text" placeholder="Телефон или @telegram" autocomplete="tel" aria-label="Телефон или Telegram" required>
         <input id="fBiz" placeholder="Сфера бизнеса (необязательно)" autocomplete="organization" aria-label="Сфера бизнеса">
         <button class="btn" style="width:100%" type="submit">Записаться на бесплатный разбор</button>
         <p class="micro">30 минут · без обязательств · данные под защитой</p>
@@ -1005,29 +1047,16 @@
     </div>
 
     <div class="contacts">
-      <a href="https://t.me/RidFinance_bot" target="_blank" rel="noopener">Telegram · @RidFinance_bot</a>
+      <a href="https://t.me/RidFinance_bot" target="_blank" rel="noopener">Личный бот · @RidFinance_bot</a>
+      <span class="contacts-sep" aria-hidden="true">·</span>
+      <a href="https://t.me/Rid_Finance" target="_blank" rel="noopener">Канал · @Rid_Finance</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="ph">[Название компании]</span> · Финансовый директор на аутсорсе ·
-  <span class="ph">[год]</span>
+  Татьяна Рид · CFO на аутсорсе · 2026
 </footer>
-
-<!-- МОДАЛЬНОЕ ОКНО КЕЙСА -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-hidden="true">
-  <div class="modal-box">
-    <button class="modal-x" id="modalClose" aria-label="Закрыть">✕</button>
-    <div class="case-tag" id="mTag"></div>
-    <h3 class="serif" id="mTitle"></h3>
-    <div class="ba">
-      <div class="was"><small>Было</small><b id="mWas"></b></div>
-      <div class="now"><small>Стало</small><b id="mNow"></b></div>
-    </div>
-    <p id="mText" style="color:var(--muted)"></p>
-  </div>
-</div>
 
 <script>
 /* прогресс-бар */
@@ -1068,7 +1097,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
    МИНИ-АУДИТ
    Приоритет зоны — по ОСТРОТЕ риска (вес), а не по сумме денег.
    Веса и связи «вопрос → зона» вынесены в AUDIT — калибруется здесь.
-   Сумма потерь — вторичная оценка (для vault и заливки тарифов).
+   Сумма потерь — вторичная спокойная оценка (только для vault).
    ================================================================ */
 const AUDIT = {
   /* severity: 3 — острый (угроза ликвидности), 2 — средний, 1 — хронический */
@@ -1142,7 +1171,7 @@ const AUDIT = {
       opts: [['По расчёту маржи', 0], ['По ситуации', 1], ['Как договоримся', 2]]
     }
   ],
-  empty: 'По ответам острых зон не видно — это хороший знак. Но самопроверка и взгляд со стороны на реальные цифры — разные вещи. На бесплатном разборе мы сверим ощущение с данными.'
+  empty: 'По ответам острых зон не видно — это хороший знак. Но самопроверка и взгляд со стороны на реальные цифры — разные вещи. На бесплатном разборе я сверю ощущение с данными.'
 };
 
 const leaks = [...document.querySelectorAll('.leak')];
@@ -1150,7 +1179,6 @@ const turnoverEl = document.getElementById('turnover');
 const toValEl = document.getElementById('toVal');
 const foundEl = document.getElementById('found');
 const foundYEl = document.getElementById('foundYear');
-const tiers = [...document.querySelectorAll('.tier')];
 const verdictEl = document.getElementById('verdict');
 const qAnswers = {};          // id вопроса → баллы
 let touched = false, shownMonth = 0;
@@ -1245,25 +1273,11 @@ function recalc() {
   AUDIT.questions.forEach(q => { if ((qAnswers[q.id] || 0) > 0) zoneActive[q.link] = true; });
   const year = month * 12;
 
-  /* вторичная цифра + заливка тарифов */
+  /* вторичная цифра — спокойная оценка (без ROI и заливки тарифов) */
   roll(shownMonth, month); shownMonth = month;
   foundYEl.textContent = fmt(year);
   const hint = document.getElementById('vaultHint');
   if (hint) hint.classList.toggle('hidden', touched);
-
-  tiers.forEach(tier => {
-    const priceY = (+tier.dataset.price) * 12;
-    const pct = Math.min(100, year / priceY * 100);
-    tier.querySelector('.fill').style.height = pct + '%';
-    const netEl = tier.querySelector('[data-net]');
-    if (year >= priceY && month > 0) {
-      tier.classList.add('covered');
-      netEl.textContent = 'оценка перекрывает стоимость · +' + fmt(year - priceY) + '/год';
-    } else {
-      tier.classList.remove('covered');
-      netEl.textContent = '';
-    }
-  });
 
   /* вывод аудита */
   if (!touched) { verdictEl.classList.remove('show'); return; }
@@ -1285,71 +1299,6 @@ function roll(from, to) {
 
 /* «Сохранить разбор» — печать в PDF */
 document.getElementById('savePdf').addEventListener('click', () => window.print());
-
-/* видео facade */
-const videoWrap = document.getElementById('videoWrap');
-let videoLoaded = false;
-function loadVideo() {
-  if (videoLoaded) return;
-  videoLoaded = true;
-  /* TODO: заменить [ССЫЛКА_НА_ВИДЕО] на реальный embed-URL */
-  videoWrap.innerHTML = '<iframe src="[ССЫЛКА_НА_ВИДЕО]" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen title="Видео о работе финансового директора"></iframe>';
-  videoWrap.removeAttribute('role'); videoWrap.removeAttribute('tabindex'); videoWrap.removeAttribute('aria-label');
-}
-videoWrap.addEventListener('click', loadVideo);
-videoWrap.addEventListener('keydown', e => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
-});
-
-/* кейсы + модалка */
-const casesData = [
-  { tag: '[Оптовая торговля]', title: 'Кассовый разрыв стал виден за 2 месяца до',
-    was: 'Хаос в платежах', now: 'Платёжный календарь',
-    text: 'Такой же собственник был уверен, что всё под контролем. Построили платёжный календарь — разрыв стал виден заранее, успели передоговориться с поставщиками без штрафов. [реальные цифры клиента]' },
-  { tag: '[Производство]', title: 'Скрытое убыточное направление',
-    was: '«Всё прибыльно»', now: '+[X]% прибыли',
-    text: 'Тоже думал, что прибыльны все направления. Юнит-экономика показала, что одно съедало прибыль остальных. Закрыли — маржа выросла. [реальные цифры клиента]' },
-  { tag: '[Розница / Торговля]', title: 'Деньги, замороженные в складе',
-    was: 'Зависшие остатки', now: 'Высвобождено [X] ₽',
-    text: 'Знакомая ситуация: склад как актив в отчёте, но деньги не работают. Навели учёт оборачиваемости, вернули замороженное в оборот. [реальные цифры клиента]' }
-];
-const modal = document.getElementById('modal');
-const modalClose = document.getElementById('modalClose');
-let lastFocused = null;
-function openModal(idx) {
-  const d = casesData[idx];
-  document.getElementById('mTag').textContent = d.tag;
-  document.getElementById('mTitle').textContent = d.title;
-  document.getElementById('mWas').textContent = d.was;
-  document.getElementById('mNow').textContent = d.now;
-  document.getElementById('mText').textContent = d.text;
-  modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  lastFocused = document.activeElement; modalClose.focus();
-}
-function closeModal() {
-  if (!modal.classList.contains('open')) return;
-  modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  if (lastFocused) lastFocused.focus();
-}
-modal.addEventListener('keydown', e => {
-  if (!modal.classList.contains('open') || e.key !== 'Tab') return;
-  const f = [...modal.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
-  if (!f.length) return;
-  const first = f[0], last = f[f.length - 1];
-  if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-  else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
-});
-document.querySelectorAll('.case').forEach(c => {
-  c.addEventListener('click', () => openModal(+c.dataset.case));
-  c.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(+c.dataset.case); }
-  });
-});
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 /* FAQ */
 document.querySelectorAll('.faq-q').forEach(q => {
@@ -1385,18 +1334,18 @@ function submitForm() {
 
   /* реплики по id секции: [say, emo, pos%, hide?] */
   const SCRIPT = {
-    s0:      { say: 'Привет! Идём посмотрим вместе 👋', emo: 'e-wave', pos: 52 },
+    s0:      { say: 'Привет! Я Татьяна, идём посмотрим 👋', emo: 'e-wave', pos: 52 },
     s1:      { say: 'Деньги уходят тихо… вглядитесь', emo: 'e-think', pos: 24 },
     shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
     core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
-    how:     { say: 'Вот как мы думаем', emo: 'e-happy', pos: 28 },
+    how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
     tools:   { say: 'Всё открывается с телефона', emo: 'e-happy', pos: 66 },
     pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
+    ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },
     deliver: { say: 'Вот что у вас появится', emo: 'e-happy', pos: 30 },
     process: { say: 'Спокойно, по шагам', emo: 'e-think', pos: 26 },
-    video:   { say: '90 секунд, без спешки', emo: 'e-happy', pos: 64 },
     tariffs: { say: 'Цены — когда вы уже всё видели', emo: 'e-think', pos: 30 },
-    cases:   { say: 'Похожие истории', emo: 'e-happy', pos: 70 },
+    cases:   { say: 'Что вскрывается на диагностике', emo: 'e-think', pos: 70 },
     faq:     { say: 'Тут ответы на сомнения 💡', emo: 'e-think', pos: 34 },
     final:   { say: 'Посмотрите, когда удобно 👋', emo: 'e-wave', pos: 56, hide: true }
   };

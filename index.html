@@ -92,6 +92,13 @@
   .chip{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--cream-dim);
     border:1px solid var(--line);border-radius:30px;padding:9px 16px;background:rgba(255,255,255,.014)}
   .chip::before{content:"✦";color:var(--gold);margin-right:8px;font-size:11px}
+  /* мобильный hero: компактнее, чтобы CTA был виден без лишнего скролла */
+  @media(max-width:560px){
+    .hero{padding-top:clamp(70px,18vw,96px)}
+    .hero h1{font-size:clamp(25px,7vw,34px);margin-bottom:16px;max-width:100%}
+    .hero-sub{margin-bottom:24px}
+    .chips{margin-top:22px}
+  }
 
   /* ============ КАРТОЧКИ-СЕТКИ ============ */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -142,7 +149,7 @@
   .tier.best{border-color:rgba(216,178,94,.55);box-shadow:var(--glow)}
   .tier-badge{position:absolute;top:-11px;left:26px;font-size:10px;font-weight:800;
     letter-spacing:.1em;padding:5px 11px;border-radius:2px;text-transform:uppercase;
-    background:var(--gold);color:#1a1206}
+    white-space:nowrap;background:var(--gold);color:#1a1206}
   .tier-name{font-family:'Playfair Display';font-weight:700;font-size:24px}
   .tier-price{margin:10px 0 16px;font-family:'Playfair Display';font-weight:900;
     font-size:30px;color:var(--cream)}
@@ -290,7 +297,8 @@
     <div class="kick">Что входит в работу</div>
     <h2 class="sec serif reveal">Финансовая функция, встроенная в управление</h2>
     <p class="lead reveal">Не разовая консультация, а понятная система: цифры, отчёты и решения,
-      на которые можно опираться каждый месяц.</p>
+      на которые можно опираться каждый месяц. При необходимости — небольшие инструменты
+      контроля: дебиторка, кассовые разрывы, план-факт, маржинальность.</p>
     <div class="deliv reveal" style="margin-top:42px">
       <div class="d-item">
         <div class="d-num">01</div>
@@ -319,8 +327,8 @@
       </div>
       <div class="d-item">
         <div class="d-num">06</div>
-        <b>AI-assisted анализ</b>
-        <span>Анализ данных и отчётности с использованием AI — быстрее и глубже.</span>
+        <b>Анализ с применением ИИ</b>
+        <span>ИИ-анализ финансовых данных и отчётности — быстрее и глубже.</span>
       </div>
     </div>
   </div>
@@ -368,6 +376,50 @@
   </div>
 </section>
 
+<!-- ====== ИНСТРУМЕНТЫ КОНТРОЛЯ ====== -->
+<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="tools">
+  <div class="wrap">
+    <div class="kick">Оптимизация процессов</div>
+    <h2 class="sec serif reveal">Не только отчёты, а рабочие инструменты для контроля</h2>
+    <p class="lead reveal">Если проблема повторяется регулярно, её лучше не держать в голове и не
+      контролировать вручную. Для таких задач можно внедрять небольшие прикладные инструменты:
+      таблицы, мини-дашборды или простые веб-приложения, которые помогают собственнику и команде
+      видеть проблему вовремя.</p>
+    <div class="cards" style="margin-top:42px">
+      <div class="card reveal">
+        <b>Контроль дебиторки</b>
+        <p>Кто должен, сколько, с какого срока, где риск просрочки и какие суммы зависли.</p>
+      </div>
+      <div class="card reveal">
+        <b>Кассовые разрывы</b>
+        <p>План поступлений и платежей, ближайшие провалы по деньгам и решения до того,
+          как касса ушла в минус.</p>
+      </div>
+      <div class="card reveal">
+        <b>Маржинальность проектов</b>
+        <p>Выручка, прямые расходы, валовая маржа и отклонения по каждому проекту,
+          объекту или направлению.</p>
+      </div>
+      <div class="card reveal">
+        <b>План-факт</b>
+        <p>Сравнение плана и факта по выручке, расходам, прибыли и денежному потоку.</p>
+      </div>
+      <div class="card reveal">
+        <b>Контроль расходов</b>
+        <p>Регулярные расходы, отклонения, лишние платежи и зоны, где деньги уходят незаметно.</p>
+      </div>
+      <div class="card reveal">
+        <b>Платёжный календарь</b>
+        <p>Что платить, когда платить, какие обязательства критичны и где нужен перенос
+          или приоритизация.</p>
+      </div>
+    </div>
+    <p class="tier-note">Формат инструмента зависит от задачи: иногда достаточно Google Sheets,
+      иногда нужен мини-дашборд или простое веб-приложение. Главное — не усложнять систему,
+      а дать собственнику быстрый контроль над конкретной финансовой зоной.</p>
+  </div>
+</section>
+
 <!-- ====== ТАРИФЫ ====== -->
 <section style="background:linear-gradient(180deg,var(--coal),var(--void))" id="tariffs">
   <div class="wrap">
@@ -398,7 +450,7 @@
       </div>
 
       <div class="tier best">
-        <div class="tier-badge">Оптимальный</div>
+        <div class="tier-badge">Чаще всего выбирают</div>
         <div class="tier-name">Финансовый контроль</div>
         <div class="tier-price">от 120 000 ₽ <small>/ месяц</small></div>
         <div class="tier-for">Для бизнеса, где уже есть обороты, проекты, расходы и обязательства,
@@ -420,7 +472,7 @@
       </div>
 
       <div class="tier">
-        <div class="tier-name">Финдир на аутсорсе</div>
+        <div class="tier-name">Финансовый директор на аутсорсе</div>
         <div class="tier-price">от 250 000 ₽ <small>/ месяц</small></div>
         <div class="tier-for">Для бизнеса, где финансы нужно встроить в управление: бюджетирование,
           проектная маржинальность, ДДС, сценарии, решения по росту и контролю.</div>
@@ -433,7 +485,7 @@
           <li>сценарный анализ</li>
           <li>подготовка решений для собственника</li>
           <li>до 4 рабочих созвонов в месяц</li>
-          <li>AI-assisted анализ данных и отчётности</li>
+          <li>ИИ-анализ финансовых данных и отчётности</li>
           <li>участие в настройке финансовых процессов</li>
         </ul>
         <div class="tier-res">Финансовая функция становится управляемой: собственник видит цифры,
@@ -562,12 +614,12 @@
         <p>Риски выгорания, отпуска и ухода в важный момент</p>
       </div>
       <div class="vs-col cfo">
-        <div class="role">Финдир на аутсорсе</div>
+        <div class="role">Финансовый директор на аутсорсе</div>
         <h4>Гибко и по делу</h4>
         <p>Платите за нужный объём работы, без расходов на штат</p>
         <p>Старт с диагностики — первые результаты быстро</p>
         <p>Опыт разных бизнесов и отраслей</p>
-        <p>AI-assisted анализ ускоряет работу с данными</p>
+        <p>Применение ИИ ускоряет работу с данными</p>
       </div>
     </div>
   </div>
@@ -619,10 +671,10 @@
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
-          <span>Что такое AI-assisted анализ?</span><i aria-hidden="true">+</i>
+          <span>Что значит «анализ с применением ИИ»?</span><i aria-hidden="true">+</i>
         </button>
         <div class="faq-a">
-          Это использование AI-инструментов для обработки данных и отчётности: быстрее
+          Это использование ИИ-инструментов для обработки данных и отчётности: быстрее
           собрать картину, найти аномалии в расходах и подготовить материалы для решений.
           Выводы и ответственность остаются за финансовым директором.
         </div>
@@ -657,7 +709,7 @@
 </section>
 
 <footer>
-  Финансовый директор на аутсорсе · AI-assisted финансовый анализ для малого и среднего бизнеса
+  Финансовый директор на аутсорсе · финансовый анализ с применением ИИ для малого и среднего бизнеса
 </footer>
 
 <script>

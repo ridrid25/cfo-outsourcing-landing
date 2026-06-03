@@ -46,8 +46,12 @@ const shot = async (page, name) => {
     return page;
   };
 
-  // 2) Hero (375)
+  // 2) Hero (375) — ждём, пока эффект печати выведет фразу целиком
   let page = await open(375);
+  await page.waitForFunction(() => {
+    const t = (document.getElementById('type')?.textContent || '').trim();
+    return ['где теряются деньги', 'где проседает касса', 'где скрыта прибыль'].includes(t);
+  }, { timeout: 8000 });
   await page.locator('#s0').screenshot({ path: resolve(outDir, 'hero-375.png') });
   console.log('  → hero-375.png');
   await page.close();

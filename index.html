@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Финансовый директор на аутсорсе — находим замороженные деньги и возвращаем в оборот без штатного финдиректора">
-<title>Финансовый директор на аутсорсе — найдите замороженные деньги</title>
+<meta name="description" content="Татьяна Рид — финансовый директор на аутсорсе. 25 лет в реальном бизнесе: строительство, дорожная отрасль, производство. DipIFR · ACCA · CIMA. Бесплатная экспресс-диагностика: где теряются деньги. Ключевые цифры — в телефоне, система с AI.">
+<title>Татьяна Рид · CFO на аутсорсе — диагностика, где теряются деньги</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -60,6 +60,8 @@
     box-shadow:none}
   .btn-ln:hover{border-color:var(--gold);background:rgba(216,178,94,.06);box-shadow:none}
   .micro{font-size:13px;color:var(--muted);margin-top:14px;letter-spacing:.04em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  @media(max-width:520px){.cta-row .btn{width:100%}}
 
   /* reveal — базовый up, варианты ниже, .in переопределяет последним */
   .reveal{opacity:0;transition:opacity .9s cubic-bezier(.16,.8,.3,1),transform .9s cubic-bezier(.16,.8,.3,1)}
@@ -67,7 +69,6 @@
   .reveal[data-rv="left"]{transform:translateX(-52px)}
   .reveal[data-rv="right"]{transform:translateX(52px)}
   .reveal[data-rv="scale"]{transform:scale(.9)}
-  /* ВАЖНО: .in объявлен последним — побеждает data-rv варианты по специфичности */
   .reveal.in{opacity:1;transform:none}
 
   /* ============ HERO ============ */
@@ -83,15 +84,21 @@
     background-size:80px 80px;
     mask:radial-gradient(70% 60% at 50% 40%,#000,transparent);
     -webkit-mask:radial-gradient(70% 60% at 50% 40%,#000,transparent)}
-  .hero h1{font-size:clamp(38px,8vw,82px);font-weight:900;color:var(--cream);margin-bottom:6px}
+  .hero h1{font-size:clamp(25px,7vw,72px);font-weight:900;color:var(--cream);margin-bottom:6px;
+    overflow-wrap:break-word;word-break:break-word}
+  @media(max-width:360px){.wrap{padding:0 18px}}
   .hero h1 em{font-style:italic;font-weight:500}
-  .type{display:inline-block;border-right:3px solid var(--gold);padding-right:5px;
-    animation:blink 1.05s step-end infinite}
+  .type{display:inline;max-width:100%;border-right:3px solid var(--gold);padding-right:5px;
+    overflow-wrap:break-word;animation:blink 1.05s step-end infinite}
   @keyframes blink{50%{border-color:transparent}}
   .hero-sub{font-size:clamp(16px,2.4vw,20px);color:var(--cream-dim);
-    max-width:580px;margin:34px auto 40px;line-height:1.6}
+    max-width:600px;margin:30px auto 14px;line-height:1.6}
+  .hero-pocket{font-size:14px;color:var(--muted);max-width:520px;margin:0 auto 36px;
+    display:inline-flex;align-items:center;gap:9px;justify-content:center}
+  .hp-ico{flex-shrink:0;color:var(--gold)}
   .hero .btn{min-width:300px}
-  .scrolldown{margin-top:64px;font-size:11px;letter-spacing:.3em;color:var(--muted);
+  @media(max-width:380px){.hero .btn{min-width:0;width:100%}}
+  .scrolldown{margin-top:56px;font-size:11px;letter-spacing:.3em;color:var(--muted);
     text-transform:uppercase}
   .scrolldown span{display:block;width:1px;height:42px;margin:14px auto 0;
     background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
@@ -107,7 +114,13 @@
   .manifesto b{color:var(--cream);font-weight:700}
   .manifesto .hl{font-style:italic}
 
-  /* ============ ЯДРО — СЕЙФ ============ */
+  /* ============ СНЯТИЕ СТЫДА ============ */
+  .shame{background:linear-gradient(180deg,var(--coal),var(--void))}
+  .shame p{font-family:'Playfair Display';font-size:clamp(20px,3.4vw,32px);font-weight:500;
+    line-height:1.42;color:var(--cream-dim);max-width:780px}
+  .shame b{color:var(--cream);font-weight:700}
+
+  /* ============ ЯДРО — МИНИ-АУДИТ ============ */
   .core{background:linear-gradient(180deg,var(--void),var(--coal))}
   .core-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media(max-width:880px){.core-grid{grid-template-columns:1fr;gap:36px}}
@@ -141,62 +154,71 @@
     border-radius:50%;cursor:pointer;
     background:radial-gradient(circle at 35% 35%,var(--gold-bright),var(--gold-deep))}
 
-  /* vault — одометр */
-  .vault{border:1px solid var(--line);border-radius:4px;padding:34px 30px;text-align:center;
-    background:radial-gradient(120% 90% at 50% 0%,rgba(216,178,94,.08),transparent 70%);
+  /* поведенческие вопросы */
+  .qs{margin-top:14px;display:grid;gap:13px}
+  .q-block{border:1px solid var(--line);border-radius:3px;padding:16px 16px 13px;
+    background:rgba(255,255,255,.012)}
+  .q-txt{font-size:14.5px;font-weight:600;color:var(--cream);margin-bottom:12px;line-height:1.4}
+  .q-opts{display:flex;flex-direction:column;gap:8px}
+  .q-opt{display:flex;align-items:center;gap:11px;padding:11px 13px;border:1px solid var(--line);
+    border-radius:3px;cursor:pointer;font-size:14px;color:var(--cream-dim);transition:.2s;
+    background:transparent;text-align:left;font-family:'Manrope';width:100%}
+  .q-opt:hover{border-color:rgba(216,178,94,.45)}
+  .q-opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .q-opt .dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);
+    flex-shrink:0;transition:.2s}
+  .q-opt.on{border-color:var(--gold);background:rgba(216,178,94,.09);color:var(--cream)}
+  .q-opt.on .dot{border-color:var(--gold);
+    background:radial-gradient(circle at 35% 35%,var(--gold-bright),var(--gold-deep))}
+
+  /* vault — спокойная вторичная оценка */
+  .vault{border:1px solid var(--line);border-radius:4px;padding:30px 28px;text-align:center;
+    background:radial-gradient(120% 90% at 50% 0%,rgba(216,178,94,.06),transparent 70%);
     position:sticky;top:24px}
   .vault-cap{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
-  .vault-num{font-family:'Playfair Display';font-weight:900;font-size:clamp(40px,9vw,68px);
-    line-height:1;margin:14px 0 4px;transition:transform .15s}
-  .vault-num.bump{transform:scale(1.06)}
-  .vault-sub{font-size:13.5px;color:var(--cream-dim)}
+  .vault-num{font-family:'Playfair Display';font-weight:900;font-size:clamp(34px,7vw,54px);
+    line-height:1;margin:14px 0 4px;color:var(--cream-dim)}
+  .vault-sub{font-size:13.5px;color:var(--muted)}
   .vault-year{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line);
     font-size:14px;color:var(--muted)}
-  .vault-year b{color:var(--gold);font-family:'Playfair Display';font-size:24px}
-  .flow-hint{text-align:center;font-size:13px;letter-spacing:.06em;color:var(--muted);
-    margin:38px 0 8px;text-transform:uppercase}
-  .flow-hint::after{content:"↓";display:block;font-size:22px;color:var(--gold);
-    margin-top:8px;animation:drop2 1.8s infinite}
-  @keyframes drop2{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+  .vault-year b{color:var(--gold);font-family:'Playfair Display';font-size:22px}
+  .vault-disc{margin-top:16px;font-size:12px;color:var(--muted-2);line-height:1.5;font-style:italic}
+  .vault-hint{font-size:12px;color:var(--muted);margin-top:14px;font-style:italic;opacity:.75;transition:opacity .3s}
+  .vault-hint.hidden{opacity:0;pointer-events:none}
 
-  /* ============ ТАРИФЫ ============ */
-  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:760px){.tiers{grid-template-columns:1fr}}
-  .tier{position:relative;border:1px solid var(--line);border-radius:4px;
-    padding:28px 24px;overflow:hidden;background:var(--ink);transition:.4s;isolation:isolate}
-  .tier.best{border-color:rgba(216,178,94,.5)}
-  .tier .fill{position:absolute;left:0;right:0;bottom:0;height:0%;z-index:-1;
-    transition:height .7s cubic-bezier(.2,.8,.2,1);
-    background:linear-gradient(0deg,rgba(216,178,94,.28),rgba(216,178,94,.04));
-    border-top:1px solid var(--gold)}
-  .tier.covered{border-color:var(--gold);box-shadow:var(--glow)}
-  .tier-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:800;
-    letter-spacing:.1em;padding:5px 10px;border-radius:2px;text-transform:uppercase;
-    opacity:0;transform:translateY(-6px);transition:.4s}
-  .tier.covered .tier-badge{opacity:1;transform:none;background:var(--gold);color:#1a1206}
-  .tier.best:not(.covered) .tier-badge{opacity:1;transform:none;
-    background:rgba(216,178,94,.14);color:var(--gold)}
-  .tier-name{font-family:'Playfair Display';font-weight:700;font-size:22px}
-  .tier-price{margin:12px 0 4px;font-family:'Playfair Display';font-weight:900;
-    font-size:30px;color:var(--cream)}
-  .tier-price small{font-family:'Manrope';font-size:14px;color:var(--muted);font-weight:500}
-  .tier.covered .tier-price .amt{text-decoration:line-through;
-    text-decoration-color:var(--loss);color:var(--muted);font-size:22px}
-  .tier-net{font-size:13.5px;font-weight:700;color:var(--plus);min-height:20px;
-    margin-top:4px;opacity:0;transition:.4s}
-  .tier.covered .tier-net{opacity:1}
-  .tier-pay{font-size:12.5px;color:var(--gold);margin-top:2px;min-height:16px}
-  .tier ul{list-style:none;margin:18px 0 0;border-top:1px solid var(--line);padding-top:16px}
-  .tier li{font-size:14px;color:var(--cream-dim);padding:6px 0 6px 22px;position:relative}
-  .tier li::before{content:"—";position:absolute;left:0;color:var(--gold);opacity:.6}
-  .tier-hook{font-size:13px;color:var(--muted);margin:4px 0 0;line-height:1.35;min-height:36px}
-  .tier.best .tier-hook{color:var(--cream-dim)}
-  .tier .demo{font-size:10px;color:var(--muted-2);letter-spacing:.1em;margin-top:14px}
-  /* stagger fill animation — left-to-right narrative */
-  .tiers .tier:nth-child(2) .fill{transition-delay:.12s}
-  .tiers .tier:nth-child(3) .fill{transition-delay:.24s}
+  /* ВЫВОД АУДИТА */
+  .verdict{margin-top:44px;border:1px solid var(--gold);border-radius:6px;overflow:hidden;
+    background:radial-gradient(130% 90% at 50% 0,rgba(216,178,94,.08),transparent 70%);
+    box-shadow:var(--glow);display:none}
+  .verdict.show{display:block;animation:pop .5s cubic-bezier(.2,.8,.2,1)}
+  @keyframes pop{from{opacity:0;transform:scale(.97) translateY(14px)}to{opacity:1;transform:none}}
+  .verdict-head{padding:24px 28px 20px}
+  .verdict-class{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;margin-bottom:8px}
+  .verdict-title{font-family:'Playfair Display';font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--cream)}
+  .verdict-body{padding:0 28px}
+  .vp{padding:18px 0;border-top:1px solid var(--line)}
+  .vp-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .vp-txt{font-size:15.5px;color:var(--cream);line-height:1.55}
+  .vp.q .vp-txt{font-style:italic;font-family:'Playfair Display';font-size:18px;color:var(--gold-bright)}
+  .vp-check{list-style:none;margin:4px 0 0;padding:0;counter-reset:c}
+  .vp-check li{position:relative;padding:8px 0 8px 32px;font-size:14.5px;color:var(--cream-dim);counter-increment:c}
+  .vp-check li::before{content:counter(c);position:absolute;left:0;top:6px;width:21px;height:21px;
+    border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-size:11px;
+    display:grid;place-items:center;font-weight:700}
+  .verdict-actions{padding:24px 28px;border-top:1px solid var(--line);background:rgba(0,0,0,.2)}
+  .verdict-soft{font-size:14.5px;color:var(--cream-dim);margin:0 0 16px;line-height:1.55}
+  .verdict-actions .cta-row{gap:12px 18px}
+  .btn-sm{padding:13px 20px;font-size:14px}
+  /* вторичное действие — тихая текст-ссылка, не конкурирует с главной CTA */
+  .btn-text{display:inline-flex;align-items:center;gap:6px;background:none;border:none;
+    box-shadow:none;cursor:pointer;font-family:'Manrope';font-weight:600;font-size:13.5px;
+    color:var(--muted);padding:6px 2px;letter-spacing:.02em;text-decoration:underline;
+    text-underline-offset:3px;text-decoration-color:var(--line);transition:color .2s}
+  .btn-text:hover{color:var(--gold);text-decoration-color:var(--gold)}
+  .btn-text:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-  /* ============ БУХ vs ФИНДИР ============ */
+  /* ============ КАК НАХОДИМ (БУХ vs ФИНДИР) ============ */
   .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
   @media(max-width:680px){.vs{grid-template-columns:1fr;gap:14px}.vs .vs-mid{display:none}}
   .vs-col{border:1px solid var(--line);border-radius:4px;padding:28px 24px}
@@ -210,34 +232,63 @@
     text-align:center}
   .cfo h4{color:var(--gold)}
 
+  /* ============ ИНСТРУМЕНТЫ ============ */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+  .tool{border:1px solid var(--line);border-radius:4px;padding:22px 20px;background:var(--ink);transition:.3s}
+  .tool:hover{border-color:rgba(216,178,94,.45);transform:translateY(-3px)}
+  .tool .tag{font-size:11px;color:var(--gold);letter-spacing:.04em;margin-bottom:10px;
+    display:inline-flex;align-items:center;gap:6px}
+  .tool b{display:block;font-family:'Playfair Display';font-size:18px;margin-bottom:6px}
+  .tool p{font-size:14px;color:var(--muted)}
+  .cards-cap{margin-top:26px;font-size:14px;color:var(--cream-dim);text-align:center}
+  .cards-cap b{color:var(--gold);font-weight:700}
+
+  /* ============ В КАРМАНЕ + МОКАП ============ */
+  .pocket{background:linear-gradient(180deg,var(--coal),var(--void))}
+  .pocket-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  @media(max-width:860px){.pocket-grid{grid-template-columns:1fr;gap:42px}}
+  .scn{border-top:1px solid var(--line);padding:17px 0}
+  .scn:first-child{border-top:none;padding-top:0}
+  .scn b{font-family:'Playfair Display';font-size:17px;display:block;margin-bottom:3px;color:var(--cream)}
+  .scn span{font-size:14px;color:var(--muted)}
+  .phone-col{display:flex;flex-direction:column;align-items:center}
+  .phone{width:272px;max-width:80vw;aspect-ratio:9/16.5;border-radius:36px;
+    border:1px solid var(--line);background:linear-gradient(170deg,var(--ink-2),var(--coal));
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.85),var(--glow),inset 0 1px 0 rgba(255,255,255,.06);
+    padding:14px 12px;position:relative}
+  .phone::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);
+    width:42%;height:5px;border-radius:5px;background:rgba(255,255,255,.1)}
+  .phone-screen{height:100%;border-radius:25px;
+    background:radial-gradient(120% 80% at 50% 0,#181527,var(--void));
+    border:1px solid var(--line);padding:26px 16px 16px;display:flex;flex-direction:column;gap:11px;overflow:hidden}
+  .ps-cap{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .ps-big{font-family:'Playfair Display';font-weight:900;font-size:30px;color:var(--cream);line-height:1}
+  .ps-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;
+    padding:9px 0;border-top:1px solid var(--line)}
+  .ps-row span{color:var(--muted)}.ps-row b{color:var(--cream-dim);font-weight:600}
+  .ps-row b.warn{color:var(--loss)}.ps-row b.ok{color:var(--plus)}
+  .ps-chart-cap{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .ps-chart{display:flex;align-items:flex-end;gap:5px;height:60px;margin-top:8px}
+  .ps-chart i{flex:1;background:linear-gradient(var(--gold),var(--gold-deep));border-radius:2px 2px 0 0;opacity:.85}
+  .ps-axis{display:flex;gap:5px;margin-top:6px}
+  .ps-axis span{flex:1;text-align:center;font-size:8px;letter-spacing:.04em;color:var(--muted-2)}
+  .phone-cap{margin-top:16px;font-size:12px;color:var(--muted-2);text-align:center}
+  .pocket-note{margin-top:34px;font-size:14px;color:var(--muted);max-width:780px;line-height:1.6}
+  .pocket-note b{color:var(--cream-dim)}
+  /* лид-заметка внутри колонки сценариев — отделяем, чтобы не сливалась с последним сценарием */
+  .pocket-note--lead{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+
   /* ============ ЧТО ПОЛУЧАЕТЕ ============ */
   .deliv{display:grid;grid-template-columns:1fr 1fr;gap:0}
   @media(max-width:680px){.deliv{grid-template-columns:1fr}}
   .d-item{padding:26px 24px;border-top:1px solid var(--line);position:relative;transition:.3s}
   .d-item:hover{background:rgba(216,178,94,.04)}
-  .d-num{font-family:'Playfair Display';font-style:italic;font-size:16px;
-    color:var(--gold);opacity:.7}
-  .d-item b{display:block;font-family:'Playfair Display';font-size:20px;
-    font-weight:700;margin:6px 0 4px}
+  .d-num{font-family:'Playfair Display';font-style:italic;font-size:16px;color:var(--gold);opacity:.7}
+  .d-item b{display:block;font-family:'Playfair Display';font-size:20px;font-weight:700;margin:6px 0 4px}
   .d-item span{font-size:14px;color:var(--muted)}
-
-  /* ============ ВИДЕО ============ */
-  .video-wrap{position:relative;border:1px solid var(--line);border-radius:4px;
-    overflow:hidden;aspect-ratio:16/9;cursor:pointer;
-    background:radial-gradient(110% 90% at 50% 40%,var(--ink-2),var(--void))}
-  .video-wrap .pin{position:absolute;inset:0;display:grid;place-items:center;
-    text-align:center;padding:20px}
-  .play-btn{width:84px;height:84px;border-radius:50%;
-    background:linear-gradient(120deg,var(--gold-bright),var(--gold));
-    display:grid;place-items:center;margin:0 auto 18px;
-    box-shadow:0 0 0 0 rgba(216,178,94,.5);animation:pulse 2.6s infinite}
-  .play-btn::after{content:"";border-left:26px solid #1a1206;
-    border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:7px}
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(216,178,94,.45)}
-    70%{box-shadow:0 0 0 26px rgba(216,178,94,0)}
-    100%{box-shadow:0 0 0 0 rgba(216,178,94,0)}}
-  .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 
   /* ============ ТАЙМЛАЙН ============ */
   .tl{position:relative;padding-left:30px}
@@ -252,33 +303,27 @@
     font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
     border:1px solid var(--line);padding:4px 10px;border-radius:20px;margin-top:8px}
 
-  /* ============ КЕЙСЫ ============ */
-  .case{border:1px solid var(--line);border-radius:4px;padding:24px;margin-bottom:13px;
-    cursor:pointer;transition:.3s;background:var(--ink)}
-  .case:hover{border-color:var(--gold);transform:translateX(5px)}
-  .case:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  .case-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-  .case b{display:block;font-family:'Playfair Display';font-size:21px;margin:8px 0;font-weight:700}
-  .case .res{color:var(--plus);font-weight:700}
-
-  .modal{position:fixed;inset:0;background:rgba(8,8,13,.82);backdrop-filter:blur(6px);
-    display:none;place-items:center;z-index:500;padding:22px}
-  .modal.open{display:grid}
-  .modal-box{background:var(--coal);border:1px solid var(--line);border-radius:6px;
-    padding:34px 30px;max-width:500px;width:100%;position:relative;
-    animation:pop .4s cubic-bezier(.2,.8,.2,1)}
-  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(18px)}to{opacity:1;transform:none}}
-  .modal-x{position:absolute;top:16px;right:16px;width:36px;height:36px;
-    border:1px solid var(--line);background:none;border-radius:50%;
-    color:var(--muted);font-size:17px;cursor:pointer;transition:.2s}
-  .modal-x:hover{border-color:var(--gold);color:var(--cream)}
-  .modal-x:focus-visible{outline:2px solid var(--gold)}
-  .modal-box h3{font-size:25px;margin:6px 0 18px}
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
-  .ba div{padding:16px;border-radius:3px}
-  .ba .was{background:rgba(221,107,80,.1)}.ba .now{background:rgba(134,192,143,.12)}
-  .ba small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .ba b{display:block;font-family:'Playfair Display';font-size:19px;margin-top:5px}
+  /* ============ ТАРИФЫ ============ */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr}}
+  .tier{position:relative;border:1px solid var(--line);border-radius:4px;
+    padding:28px 24px;background:var(--ink);transition:.4s}
+  .tier.best{border-color:rgba(216,178,94,.5)}
+  .tier-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:800;
+    letter-spacing:.08em;padding:5px 10px;border-radius:2px;text-transform:uppercase;
+    white-space:nowrap;background:rgba(216,178,94,.14);color:var(--gold)}
+  .tier-name{font-family:'Playfair Display';font-weight:700;font-size:22px}
+  .tier-price{margin:12px 0 4px;font-family:'Playfair Display';font-weight:900;
+    font-size:30px;color:var(--cream)}
+  .tier-price small{font-family:'Manrope';font-size:14px;color:var(--muted);font-weight:500}
+  .tier ul{list-style:none;margin:18px 0 0;border-top:1px solid var(--line);padding-top:16px}
+  .tier li{font-size:14px;color:var(--cream-dim);padding:6px 0 6px 22px;position:relative}
+  .tier li::before{content:"—";position:absolute;left:0;color:var(--gold);opacity:.6}
+  .tier-hook{font-size:13px;color:var(--muted);margin:4px 0 0;line-height:1.35;min-height:36px}
+  .tier.best .tier-hook{color:var(--cream-dim)}
+  .price-anchor{text-align:center;font-size:13px;color:var(--muted-2);margin-bottom:24px}
+  .tier-foot{text-align:center;margin-top:28px;font-size:13px;color:var(--muted);max-width:720px;
+    margin-left:auto;margin-right:auto;line-height:1.55}
 
   /* ============ FAQ ============ */
   .faq{border-bottom:1px solid var(--line)}
@@ -289,71 +334,47 @@
   .faq-q i{color:var(--gold);font-style:normal;font-size:24px;transition:.3s;flex-shrink:0}
   .faq.open .faq-q i{transform:rotate(45deg)}
   .faq-a{max-height:0;overflow:hidden;transition:max-height .4s;color:var(--muted);font-size:15px}
-  .faq.open .faq-a{max-height:280px;padding-bottom:22px}
+  .faq.open .faq-a{max-height:320px;padding-bottom:22px}
 
   /* ============ ФИНАЛ ============ */
-  .final{background:radial-gradient(120% 100% at 50% 100%,#1b1830,var(--void) 60%);
-    text-align:center}
+  .final{background:radial-gradient(120% 100% at 50% 100%,#1b1830,var(--void) 60%);text-align:center}
   .final h2{font-size:clamp(32px,7vw,64px);font-weight:900;margin-bottom:18px}
   .final h2 em{font-style:italic;font-weight:500}
-  .scar{display:inline-block;border:1px solid var(--line);color:var(--gold);
-    font-size:13px;letter-spacing:.06em;padding:9px 18px;border-radius:30px;margin-bottom:28px}
-  .form-wrap{max-width:430px;margin:0 auto;border:1px solid var(--line);border-radius:6px;
-    padding:30px 26px;background:rgba(255,255,255,.014)}
-  .form-wrap input{width:100%;padding:16px;margin-bottom:11px;border:1px solid var(--line);
-    border-radius:3px;background:rgba(0,0,0,.3);color:var(--cream);
-    font-family:'Manrope';font-size:15px;transition:border-color .2s}
-  .form-wrap input::placeholder{color:var(--muted-2)}
-  .form-wrap input:focus-visible{outline:none;border-color:var(--gold)}
-  .form-wrap input.err{border-color:var(--loss)}
-  .thanks{display:none}.thanks.show{display:block;animation:pop .5s}
+  .assure{display:inline-block;border:1px solid var(--line);color:var(--cream-dim);
+    font-size:13px;letter-spacing:.04em;padding:9px 18px;border-radius:30px;margin-bottom:28px}
+  .cta-final{max-width:430px;margin:0 auto}
+  .cta-final .btn{width:100%;min-width:0}
   .contacts{margin-top:30px;font-size:14px;color:var(--muted)}
   .contacts a{color:var(--gold);text-decoration:none}
   .contacts a:hover{text-decoration:underline}
-  footer{text-align:center;padding:30px;font-size:12.5px;color:var(--muted-2);
-    border-top:1px solid var(--line)}
+  footer{text-align:center;padding:30px;font-size:12.5px;color:var(--muted-2);border-top:1px solid var(--line)}
   .ph{outline:1px dashed rgba(216,178,94,.5);outline-offset:2px;border-radius:2px}
 
   /* ============ БОТ-ГИД ============ */
-  #guide{position:fixed;top:10px;left:50%;z-index:900;
-    transform:translateX(-50%);
+  #guide{position:fixed;top:10px;left:50%;z-index:900;transform:translateX(-50%);
     transition:left .9s cubic-bezier(.4,.1,.2,1),opacity .5s,transform .85s;
     width:64px;pointer-events:none;will-change:left,transform}
   @media(max-width:600px){#guide{width:50px;top:6px}}
-
-  .g-body{position:relative;width:56px;height:56px;margin:0 auto;
-    border-radius:18px 18px 16px 16px;
+  .g-body{position:relative;width:56px;height:56px;margin:0 auto;border-radius:18px 18px 16px 16px;
     background:radial-gradient(circle at 38% 30%,var(--gold-bright),var(--gold) 55%,var(--gold-deep));
-    box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 2px 4px rgba(255,255,255,.4),
-      0 0 26px rgba(216,178,94,.4);
+    box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 2px 4px rgba(255,255,255,.4),0 0 26px rgba(216,178,94,.4);
     animation:gbob 2.4s ease-in-out infinite}
   @media(max-width:600px){.g-body{width:44px;height:44px;border-radius:14px 14px 12px 12px}}
   @keyframes gbob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-1deg)}}
   #guide.walking .g-body{animation:gwalk .4s ease-in-out infinite}
   @keyframes gwalk{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-4px) rotate(3deg)}}
-
-  /* антенна */
-  .g-ant{position:absolute;top:-13px;left:50%;width:2px;height:11px;
-    background:var(--gold-deep);transform:translateX(-50%)}
+  .g-ant{position:absolute;top:-13px;left:50%;width:2px;height:11px;background:var(--gold-deep);transform:translateX(-50%)}
   .g-ant::after{content:"";position:absolute;top:-5px;left:-2.5px;width:7px;height:7px;
-    border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold);
-    animation:blinkled 1.6s infinite}
+    border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold);animation:blinkled 1.6s infinite}
   @keyframes blinkled{0%,100%{opacity:1}50%{opacity:.3}}
-
-  /* глаза */
   .g-eyes{position:absolute;top:19px;left:0;right:0;display:flex;justify-content:center;gap:11px}
   @media(max-width:600px){.g-eyes{top:14px;gap:8px}}
   .g-eye{width:9px;height:11px;background:#1a1206;border-radius:50%;animation:eyeblink 4s infinite}
   @media(max-width:600px){.g-eye{width:7px;height:9px}}
   @keyframes eyeblink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
-
-  /* рот */
   .g-mouth{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);
-    width:14px;height:7px;border-bottom:2.5px solid #1a1206;
-    border-radius:0 0 14px 14px;transition:.3s}
+    width:14px;height:7px;border-bottom:2.5px solid #1a1206;border-radius:0 0 14px 14px;transition:.3s}
   @media(max-width:600px){.g-mouth{bottom:8px;width:11px;height:5px}}
-
-  /* ножки */
   .g-legs{position:absolute;bottom:-9px;left:0;right:0;display:flex;justify-content:center;gap:13px}
   @media(max-width:600px){.g-legs{bottom:-7px;gap:10px}}
   .g-leg{width:4px;height:10px;background:var(--gold-deep);border-radius:0 0 3px 3px;transform-origin:top}
@@ -361,80 +382,92 @@
   #guide.walking .g-leg:first-child{animation:step .4s infinite}
   #guide.walking .g-leg:last-child{animation:step .4s infinite .2s}
   @keyframes step{0%,100%{transform:rotate(18deg)}50%{transform:rotate(-18deg)}}
-
-  /* рука */
   .g-arm{position:absolute;right:-10px;bottom:6px;width:16px;height:4px;
     background:var(--gold-deep);border-radius:3px;transform-origin:left;
     transform:rotate(20deg);opacity:0;transition:opacity .3s}
   .g-arm::after{content:"👇";position:absolute;right:-14px;top:-7px;font-size:13px}
   @media(max-width:600px){.g-arm{right:-8px;width:12px}}
-
-  /* спич-бабл */
-  .g-bubble{position:absolute;top:50%;left:72px;
-    transform:translateY(-50%) scale(.6);transform-origin:left center;
+  .g-bubble{position:absolute;top:50%;left:72px;transform:translateY(-50%) scale(.6);transform-origin:left center;
     background:var(--coal);border:1px solid var(--gold);color:var(--cream);
-    font-size:12.5px;font-weight:600;line-height:1.35;padding:9px 13px;
-    border-radius:3px;white-space:nowrap;
-    box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;
-    transition:opacity .35s,transform .35s;letter-spacing:.01em;pointer-events:none}
+    font-size:12.5px;font-weight:600;line-height:1.35;padding:9px 13px;border-radius:3px;white-space:nowrap;
+    box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transition:opacity .35s,transform .35s;
+    letter-spacing:.01em;pointer-events:none}
   .g-bubble::before{content:"";position:absolute;left:-6px;top:50%;
     transform:translateY(-50%) rotate(45deg);width:9px;height:9px;
     background:var(--coal);border-left:1px solid var(--gold);border-bottom:1px solid var(--gold)}
   #guide.show-bubble .g-bubble{opacity:1;transform:translateY(-50%) scale(1)}
-
-  /* бабл слева когда бот в правой половине */
-  #guide.flip .g-bubble{left:auto;right:72px;transform-origin:right center;
-    transform:translateY(-50%) scale(.6)}
+  #guide.flip .g-bubble{left:auto;right:72px;transform-origin:right center;transform:translateY(-50%) scale(.6)}
   #guide.flip .g-bubble::before{left:auto;right:-6px;border-left:none;border-bottom:none;
     border-right:1px solid var(--gold);border-top:1px solid var(--gold)}
   #guide.show-bubble.flip .g-bubble{transform:translateY(-50%) scale(1)}
   @media(max-width:600px){
-    .g-bubble{font-size:11px;left:56px;white-space:normal;width:140px;max-width:140px}
+    .g-bubble{font-size:11px;left:56px;white-space:normal;width:150px;max-width:150px}
     #guide.flip .g-bubble{right:56px;left:auto}}
-
-  /* ЭМОЦИИ */
   #guide.e-happy .g-mouth{height:9px;border-radius:0 0 16px 16px}
   #guide.e-think .g-mouth{width:7px;height:0;border-bottom:2.5px solid #1a1206;border-radius:0}
   #guide.e-point .g-arm{opacity:1;animation:pointArm 1s ease-in-out infinite}
   @keyframes pointArm{0%,100%{transform:rotate(20deg)}50%{transform:rotate(40deg)}}
-
   #guide.e-stomp .g-body{animation:gstomp .5s ease-in-out infinite}
   @keyframes gstomp{0%,100%{transform:translateY(0)}30%{transform:translateY(-9px) rotate(-4deg)}60%{transform:translateY(0) rotate(2deg)}}
   #guide.e-stomp .g-leg:first-child{animation:stompanim .5s infinite}
   @keyframes stompanim{0%,100%{transform:rotate(0)}40%{transform:rotate(-35deg)}55%{transform:rotate(8deg)}}
-  #guide.e-stomp::after{content:"";position:absolute;bottom:-12px;left:50%;
-    transform:translateX(-50%);width:30px;height:5px;border-radius:50%;
-    background:radial-gradient(rgba(216,178,94,.5),transparent 70%);
-    animation:dust .5s infinite}
-  @keyframes dust{0%{opacity:.7;transform:translateX(-50%) scale(.4)}100%{opacity:0;transform:translateX(-50%) scale(1.5)}}
-
-  /* сон / уход */
   #guide.asleep{transform:translateX(-50%) translateY(-140px);opacity:0;pointer-events:none}
   #guide.gone{transform:translateX(-50%) translateY(-150px) scale(.5);opacity:0}
-
-  /* машет */
   #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
-
-  /* искра-пробуждение в хедлайне */
-  .waker{cursor:pointer;color:var(--gold);font-size:14px;vertical-align:super;
-    margin-left:3px;pointer-events:auto;animation:wpulse 2.2s infinite;
-    display:inline-block;border-radius:2px}
+  .waker{cursor:pointer;color:var(--gold);font-size:14px;vertical-align:super;margin-left:3px;
+    pointer-events:auto;animation:wpulse 2.2s infinite;display:inline-block;border-radius:2px}
   .waker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   @keyframes wpulse{0%,100%{opacity:.3}50%{opacity:1;text-shadow:0 0 12px var(--gold)}}
 
-  /* vault hint — zero-state prompt */
-  .vault-hint{font-size:12px;color:var(--muted);margin-top:12px;
-    font-style:italic;opacity:.7;transition:opacity .3s}
-  .vault-hint.hidden{opacity:0;pointer-events:none}
+  /* печать «Сохранить разбор» */
+  @media print{
+    body{background:#fff;color:#000}
+    body::after{display:none}
+    body *{visibility:hidden}
+    #verdict,#verdict *{visibility:visible}
+    #verdict{position:absolute;left:0;top:0;width:100%;border:none;box-shadow:none;background:#fff;color:#000}
+    .verdict-actions{display:none}
+    #guide,#prog{display:none}
+  }
+
+  /* ===== БРЕНД: персона, регалии, специализация ===== */
+  .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
+  .cred-exp{font-size:14.5px;color:var(--cream-dim);max-width:540px;line-height:1.5}
+  .cred-badges{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .cred-badges b{font-family:'Manrope';font-size:11px;font-weight:700;letter-spacing:.16em;
+    color:var(--gold);border:1px solid var(--line);border-radius:20px;padding:5px 13px}
+  .hero-spec{font-size:12px;color:var(--muted-2);max-width:560px;margin:22px auto 0;
+    letter-spacing:.03em;line-height:1.65}
+  .hero-value{font-size:13.5px;color:var(--cream-dim);max-width:520px;margin:14px auto 0;line-height:1.5}
+  .hero-value b{color:var(--gold);font-weight:700}
+
+  /* ===== сценарии «что вскрывается на диагностике» ===== */
+  .scenario{border:1px solid var(--line);border-radius:4px;padding:24px;margin-bottom:13px;background:var(--ink)}
+  .scenario .case-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .scenario b{display:block;font-family:'Playfair Display';font-size:21px;margin:9px 0 14px;font-weight:700}
+  .scn-line{font-size:14.5px;color:var(--cream-dim);line-height:1.55;padding:11px 0;border-top:1px solid var(--line)}
+  .scn-line em{font-style:normal;font-weight:700;color:var(--gold);font-family:'Manrope';
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+  /* ===== тарифы: «от …» и бесплатно ===== */
+  .tier-price .from{font-family:'Manrope';font-size:15px;color:var(--muted);font-weight:600;margin-right:3px}
+  .tier-price .free{color:var(--plus)}
+  .tier-kind{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:6px 0 2px}
+
+  /* ===== AI-секция (2×2 на десктопе, 1 колонка на телефоне) ===== */
+  @media(min-width:561px){.ai-cards{grid-template-columns:repeat(2,1fr)}}
+  .tool .tag.ai{color:var(--gold-bright)}
+
+  .contacts-sep{margin:0 10px;color:var(--muted-2)}
 
   /* reduced-motion */
   @media(prefers-reduced-motion:reduce){
     #guide{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
-    .g-body,.hero-glow,.scrolldown span,.play-btn,.type,
-    .g-ant::after,.g-eye,.flow-hint::after{animation:none !important}
+    .g-body,.hero-glow,.scrolldown span,.type,
+    .g-ant::after,.g-eye{animation:none !important}
   }
 </style>
 </head>
@@ -446,216 +479,296 @@
   <div class="g-bubble" id="gBubble"></div>
   <div class="g-body">
     <div class="g-ant"></div>
-    <div class="g-eyes">
-      <div class="g-eye"></div>
-      <div class="g-eye"></div>
-    </div>
+    <div class="g-eyes"><div class="g-eye"></div><div class="g-eye"></div></div>
     <div class="g-mouth"></div>
     <div class="g-arm"></div>
-    <div class="g-legs">
-      <div class="g-leg"></div>
-      <div class="g-leg"></div>
-    </div>
+    <div class="g-legs"><div class="g-leg"></div><div class="g-leg"></div></div>
   </div>
 </div>
 
-<!-- ====== HERO ====== -->
+<!-- ====== HERO — диагностика-инструмент ====== -->
 <section class="hero" id="s0">
   <div class="hero-glow"></div>
   <div class="grid-lines"></div>
   <div class="wrap">
     <div class="kick" style="justify-content:center">
-      Финансовый директор на аутсорсе
+      Татьяна Рид · CFO на аутсорсе
       <span class="waker" id="waker" role="button" tabindex="0"
         aria-label="Разбудить гида" title="нажми ✦">✦</span>
     </div>
-    <h1>Где <em>заморожены</em><br><span class="type gold-text" id="type"></span></h1>
-    <p class="hero-sub">У прибыльного на бумаге бизнеса деньги застревают в складе,
-      дебиторке и скидках «на глаз». Мы находим их и возвращаем в оборот —
-      без штатного финдиректора за <span class="ph">[X]</span>× дешевле.</p>
-    <a href="#core" class="btn">Найти замороженные деньги</a>
-    <p class="micro">30 минут · бесплатно · без обязательств</p>
+    <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
+    <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
+    <div class="hero-cred">
+      <span class="cred-exp">25 лет в реальном бизнесе — строительство, дорожная отрасль, производство</span>
+      <span class="cred-badges"><b>DipIFR</b><b>ACCA</b><b>CIMA</b></span>
+    </div>
+    <p class="hero-value"><b>Без затрат на штатного финдиректора</b> — налоги, отпуска, больничные и риск найма.</p>
+    <p class="hero-pocket">
+      <svg class="hp-ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+        <rect x="6.5" y="2" width="11" height="20" rx="2.4"/><line x1="10.5" y1="18.6" x2="13.5" y2="18.6"/>
+      </svg>
+      <span>Ключевые цифры бизнеса — в телефоне, доступны в любой момент.</span>
+    </p>
+    <a href="#core" class="btn">Пройти диагностику</a>
+    <p class="micro">2 минуты · бесплатно · без заявки</p>
+    <p class="hero-spec">Строительство · дорожная отрасль · производство · удалённо по всей России</p>
     <div class="scrolldown" aria-hidden="true">прокрутите<span></span></div>
   </div>
 </section>
 
-<!-- ====== МАНИФЕСТ БОЛИ ====== -->
+<!-- ====== БОЛЬ ====== -->
 <section class="manifesto" id="s1">
   <div class="wrap narrow">
     <p class="reveal" data-rv="up">
-      Вы не теряете деньги в один момент.
-      <b>Они утекают тихо</b> — пока вы заняты продажами.
-      <span class="hl gold-text">Зависший склад. Дебиторка, которую не торопятся
+      Деньги редко уходят разом.
+      <b>Они задерживаются тихо</b> — пока вы заняты делом.
+      <span class="hl gold-text">Склад, который не двигается. Дебиторка, которую не торопятся
       гасить. Скидки без расчёта маржи.</span>
-      К концу года это <b>миллионы</b>, которых вы так и не увидели.
+      Это видно не сразу — и так устроено у большинства растущих компаний.
     </p>
   </div>
 </section>
 
-<!-- ====== ЯДРО: КАРТА УТЕЧЕК + КАЛЬКУЛЯТОР + ТАРИФЫ ====== -->
+<!-- ====== СНЯТИЕ СТЫДА ====== -->
+<section class="shame" id="shame">
+  <div class="wrap narrow">
+    <p class="reveal" data-rv="up">
+      Вы строили бизнес, продавали, нанимали людей — <b>а не сидели над таблицами.</b>
+      Это нормально. Просто никто ещё не показал ваши цифры так, чтобы всё было видно
+      с первого взгляда. <span class="gold-text">Давайте посмотрим вместе.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ====== ЯДРО: МИНИ-АУДИТ ====== -->
 <section class="core" id="core">
   <div class="wrap">
-    <div class="kick">Карта утечек</div>
+    <div class="kick">Экспресс-диагностика</div>
     <h2 class="serif reveal" data-rv="left"
       style="font-size:clamp(28px,5.5vw,46px);font-weight:700;margin-bottom:12px">
-      Сколько денег у вас заморожено
+      Где ваш бизнес теряет деньги
     </h2>
     <p class="reveal" data-rv="right"
-      style="color:var(--muted);max-width:560px;margin-bottom:46px">
-      Отметьте слабые места, задайте оборот —
-      найденное внизу <span class="gold-text">само закроет стоимость услуги.</span>
+      style="color:var(--muted);max-width:580px;margin-bottom:46px">
+      Отметьте знакомое и ответьте на три вопроса. Ниже получите
+      <span class="gold-text">персональный разбор</span> — сразу, без заявки.
     </p>
 
     <div class="core-grid">
-      <!-- утечки + слайдер -->
+      <!-- утечки + вопросы + слайдер -->
       <div class="reveal" data-rv="left">
-        <!-- data-rate — консервативная оценка, правится без смены кода -->
-        <div class="leak" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
+        <!-- data-rate — консервативная оценка для вторичной цифры; data-zone — ключ зоны -->
+        <div class="leak" data-zone="deadstock" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Мёртвый склад, зависшие остатки</span>
         </div>
-        <div class="leak" data-rate="0.012" role="checkbox" aria-checked="false" tabindex="0">
+        <div class="leak" data-zone="receivables" data-rate="0.012" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Растёт дебиторка, платят с задержкой</span>
         </div>
-        <div class="leak" data-rate="0.010" role="checkbox" aria-checked="false" tabindex="0">
+        <div class="leak" data-zone="discounts" data-rate="0.010" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Скидки «на глаз», без расчёта маржи</span>
         </div>
-        <div class="leak" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
+        <div class="leak" data-zone="profitability" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Не знаю прибыльность по продуктам</span>
         </div>
-        <div class="leak" data-rate="0.008" role="checkbox" aria-checked="false" tabindex="0">
+        <div class="leak" data-zone="cashgap" data-rate="0.008" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Случаются кассовые разрывы</span>
         </div>
+
+        <!-- поведенческие вопросы (генерируются из конфига) -->
+        <div class="qs" id="qs"></div>
+
         <div class="turn">
           <div class="turn-lbl">
             <span>Месячный оборот</span>
-            <b id="toVal">5 млн ₽</b>
+            <b id="toVal">15 млн ₽</b>
           </div>
-          <input type="range" id="turnover" min="1" max="150" value="5"
-            aria-label="Месячный оборот, млн рублей" aria-valuemin="1" aria-valuemax="150" aria-valuenow="5">
+          <input type="range" id="turnover" min="5" max="80" value="15"
+            aria-label="Месячный оборот, млн рублей" aria-valuemin="5" aria-valuemax="80" aria-valuenow="15">
         </div>
       </div>
 
-      <!-- счётчик-одометр -->
+      <!-- вторичная оценка (спокойно, не заголовок) -->
       <div class="vault reveal" data-rv="scale">
-        <div class="vault-cap">Заморожено впустую</div>
-        <!-- оценочно: найдено/мес = оборот_руб × Σ(data-rate выбранных) -->
-        <div class="vault-num gold-text tnum" id="found" aria-live="polite" aria-atomic="true">0 ₽</div>
-        <div class="vault-sub">в месяц · оценочно</div>
+        <div class="vault-cap">Во сколько примерно обходится</div>
+        <div class="vault-num tnum" id="found" aria-live="polite" aria-atomic="true">0 ₽</div>
+        <div class="vault-sub">в месяц · грубая оценка</div>
         <div class="vault-year">в год это <b class="tnum" id="foundYear">0 ₽</b></div>
-        <div id="vaultHint" class="vault-hint">← отметьте хотя бы одну утечку</div>
+        <div class="vault-disc">Это прикидка, а не диагноз. Точную цифру по вашим
+          данным можно посчитать на разборе.</div>
+        <div id="vaultHint" class="vault-hint">← отметьте зоны или ответьте на вопросы</div>
       </div>
     </div>
 
-    <div class="flow-hint reveal" data-rv="up" aria-hidden="true">эти деньги закрывают стоимость работы</div>
-
-    <!-- якорь сравнения: штатный финдиректор для контекста цен -->
-    <p class="reveal" data-rv="up" style="text-align:center;font-size:13px;color:var(--muted-2);margin-bottom:20px">
-      Штатный финдиректор: от 250 000 ₽/мес (оклад + налоги + соцпакет)
-    </p>
-
-    <!-- тарифы с заливкой окупаемости -->
-    <!-- демо-цены в data-price (₽/мес) — ЗАМЕНИТЬ на реальные перед публикацией -->
-    <div class="tiers reveal" data-rv="up">
-      <div class="tier" data-price="35000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">окупается</div>
-        <div class="tier-name">Старт</div>
-        <div class="tier-hook">Видите, куда уходят деньги — и управляете этим</div>
-        <div class="tier-price">
-          <span class="amt"><span class="ph">35 000</span></span>
-          <small>₽/мес</small>
-        </div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <div class="tier-pay" data-pay></div>
-        <ul>
-          <li>Управленческий учёт</li>
-          <li>ДДС и P&amp;L</li>
-          <li>Ежемесячный отчёт</li>
-        </ul>
-        <div class="demo">демо-цена</div>
+    <!-- ПЕРСОНАЛЬНЫЙ ВЫВОД -->
+    <div class="verdict" id="verdict" aria-live="polite">
+      <div class="verdict-head">
+        <div class="verdict-class" id="vClass"></div>
+        <div class="verdict-title" id="vTitle"></div>
       </div>
-
-      <div class="tier best" data-price="65000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">оптимальный</div>
-        <div class="tier-name">Бизнес</div>
-        <div class="tier-hook">Никогда не попадёте в кассовый разрыв</div>
-        <div class="tier-price">
-          <span class="amt"><span class="ph">65 000</span></span>
-          <small>₽/мес</small>
+      <div class="verdict-body" id="vBody"></div>
+      <div class="verdict-actions">
+        <p class="verdict-soft" id="vSoft"></p>
+        <div class="cta-row">
+          <a href="#final" class="btn btn-sm">Разобрать на моих цифрах — 30 мин, бесплатно</a>
+          <button class="btn-text" id="savePdf" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
+            Сохранить разбор
+          </button>
         </div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <div class="tier-pay" data-pay></div>
-        <ul>
-          <li>Всё из «Старт»</li>
-          <li>Платёжный календарь</li>
-          <li>Финансовый дашборд</li>
-          <li>Стратегические сессии</li>
-        </ul>
-        <div class="demo">демо-цена</div>
-      </div>
-
-      <div class="tier" data-price="120000">
-        <div class="fill" aria-hidden="true"></div>
-        <div class="tier-badge">окупается</div>
-        <div class="tier-name">Премиум</div>
-        <div class="tier-hook">Готовы к росту, инвестициям и масштабу</div>
-        <div class="tier-price">
-          <span class="amt"><span class="ph">120 000</span></span>
-          <small>₽/мес</small>
-        </div>
-        <div class="tier-net" data-net aria-live="polite"></div>
-        <div class="tier-pay" data-pay></div>
-        <ul>
-          <li>Всё из «Бизнес»</li>
-          <li>Бюджетирование, план-факт</li>
-          <li>Подготовка к инвестициям</li>
-        </ul>
-        <div class="demo">демо-цена</div>
       </div>
     </div>
-
-    <p style="text-align:center;margin-top:34px">
-      <a href="#final" class="btn">Узнать точную цифру на разборе — 30 мин, бесплатно</a>
-    </p>
   </div>
 </section>
 
-<!-- ====== БУХГАЛТЕР vs ФИНДИРЕКТОР ====== -->
-<section id="s3">
+<!-- ====== КАК МЫ НАХОДИМ ДЕНЬГИ ====== -->
+<section id="how">
   <div class="wrap narrow">
-    <div class="kick">Частый вопрос</div>
+    <div class="kick">Как я работаю</div>
     <h2 class="serif reveal" data-rv="up"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:36px">
-      «У меня же есть бухгалтер»
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Бухгалтер закрывает прошлое. Я смотрю вперёд
     </h2>
+    <p class="reveal" data-rv="up" style="color:var(--muted);max-width:600px;margin-bottom:36px">
+      Если у вас есть бухгалтер — отлично, он на своём месте. Как финдиректор я отвечаю
+      за другое. Вот в чём разница.
+    </p>
     <div class="vs reveal" data-rv="scale">
       <div class="vs-col">
         <div class="role">Бухгалтер</div>
         <h4>Смотрит назад</h4>
         <p>Считает то, что уже случилось: налоги, отчётность</p>
-        <p>Его клиент — налоговая, не вы</p>
-        <p>Не его роль — искать вашу упущенную прибыль</p>
+        <p>Его клиент — государство, и это правильно</p>
+        <p>Искать упущенную прибыль — не его задача</p>
       </div>
       <div class="vs-mid" aria-hidden="true">vs</div>
       <div class="vs-col cfo">
-        <div class="role">Финдиректор</div>
-        <h4>Смотрит вперёд</h4>
+        <div class="role">Я — финдиректор</div>
+        <h4>Смотрю вперёд</h4>
         <p>Прогноз денег и прибыли на месяцы вперёд</p>
-        <p>Отвечает за ваши решения и рост</p>
-        <p>Находит замороженное и возвращает в оборот</p>
+        <p>Помогаю вашим решениям и росту</p>
+        <p>Нахожу, где деньги задержались, и возвращаю в оборот</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ====== ИНСТРУМЕНТЫ КОНТРОЛЯ ====== -->
+<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="tools">
+  <div class="wrap">
+    <div class="kick">Инструменты контроля</div>
+    <h2 class="serif reveal" data-rv="left"
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Не отчёты раз в месяц, а контроль под рукой
+    </h2>
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
+      Если проблема повторяется, её лучше не держать в голове. Под конкретную задачу я
+      внедряю небольшой прикладной инструмент — таблицу, мини-дашборд или простое
+      веб-приложение, которое показывает проблему вовремя.
+    </p>
+    <div class="cards reveal" data-rv="up">
+      <div class="tool"><div class="tag">📱 с телефона</div><b>Контроль дебиторки</b>
+        <p>Кто должен, сколько, с какого срока, где риск просрочки и какие суммы зависли.</p></div>
+      <div class="tool"><div class="tag">📱 с телефона</div><b>Кассовые разрывы</b>
+        <p>План поступлений и платежей, ближайшие провалы по деньгам и решения до того, как касса ушла в минус.</p></div>
+      <div class="tool"><div class="tag">📱 с телефона</div><b>Маржинальность проектов</b>
+        <p>Выручка, прямые расходы, валовая маржа и отклонения по каждому проекту, объекту или направлению.</p></div>
+      <div class="tool"><div class="tag">📱 с телефона</div><b>План-факт</b>
+        <p>Сравнение плана и факта по выручке, расходам, прибыли и денежному потоку.</p></div>
+      <div class="tool"><div class="tag">📱 с телефона</div><b>Контроль расходов</b>
+        <p>Регулярные расходы, отклонения, лишние платежи и зоны, где деньги уходят незаметно.</p></div>
+      <div class="tool"><div class="tag">📱 с телефона</div><b>Платёжный календарь</b>
+        <p>Что платить, когда платить, какие обязательства критичны и где нужен перенос или приоритизация.</p></div>
+    </div>
+    <p class="cards-cap reveal" data-rv="up">Любой инструмент открывается <b>с телефона</b> —
+      не нужно ждать отчёта или садиться за компьютер.</p>
+  </div>
+</section>
+
+<!-- ====== ВАШ БИЗНЕС — В КАРМАНЕ ====== -->
+<section class="pocket" id="pocket">
+  <div class="wrap">
+    <div class="kick">Кульминация</div>
+    <h2 class="serif reveal" data-rv="left"
+      style="font-size:clamp(28px,5.5vw,48px);font-weight:700;margin-bottom:36px">
+      Ваш бизнес — в кармане
+    </h2>
+    <div class="pocket-grid">
+      <div class="reveal" data-rv="left">
+        <div class="scn"><b>В очереди в аэропорту</b>
+          <span>проверили: хватает ли денег на зарплаты 10-го.</span></div>
+        <div class="scn"><b>Перед сделкой</b>
+          <span>за 10 секунд глянули свободный остаток.</span></div>
+        <div class="scn"><b>Клиент просит скидку</b>
+          <span>сразу видно, не уходите ли в минус по марже.</span></div>
+        <div class="scn"><b>Утром с кофе</b>
+          <span>один экран: деньги, долги, ближайшие платежи.</span></div>
+        <p class="pocket-note pocket-note--lead reveal" data-rv="up">
+          <b>Ничего не нужно устанавливать и осваивать</b> — открывается по ссылке,
+          как обычная страница. Захотели — посмотрели.
+        </p>
+      </div>
+      <div class="phone-col reveal" data-rv="right">
+        <div class="phone" aria-hidden="true">
+          <div class="phone-screen">
+            <div class="ps-cap">Свободные деньги</div>
+            <div class="ps-big tnum"><span class="ph">2 480 000 ₽</span></div>
+            <div class="ps-row"><span>Дебиторка</span><b class="warn ph">1 150 000 ₽</b></div>
+            <div class="ps-row"><span>Ближайший платёж · 10.06</span><b class="ph">640 000 ₽</b></div>
+            <div class="ps-row"><span>Прогноз на конец месяца</span><b class="ok ph">+310 000 ₽</b></div>
+            <div class="ps-chart-cap">Деньги по неделям</div>
+            <div class="ps-chart">
+              <i style="height:45%"></i><i style="height:62%"></i><i style="height:38%"></i>
+              <i style="height:74%"></i><i style="height:56%"></i><i style="height:88%"></i><i style="height:66%"></i>
+            </div>
+            <div class="ps-axis"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+          </div>
+        </div>
+        <div class="phone-cap">цифры на экране — пример оформления</div>
+      </div>
+    </div>
+    <p class="pocket-note reveal" data-rv="up">
+      Это <b>ключевые цифры и контроль конкретных зон</b> в телефоне — а не «весь учёт
+      в приложении на любой случай». Формат под задачу подбираю вместе с вами; это мой
+      практический инструмент как финдиректора, а не отдельный IT-сервис.
+    </p>
+  </div>
+</section>
+
+<!-- ====== AI-АВТОМАТИЗАЦИЯ ====== -->
+<section style="background:linear-gradient(180deg,var(--coal),var(--void))" id="ai">
+  <div class="wrap">
+    <div class="kick">AI-автоматизация</div>
+    <h2 class="serif reveal" data-rv="left"
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Систему строю с AI — она считает за вас
+    </h2>
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
+      Рутину забирает автоматизация: вы получаете не таблицы, а готовые выводы и
+      предупреждения — заранее, пока ещё можно повлиять.
+    </p>
+    <div class="cards ai-cards reveal" data-rv="up">
+      <div class="tool"><div class="tag ai">✦ прогноз</div><b>Кассовые разрывы за 2–4 недели</b>
+        <p>Модель сводит поступления и платежи и заранее показывает день, где денег может не хватить.</p></div>
+      <div class="tool"><div class="tag ai">✦ контроль</div><b>Дебиторка под присмотром</b>
+        <p>Кто должен, сколько, с какого срока и где риск просрочки — без ручного сведения отчётов.</p></div>
+      <div class="tool"><div class="tag ai">✦ отчёты</div><b>Умные отчёты собственнику</b>
+        <p>Не выгрузка цифр, а короткий вывод на человеческом языке: что важно именно сейчас.</p></div>
+      <div class="tool"><div class="tag ai">✦ сценарии</div><b>Сценарии «что если»</b>
+        <p>Подняли цену, взяли крупный контракт, отложили платёж — сразу видно, что будет с деньгами.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ====== ЧТО ПОЛУЧАЕТЕ ====== -->
-<section class="core" id="s4">
+<section id="deliver">
   <div class="wrap">
     <div class="kick">Осязаемый результат</div>
     <h2 class="serif reveal" data-rv="left"
@@ -663,180 +776,177 @@
       Что у вас появится в первый месяц
     </h2>
     <div class="deliv reveal" data-rv="up">
-      <div class="d-item">
-        <div class="d-num">01</div>
-        <b>Платёжный календарь</b>
-        <span>Видите кассовые разрывы за недели до них</span>
-      </div>
-      <div class="d-item">
-        <div class="d-num">02</div>
-        <b>Движение денег · ДДС</b>
-        <span>Куда реально уходят деньги</span>
-      </div>
-      <div class="d-item">
-        <div class="d-num">03</div>
-        <b>Прибыли и убытки · P&amp;L</b>
-        <span>Сколько вы зарабатываете на самом деле</span>
-      </div>
-      <div class="d-item">
-        <div class="d-num">04</div>
-        <b>Юнит-экономика</b>
-        <span>Что кормит бизнес, а что тянет вниз</span>
-      </div>
-      <div class="d-item">
-        <div class="d-num">05</div>
-        <b>Финансовый дашборд</b>
-        <span>Все ключевые цифры на одном экране</span>
-      </div>
-      <div class="d-item">
-        <div class="d-num">06</div>
-        <b>Бюджет и план-факт</b>
-        <span>Цель в цифрах и контроль отклонений</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== ВИДЕО ====== -->
-<section id="s5">
-  <div class="wrap narrow">
-    <div class="kick">За 90 секунд</div>
-    <h2 class="serif reveal" data-rv="right"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:28px">
-      Как мы наводим порядок
-    </h2>
-    <div class="video-wrap reveal" data-rv="scale" id="videoWrap"
-      role="button" tabindex="0"
-      aria-label="Воспроизвести видео — загрузится по клику">
-      <div class="pin">
-        <div>
-          <div class="play-btn" aria-hidden="true"></div>
-          <b class="serif" style="font-size:20px">Смотреть, как это работает</b>
-          <p style="color:var(--muted);font-size:13px;margin-top:6px">
-            Загрузится по клику · <span class="ph">[ССЫЛКА_НА_ВИДЕО]</span>
-          </p>
-        </div>
-      </div>
+      <div class="d-item"><div class="d-num">01</div><b>Платёжный календарь</b>
+        <span>Видите кассовые разрывы за недели до них</span></div>
+      <div class="d-item"><div class="d-num">02</div><b>Движение денег · ДДС</b>
+        <span>Куда реально уходят деньги</span></div>
+      <div class="d-item"><div class="d-num">03</div><b>Прибыли и убытки · P&amp;L</b>
+        <span>Сколько вы зарабатываете на самом деле</span></div>
+      <div class="d-item"><div class="d-num">04</div><b>Юнит-экономика</b>
+        <span>Что кормит бизнес, а что тянет вниз</span></div>
+      <div class="d-item"><div class="d-num">05</div><b>Финансовый дашборд</b>
+        <span>Все ключевые цифры на одном экране</span></div>
+      <div class="d-item"><div class="d-num">06</div><b>Бюджет и план-факт</b>
+        <span>Цель в цифрах и контроль отклонений</span></div>
     </div>
   </div>
 </section>
 
 <!-- ====== КАК РАБОТАЕМ ====== -->
-<section class="core" id="s6">
+<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="process">
   <div class="wrap narrow">
     <div class="kick">Процесс</div>
     <h2 class="serif reveal" data-rv="left"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:36px">
-      Четыре шага
+      Четыре шага, спокойно
     </h2>
     <div class="tl reveal" data-rv="up">
-      <div class="tl-step">
-        <b>Бесплатный разбор</b>
-        <p>30 минут. Находим, где заморожены деньги, даём первые цифры.</p>
-      </div>
-      <div class="tl-step">
-        <b>Порядок в цифрах</b>
-        <p>Собираем учёт, ДДС, P&amp;L, платёжный календарь.</p>
-        <span class="nda-badge">🔒 Данные под NDA</span>
-      </div>
-      <div class="tl-step">
-        <b>Отчётность и дашборд</b>
-        <p>Каждый месяц — понятная картина бизнеса без хаоса.</p>
-      </div>
-      <div class="tl-step">
-        <b>Решения вместе с вами</b>
-        <p>Куда расти, где резать, как дойти до цели по деньгам.</p>
-      </div>
+      <div class="tl-step"><b>Бесплатный разбор</b>
+        <p>30 минут. Смотрю вместе с вами, где деньги задерживаются, даю первые цифры.</p></div>
+      <div class="tl-step"><b>Порядок в цифрах</b>
+        <p>Собираю учёт, ДДС, P&amp;L, платёжный календарь.</p>
+        <span class="nda-badge">🔒 Данные под NDA</span></div>
+      <div class="tl-step"><b>Отчётность и дашборд</b>
+        <p>Каждый месяц — понятная картина бизнеса без хаоса.</p></div>
+      <div class="tl-step"><b>Решения вместе с вами</b>
+        <p>Куда расти, где аккуратнее, как дойти до цели по деньгам.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ====== КЕЙСЫ ====== -->
-<section id="s7">
-  <div class="wrap narrow">
-    <div class="kick">Было → стало</div>
-    <h2 class="serif reveal" data-rv="right"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:30px">
-      Результаты клиентов
+<!-- ====== ТАРИФЫ ====== -->
+<section id="tariffs">
+  <div class="wrap">
+    <div class="kick">Форматы работы</div>
+    <h2 class="serif reveal" data-rv="left"
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Сколько это стоит
     </h2>
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:560px;margin-bottom:30px">
+      Называю цены прямо. Точную стоимость определяю по итогам бесплатной диагностики —
+      она зависит от объёма работы и состояния учёта. Спокойно, без давления.
+    </p>
+
+    <p class="price-anchor reveal" data-rv="up">
+      Для сравнения — штатный финансовый директор обходится от 250 000 ₽/мес:
+      оклад, налоги и соцпакет.
+    </p>
+
+    <div class="tiers reveal" data-rv="up">
+      <div class="tier">
+        <div class="tier-name">Диагностика</div>
+        <div class="tier-kind">разовая встреча</div>
+        <div class="tier-price"><span class="free">бесплатно</span></div>
+        <div class="tier-hook">Смотрим, где теряются деньги, и с чего начать</div>
+        <ul><li>30 минут онлайн</li><li>Разбор по вашим зонам</li><li>Первые цифры и план действий</li></ul>
+      </div>
+      <div class="tier best">
+        <div class="tier-badge">Постоянное партнёрство</div>
+        <div class="tier-name">CFO на аутсорсе</div>
+        <div class="tier-kind">ежемесячно</div>
+        <div class="tier-price"><span class="from">от</span>200 000 <small>₽/мес</small></div>
+        <div class="tier-hook">Я отвечаю за ваши деньги и решения каждый месяц</div>
+        <ul><li>Управленческий учёт, ДДС и P&amp;L</li><li>Платёжный календарь и дашборд</li><li>Ежемесячный отчёт собственнику</li><li>AI-инструменты под ваши зоны</li><li>Стратегические решения вместе</li></ul>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Система под ключ</div>
+        <div class="tier-kind">разовый проект · 1–3 мес</div>
+        <div class="tier-price"><span class="from">от</span>300 000 <small>₽</small></div>
+        <div class="tier-hook">Ставлю финансовую систему с нуля и передаю вам</div>
+        <ul><li>Учёт и отчётность с нуля</li><li>AI-автоматизация под ваши зоны</li><li>Обучение вашей команды</li><li>Готовая система на руках</li></ul>
+      </div>
+    </div>
+
+    <p class="tier-foot reveal" data-rv="up">
+      Точную стоимость называю по итогам бесплатной диагностики: зависит от размера бизнеса,
+      числа направлений, состояния учёта и глубины вовлечения. Первый разбор бесплатный —
+      я уверена в его пользе.
+    </p>
+  </div>
+</section>
+
+<!-- ====== ЧТО ВСКРЫВАЕТСЯ НА ДИАГНОСТИКЕ ====== -->
+<section id="cases">
+  <div class="wrap narrow">
+    <div class="kick">Из практики</div>
+    <h2 class="serif reveal" data-rv="right"
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
+      Что обычно вскрывается на диагностике
+    </h2>
+    <p class="reveal" data-rv="up" style="color:var(--muted);max-width:580px;margin-bottom:30px">
+      Без выдуманных клиентов и красивых процентов — типовые ситуации из моей практики
+      по отраслям. Узнаёте свою?
+    </p>
     <div class="reveal" data-rv="up">
-      <div class="case" data-case="0" tabindex="0" role="button"
-        aria-label="Открыть кейс: оптовая торговля">
-        <div class="case-tag ph">[Оптовая торговля]</div>
-        <b>Кассовый разрыв найден за 2 месяца до</b>
-        <span class="res">Сэкономлено <span class="ph">[X] ₽</span></span>
+      <div class="scenario">
+        <div class="case-tag">Строительство · дорожная отрасль</div>
+        <b>Деньги приходят гораздо позже, чем уходят</b>
+        <div class="scn-line"><em>Частый сценарий</em>Большой лаг между выполнением работ и оплатой,
+          кассовые разрывы между этапами, а скрытые расходы в контрактах тихо съедают маржу.</div>
+        <div class="scn-line"><em>Что я делаю</em>Строю платёжный календарь под этапы, считаю реальную
+          маржу контракта со всеми затратами и заранее показываю, где касса уйдёт в минус.</div>
       </div>
-      <div class="case" data-case="1" tabindex="0" role="button"
-        aria-label="Открыть кейс: производство">
-        <div class="case-tag ph">[Производство]</div>
-        <b>Убыточное направление, которое маскировалось</b>
-        <span class="res">+<span class="ph">[X]%</span> к прибыли</span>
+      <div class="scenario">
+        <div class="case-tag">Производство</div>
+        <b>У каждого отдела своя правда, общей картины нет</b>
+        <div class="scn-line"><em>Частый сценарий</em>Непрозрачная себестоимость, скрытые потери,
+          и у каждого отдела своя версия цифр — ни одна не даёт полного понимания.</div>
+        <div class="scn-line"><em>Что я делаю</em>Собираю единую картину, считаю реальную себестоимость
+          и нахожу, где именно теряются деньги в процессе.</div>
       </div>
-      <div class="case" data-case="2" tabindex="0" role="button"
-        aria-label="Открыть кейс: розница">
-        <div class="case-tag ph">[Розница / Торговля]</div>
-        <b>Деньги, замороженные в складе</b>
-        <span class="res">Высвобождено <span class="ph">[X] ₽</span></span>
+      <div class="scenario">
+        <div class="case-tag">Рост бизнеса</div>
+        <b>Финансы не успевают за ростом</b>
+        <div class="scn-line"><em>Частый сценарий</em>Оборот растёт, а решения принимаются интуитивно:
+          непонятно, что приносит деньги, хватит ли их на следующий шаг и где предел.</div>
+        <div class="scn-line"><em>Что я делаю</em>Строю финансовую модель и отчётность, чтобы решения
+          опирались на цифры, а не на ощущения.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ====== FAQ ====== -->
-<section class="core" id="s8">
+<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="faq">
   <div class="wrap narrow">
-    <div class="kick">Возражения</div>
+    <div class="kick">Сомнения</div>
     <h2 class="serif reveal" data-rv="left"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:24px">
       Частые вопросы
     </h2>
     <div class="reveal" data-rv="up">
       <div class="faq">
-        <button class="faq-q" id="fq1" aria-expanded="false" aria-controls="fa1">
-          <span>Вы не разбираетесь в моей отрасли?</span><i aria-hidden="true">+</i>
-        </button>
-        <div class="faq-a" id="fa1">
-          Финансовая логика универсальна — денежный поток, маржа и разрывы работают одинаково
-          в любой нише. Специфику отрасли поднимаем на разборе. За <span class="ph">[N]</span> лет
-          работали с десятками ниш.
-        </div>
+        <button class="faq-q" aria-expanded="false">
+          <span>Вы не разбираетесь в моей отрасли?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a">Глубоко работаю со строительством, дорожной отраслью и производством.
+          При этом финансовая логика универсальна — денежный поток, маржа и кассовые разрывы
+          работают одинаково в любой нише. Специфику вашей отрасли разбираю на встрече.</div>
       </div>
       <div class="faq">
-        <button class="faq-q" id="fq2" aria-expanded="false" aria-controls="fa2">
-          <span>Это дорого?</span><i aria-hidden="true">+</i>
-        </button>
-        <div class="faq-a" id="fa2">
-          Как вы видели в калькуляторе — найденное обычно перекрывает стоимость уже в первые
-          месяцы. Первый разбор бесплатный: посмотрите цифры и решайте.
-        </div>
+        <button class="faq-q" aria-expanded="false">
+          <span>Это дорого?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a">Первый разбор бесплатный — посмотрите цифры и решите сами.
+          Точную стоимость я называю по итогам диагностики: есть постоянное партнёрство и
+          разовый проект «система под ключ». Дальше зависит от объёма работы и состояния учёта.</div>
       </div>
       <div class="faq">
-        <button class="faq-q" id="fq3" aria-expanded="false" aria-controls="fa3">
-          <span>Безопасно отдавать данные?</span><i aria-hidden="true">+</i>
-        </button>
-        <div class="faq-a" id="fa3">
-          Работаем по NDA до начала любых работ. Доступы к системам выдаёте вы сами
-          и отзываете в любой момент. Ни одна цифра не уходит третьим лицам.
-        </div>
+        <button class="faq-q" aria-expanded="false">
+          <span>Безопасно отдавать данные?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a">Работаю по NDA до начала любых работ. Доступы к системам вы выдаёте
+          сами и отзываете в любой момент. Ни одна цифра не уходит третьим лицам.</div>
       </div>
       <div class="faq">
-        <button class="faq-q" id="fq4" aria-expanded="false" aria-controls="fa4">
-          <span>Есть бухгалтер — зачем финдир?</span><i aria-hidden="true">+</i>
-        </button>
-        <div class="faq-a" id="fa4">
-          Бухгалтер считает прошлое для государства, финдир управляет будущим для вас.
-          Мы усиливаем бухгалтера, а не заменяем: он закрывает налоги, мы — прибыль и рост.
-        </div>
+        <button class="faq-q" aria-expanded="false">
+          <span>У меня есть бухгалтер — зачем финдир?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a">Бухгалтер закрывает налоги и отчётность для государства — и хорошо,
+          если вы справлялись с этим сами. Как финдиректор я отвечаю за другое: прибыль, деньги
+          и решения вперёд. Я усиливаю бухгалтера, а не заменяю.</div>
       </div>
       <div class="faq">
-        <button class="faq-q" id="fq5" aria-expanded="false" aria-controls="fa5">
-          <span>Аутсорс хуже штатного финдира?</span><i aria-hidden="true">+</i>
-        </button>
-        <div class="faq-a" id="fa5">
-          Вы получаете команду с опытом десятков компаний вместо одного человека —
-          без рисков найма, выгорания и ухода в самый важный момент.
-          И за <span class="ph">[X]</span>× меньше оклада штатного.
-        </div>
+        <button class="faq-q" aria-expanded="false">
+          <span>Опять приложение ставить и осваивать?</span><i aria-hidden="true">+</i></button>
+        <div class="faq-a">Нет. Инструменты открываются по ссылке, как обычная страница —
+          ничего не нужно устанавливать. Захотели — посмотрели с телефона.</div>
       </div>
     </div>
   </div>
@@ -845,84 +955,46 @@
 <!-- ====== ФИНАЛ ====== -->
 <section class="final" id="final">
   <div class="wrap narrow">
-    <span class="scar reveal" data-rv="scale">
-      ⏳ Осталось <span class="ph">[N]</span> бесплатных разборов в этом месяце
+    <span class="assure reveal" data-rv="scale">
+      Первый разбор бесплатный, потому что я уверена в его ценности
     </span>
-    <h2 class="reveal" data-rv="up">
-      Перестаньте управлять<br><em>вслепую</em>
-    </h2>
+    <h2 class="reveal" data-rv="up">Посмотрим на ваши цифры<br><em>вместе</em></h2>
     <p class="reveal" data-rv="up"
       style="color:var(--cream-dim);max-width:460px;margin:0 auto 30px">
-      Оставьте контакт — вернёмся в течение <span class="ph">[N]</span> часов
-      и назначим бесплатный разбор.
+      Напишите мне в Telegram — отвечу в течение рабочего дня и назначим бесплатный разбор.
+      Посмотрим, когда вам удобно.
     </p>
 
-    <div class="form-wrap reveal" data-rv="scale">
-      <form id="fields" onsubmit="submitForm();return false;" novalidate>
-        <input id="fName" placeholder="Ваше имя" autocomplete="given-name"
-          aria-label="Ваше имя" required>
-        <input id="fPhone" type="tel" placeholder="Телефон" autocomplete="tel"
-          aria-label="Телефон" required>
-        <input id="fBiz" placeholder="Сфера бизнеса (необязательно)"
-          autocomplete="organization" aria-label="Сфера бизнеса">
-        <button class="btn" style="width:100%" type="submit">
-          Получить бесплатный разбор
-        </button>
-        <p class="micro">30 минут · без обязательств · данные под защитой</p>
-      </form>
-      <div class="thanks" id="thanks" aria-live="polite">
-        <div style="font-size:46px" aria-hidden="true">✦</div>
-        <b class="serif" style="font-size:23px;display:block;margin:8px 0">Заявка принята</b>
-        <p style="color:var(--cream-dim);margin-bottom:20px">
-          Продолжим в Telegram — там быстрее всего.
-        </p>
-        <a href="https://t.me/RidFinance_bot" class="btn" style="width:100%" id="tg"
-          target="_blank" rel="noopener">
-          Перейти в Telegram
-        </a>
-      </div>
+    <div class="cta-final reveal" data-rv="scale">
+      <a href="https://t.me/RidFinance_bot" class="btn" target="_blank" rel="noopener">Написать в @RidFinance_bot</a>
+      <p class="micro">30 минут · без обязательств · ответ в течение рабочего дня</p>
     </div>
 
     <div class="contacts">
-      <span class="ph">[телефон]</span> ·
-      <a href="https://t.me/RidFinance_bot" class="ph">Telegram</a> ·
-      <a href="#" class="ph">[email]</a>
+      <a href="https://t.me/RidFinance_bot" target="_blank" rel="noopener">Личный бот · @RidFinance_bot</a>
+      <span class="contacts-sep" aria-hidden="true">·</span>
+      <a href="https://t.me/Rid_Finance" target="_blank" rel="noopener">Канал · @Rid_Finance</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="ph">[Название компании]</span> · Финансовый директор на аутсорсе ·
-  <span class="ph">[год]</span>
+  Татьяна Рид · CFO на аутсорсе · 2026
 </footer>
-
-<!-- МОДАЛЬНОЕ ОКНО КЕЙСА -->
-<div class="modal" id="modal" role="dialog" aria-modal="true"
-  aria-labelledby="mTitle" aria-hidden="true">
-  <div class="modal-box">
-    <button class="modal-x" id="modalClose" aria-label="Закрыть">✕</button>
-    <div class="case-tag" id="mTag"></div>
-    <h3 class="serif" id="mTitle"></h3>
-    <div class="ba">
-      <div class="was"><small>Было</small><b id="mWas"></b></div>
-      <div class="now"><small>Стало</small><b id="mNow"></b></div>
-    </div>
-    <p id="mText" style="color:var(--muted)"></p>
-  </div>
-</div>
 
 <script>
 /* прогресс-бар */
 const prog = document.getElementById('prog');
 addEventListener('scroll', () => {
   const h = document.documentElement;
-  const pct = Math.round(h.scrollTop / (h.scrollHeight - h.clientHeight) * 100);
+  const max = h.scrollHeight - h.clientHeight;
+  const pct = max > 0 ? Math.round(h.scrollTop / max * 100) : 0;
   prog.style.width = pct + '%';
   prog.setAttribute('aria-valuenow', pct);
 }, {passive: true});
 
-/* ---- эффект печати в hero ---- */
-const phrases = ['ваши деньги?', 'ваша прибыль?', 'ваш оборот?'];
+/* эффект печати в hero (подстрока) */
+const phrases = ['где теряются деньги', 'где проседает касса', 'где скрыта прибыль'];
 const typeEl = document.getElementById('type');
 let pi = 0, ci = 0, del = false;
 (function tick() {
@@ -930,19 +1002,15 @@ let pi = 0, ci = 0, del = false;
   typeEl.textContent = del ? w.slice(0, ci--) : w.slice(0, ci++);
   if (!del && ci === w.length + 1) { del = true; setTimeout(tick, 1700); return; }
   if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
-  setTimeout(tick, del ? 42 : 88);
+  setTimeout(tick, del ? 42 : 78);
 })();
 
-/* ---- reveal секций (4 направления, циклом) ---- */
+/* reveal секций */
 const revealIO = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      revealIO.unobserve(entry.target);
-    }
+    if (entry.isIntersecting) { entry.target.classList.add('in'); revealIO.unobserve(entry.target); }
   });
 }, {threshold: .15});
-
 const rvOrder = ['up', 'left', 'right', 'scale', 'up', 'right', 'left', 'scale'];
 document.querySelectorAll('.reveal').forEach((el, i) => {
   if (!el.dataset.rv) el.dataset.rv = rvOrder[i % 8];
@@ -950,189 +1018,213 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
 });
 
 /* ================================================================
-   ЯДРО: единый стейт found → заливка тарифов → перевес цены
-   found/мес = оборот_руб × Σ(data-rate выбранных утечек)  — оценочно
-   Заливка = foundГод / tierYearPrice × 100%, до 100%
-   Покрыт → цена зачёркнута + «чистыми +X ₽/год» + «окупается за N дн.»
-   Демо-цены в data-price (₽/мес) — заменить на реальные
+   МИНИ-АУДИТ
+   Приоритет зоны — по ОСТРОТЕ риска (вес), а не по сумме денег.
+   Веса и связи «вопрос → зона» вынесены в AUDIT — калибруется здесь.
+   Сумма потерь — вторичная спокойная оценка (только для vault).
    ================================================================ */
+const AUDIT = {
+  /* severity: 3 — острый (угроза ликвидности), 2 — средний, 1 — хронический */
+  zones: {
+    cashgap: {
+      sev: 3, cls: 'Острый риск · угроза ликвидности',
+      title: 'Деньги во времени — самая опасная зона',
+      diag: 'Самая острая зона у вас — деньги во времени. Прибыль на бумаге не спасает, если в конкретный день нечем платить. Это вопрос выживания, а не оптимизации.',
+      obs: 'Кассовый разрыв почти всегда виден за 3–6 недель до того, как случится. Без платёжного календаря его замечают в день, когда уже поздно.',
+      q: 'Какой ближайший день, когда у вас может не хватить денег на обязательные платежи? Если ответа нет — это и есть зона риска.',
+      check: ['Выпишите все платежи на 30 дней вперёд по датам',
+        'Рядом — ожидаемые поступления по реальным, а не обещанным срокам',
+        'Найдите первый день, где баланс уходит в минус']
+    },
+    receivables: {
+      sev: 3, cls: 'Острый риск · деньги не у вас',
+      title: 'Дебиторка: деньги есть, но не у вас',
+      diag: 'Главная зона — дебиторка. Деньги у вас есть, но они не у вас: вы по сути бесплатно кредитуете клиентов за свой счёт.',
+      obs: 'Чем старше долг, тем меньше шанс его собрать. Дебиторка без регламента тихо превращается в подарок клиенту.',
+      q: 'Какой клиент должен вам дольше всех — и почему он до сих пор не подвинут в приоритете?',
+      check: ['Выпишите долги по клиентам и срокам',
+        'Отметьте всё, что просрочено больше 30 дней',
+        'По самому крупному просроченному — назначьте конкретное действие на эту неделю']
+    },
+    discounts: {
+      sev: 2, cls: 'Средний риск · утечка маржи',
+      title: 'Скидки на ощущениях съедают маржу',
+      diag: 'Заметная утечка — скидки на ощущениях. Каждая скидка без расчёта маржи может уводить конкретную сделку в минус, а вы этого не видите.',
+      obs: 'Скидка 10% при марже 30% — это треть прибыли со сделки. На потоке это незаметно съедает результат месяца.',
+      q: 'При какой скидке ваша типовая сделка перестаёт приносить прибыль? Если цифры нет — скидки даются вслепую.',
+      check: ['Возьмите 3 последние крупные скидки',
+        'Посчитайте маржу каждой сделки после скидки',
+        'Установите порог скидки, ниже которого нужно ваше согласование']
+    },
+    deadstock: {
+      sev: 2, cls: 'Средний риск · замороженный капитал',
+      title: 'Склад, который не двигается',
+      diag: 'Замороженный капитал на складе. Это ваши деньги, превращённые в товар, который не двигается, — и они не работают.',
+      obs: 'Зависшие остатки маскируются под актив в отчётах, но по факту это изъятые из оборота деньги плюс расходы на хранение.',
+      q: 'Какая доля склада не двигалась последние 90 дней — и сколько денег в ней заморожено?',
+      check: ['Выгрузите остатки с датой последнего движения',
+        'Отметьте всё, что лежит больше 90 дней',
+        'По топ-5 позициям решите: распродажа, возврат или списание']
+    },
+    profitability: {
+      sev: 1, cls: 'Хронический риск · непрозрачность',
+      title: 'Непонятно, что кормит, а что тянет вниз',
+      diag: 'Хроническая зона — непрозрачная прибыльность. Бизнес работает, но непонятно, какое направление кормит, а какое тянет вниз за счёт остальных.',
+      obs: 'Прибыльные продукты часто маскируют убыточные. Можно расти в обороте и терять в деньгах одновременно.',
+      q: 'Если убрать самый крупный по выручке продукт — бизнес станет прибыльнее или беднее? Без юнит-экономики это лотерея.',
+      check: ['Выберите 3 главных направления',
+        'По каждому посчитайте выручку минус прямые расходы',
+        'Сравните маржу — результат часто удивляет']
+    }
+  },
+  /* поведенческие вопросы: ответ → баллы; link → усиливаемая зона */
+  questions: [
+    {
+      id: 'q1', link: 'cashgap',
+      text: 'Знаете ли вы, сколько денег будет на счетах через месяц?',
+      opts: [['Вижу прогноз в любой момент', 0], ['Прикидываю раз в месяц', 1], ['Вспоминаю, когда прижмёт', 2]]
+    },
+    {
+      id: 'q2', link: 'profitability',
+      text: 'Назовёте самый прибыльный продукт за 5 секунд — по цифрам, не по ощущению?',
+      opts: [['Да, знаю точную маржу', 0], ['Примерно чувствую', 1], ['Не уверен', 2]]
+    },
+    {
+      id: 'q3', link: 'discounts',
+      text: 'Скидки клиентам — как решаете?',
+      opts: [['По расчёту маржи', 0], ['По ситуации', 1], ['Как договоримся', 2]]
+    }
+  ],
+  empty: 'По ответам острых зон не видно — это хороший знак. Но самопроверка и взгляд со стороны на реальные цифры — разные вещи. На бесплатном разборе я сверю ощущение с данными.'
+};
+
 const leaks = [...document.querySelectorAll('.leak')];
 const turnoverEl = document.getElementById('turnover');
 const toValEl = document.getElementById('toVal');
 const foundEl = document.getElementById('found');
 const foundYEl = document.getElementById('foundYear');
-const tiers = [...document.querySelectorAll('.tier')];
-let shownMonth = 0;
+const verdictEl = document.getElementById('verdict');
+const qAnswers = {};          // id вопроса → баллы
+let touched = false, shownMonth = 0;
 
 const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
+
+/* строим блоки поведенческих вопросов из конфига */
+const qsWrap = document.getElementById('qs');
+AUDIT.questions.forEach(q => {
+  const block = document.createElement('div');
+  block.className = 'q-block';
+  block.innerHTML = '<div class="q-txt">' + q.text + '</div><div class="q-opts"></div>';
+  const opts = block.querySelector('.q-opts');
+  q.opts.forEach(([label, pts]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'q-opt';
+    b.innerHTML = '<span class="dot" aria-hidden="true"></span><span>' + label + '</span>';
+    b.addEventListener('click', () => {
+      opts.querySelectorAll('.q-opt').forEach(o => o.classList.remove('on'));
+      b.classList.add('on');
+      qAnswers[q.id] = pts;
+      touched = true;
+      recalc();
+    });
+    opts.appendChild(b);
+  });
+  qsWrap.appendChild(block);
+});
 
 function toggleLeak(el) {
   const on = el.classList.toggle('on');
   el.setAttribute('aria-checked', on ? 'true' : 'false');
+  touched = true;
   recalc();
 }
-
 leaks.forEach(l => {
   l.addEventListener('click', () => toggleLeak(l));
   l.addEventListener('keydown', e => {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleLeak(l); }
   });
 });
-turnoverEl.addEventListener('input', recalc);
+turnoverEl.addEventListener('input', () => { touched = true; recalc(); });
+
+/* выбор главной зоны: максимум остроты, тай-брейк — сумма денег */
+function choosePrimary(active, money) {
+  return active.sort((a, b) => {
+    const sd = AUDIT.zones[b].sev - AUDIT.zones[a].sev;
+    if (sd !== 0) return sd;
+    return (money[b] || 0) - (money[a] || 0);
+  })[0];
+}
+
+function renderVerdict(zoneKey) {
+  const z = AUDIT.zones[zoneKey];
+  document.getElementById('vClass').textContent = z.cls;
+  document.getElementById('vTitle').textContent = z.title;
+  document.getElementById('vBody').innerHTML =
+    '<div class="vp"><div class="vp-lbl">Диагноз приоритета</div><div class="vp-txt">' + z.diag + '</div></div>' +
+    '<div class="vp"><div class="vp-lbl">Наблюдение</div><div class="vp-txt">' + z.obs + '</div></div>' +
+    '<div class="vp q"><div class="vp-lbl">Вопрос, который стоит себе задать</div><div class="vp-txt">' + z.q + '</div></div>' +
+    '<div class="vp"><div class="vp-lbl">Проверьте на этой неделе</div><ul class="vp-check">' +
+      z.check.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
+  document.getElementById('vSoft').textContent =
+    'Вы уже видите направление. Разбор на ваших реальных цифрах покажет точный масштаб и план действий — 30 минут, бесплатно.';
+  verdictEl.classList.add('show');
+}
+
+function renderEmpty() {
+  document.getElementById('vClass').textContent = 'Похоже, острых зон нет';
+  document.getElementById('vTitle').textContent = 'Хороший знак — но стоит свериться';
+  document.getElementById('vBody').innerHTML =
+    '<div class="vp"><div class="vp-txt">' + AUDIT.empty + '</div></div>';
+  document.getElementById('vSoft').textContent =
+    'Бесплатный разбор поможет сверить ощущение с реальными данными — 30 минут, без обязательств.';
+  verdictEl.classList.add('show');
+}
 
 function recalc() {
   const mln = +turnoverEl.value;
   toValEl.textContent = mln + ' млн ₽';
   turnoverEl.setAttribute('aria-valuenow', mln);
 
-  const rate = leaks.filter(l => l.classList.contains('on'))
-    .reduce((s, l) => s + +l.dataset.rate, 0);
-
-  /* оценочно: потери/мес = оборот × суммарный коэффициент */
-  const month = mln * 1e6 * rate;
-  const year = month * 12;
-
-  roll(shownMonth, month);
-  shownMonth = month;
-  foundYEl.textContent = fmt(year);
-
-  foundEl.classList.add('bump');
-  setTimeout(() => foundEl.classList.remove('bump'), 150);
-
-  /* показываем/скрываем подсказку zero-state */
-  const hint = document.getElementById('vaultHint');
-  if (hint) hint.classList.toggle('hidden', rate > 0);
-
-  tiers.forEach(tier => {
-    const priceM = +tier.dataset.price;
-    const priceY = priceM * 12;
-    const pct = Math.min(100, year / priceY * 100);
-    tier.querySelector('.fill').style.height = pct + '%';
-
-    const netEl = tier.querySelector('[data-net]');
-    const payEl = tier.querySelector('[data-pay]');
-
-    if (year >= priceY && month > 0) {
-      tier.classList.add('covered');
-      netEl.textContent = 'чистыми +' + fmt(year - priceY) + '/год';
-      const days = Math.max(1, Math.round(priceM / (month / 30)));
-      payEl.textContent = 'окупается за ' + days + ' дн.';
-    } else {
-      tier.classList.remove('covered');
-      netEl.textContent = '';
-      payEl.textContent = '';
+  /* активные зоны + денежная оценка (вторично) */
+  const zoneActive = {}, zoneMoney = {};
+  let month = 0;
+  leaks.forEach(l => {
+    if (l.classList.contains('on')) {
+      const z = l.dataset.zone, m = mln * 1e6 * (+l.dataset.rate);
+      month += m; zoneMoney[z] = (zoneMoney[z] || 0) + m; zoneActive[z] = true;
     }
   });
+  AUDIT.questions.forEach(q => { if ((qAnswers[q.id] || 0) > 0) zoneActive[q.link] = true; });
+  const year = month * 12;
+
+  /* вторичная цифра — спокойная оценка (без ROI и заливки тарифов) */
+  roll(shownMonth, month); shownMonth = month;
+  foundYEl.textContent = fmt(year);
+  const hint = document.getElementById('vaultHint');
+  if (hint) hint.classList.toggle('hidden', touched);
+
+  /* вывод аудита */
+  if (!touched) { verdictEl.classList.remove('show'); return; }
+  const active = Object.keys(zoneActive);
+  if (!active.length) { renderEmpty(); return; }
+  renderVerdict(choosePrimary(active, zoneMoney));
 }
 
-/* плавный одометр */
+/* плавный одометр (вторичная цифра, спокойно) */
 function roll(from, to) {
   if (from === to) { foundEl.textContent = fmt(to); return; }
   const t0 = performance.now(), dur = 550;
   (function step(t) {
-    const p = Math.min((t - t0) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
+    const p = Math.min((t - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
     foundEl.textContent = fmt(from + (to - from) * ease);
     if (p < 1) requestAnimationFrame(step);
   })(t0);
 }
 
-/* ---- видео facade ---- */
-const videoWrap = document.getElementById('videoWrap');
-let videoLoaded = false;
-function loadVideo() {
-  if (videoLoaded) return;
-  videoLoaded = true;
-  /* TODO: заменить [ССЫЛКА_НА_ВИДЕО] на реальный embed-URL */
-  videoWrap.innerHTML = '<iframe src="[ССЫЛКА_НА_ВИДЕО]" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen title="Видео о работе финансового директора"></iframe>';
-  /* убираем интерактивные атрибуты с обёртки после загрузки iframe */
-  videoWrap.removeAttribute('role');
-  videoWrap.removeAttribute('tabindex');
-  videoWrap.removeAttribute('aria-label');
-}
-videoWrap.addEventListener('click', loadVideo);
-videoWrap.addEventListener('keydown', e => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
-});
+/* «Сохранить разбор» — печать в PDF */
+document.getElementById('savePdf').addEventListener('click', () => window.print());
 
-/* ---- кейсы + модалка ---- */
-const casesData = [
-  {
-    tag: '[Оптовая торговля]',
-    title: 'Кассовый разрыв найден за 2 месяца до',
-    was: 'Хаос в платежах',
-    now: 'Платёжный календарь',
-    text: 'Построили платёжный календарь — разрыв стал виден заранее, успели передоговориться с поставщиками без штрафов. [реальные цифры клиента]'
-  },
-  {
-    tag: '[Производство]',
-    title: 'Скрытое убыточное направление',
-    was: '«Всё прибыльно»',
-    now: '+[X]% прибыли',
-    text: 'Юнит-экономика показала, что одно направление съедало прибыль остальных. Закрыли — маржа выросла. [реальные цифры клиента]'
-  },
-  {
-    tag: '[Розница / Торговля]',
-    title: 'Деньги, замороженные в складе',
-    was: 'Зависшие остатки',
-    now: 'Высвобождено [X] ₽',
-    text: 'Навели учёт оборачиваемости, вернули замороженные деньги в оборот. [реальные цифры клиента]'
-  }
-];
-
-const modal = document.getElementById('modal');
-const modalClose = document.getElementById('modalClose');
-let lastFocused = null;
-
-function openModal(idx) {
-  const d = casesData[idx];
-  document.getElementById('mTag').textContent = d.tag;
-  document.getElementById('mTitle').textContent = d.title;
-  document.getElementById('mWas').textContent = d.was;
-  document.getElementById('mNow').textContent = d.now;
-  document.getElementById('mText').textContent = d.text;
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  lastFocused = document.activeElement;
-  modalClose.focus();
-}
-
-function closeModal() {
-  if (!modal.classList.contains('open')) return;
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  if (lastFocused) lastFocused.focus();
-}
-
-/* focus trap внутри модального окна */
-modal.addEventListener('keydown', e => {
-  if (!modal.classList.contains('open')) return;
-  if (e.key !== 'Tab') return;
-  const focusable = [...modal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  )].filter(el => !el.disabled);
-  if (!focusable.length) return;
-  const first = focusable[0], last = focusable[focusable.length - 1];
-  if (e.shiftKey) {
-    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-  } else {
-    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-  }
-});
-
-document.querySelectorAll('.case').forEach(c => {
-  c.addEventListener('click', () => openModal(+c.dataset.case));
-  c.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(+c.dataset.case); }
-  });
-});
-modalClose.addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-/* ---- FAQ аккордеон ---- */
+/* FAQ */
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const isOpen = q.parentElement.classList.toggle('open');
@@ -1140,34 +1232,8 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-/* ---- форма ---- */
-function submitForm() {
-  const nameEl = document.getElementById('fName');
-  const phoneEl = document.getElementById('fPhone');
-  nameEl.classList.remove('err');
-  phoneEl.classList.remove('err');
-  let valid = true;
-  if (!nameEl.value.trim()) { nameEl.classList.add('err'); nameEl.focus(); valid = false; }
-  if (!phoneEl.value.trim()) { phoneEl.classList.add('err'); if (valid) phoneEl.focus(); valid = false; }
-  if (!valid) return;
-
-  const data = {
-    name: nameEl.value.trim(),
-    phone: phoneEl.value.trim(),
-    biz: document.getElementById('fBiz').value.trim()
-  };
-  console.log('Заявка:', data);
-  /* TODO: отправка в Telegram-бот / CRM */
-
-  document.getElementById('fields').style.display = 'none';
-  document.getElementById('thanks').classList.add('show');
-}
-
 /* ================================================================
-   БОТ-ГИД
-   Логика: спящий → пробуждение тайной искрой → ведёт с эмоциями
-   (указывает/думает/радуется) → топает у CTA → машет и прячется
-   на финале → возвращается при скролле обратно.
+   БОТ-ГИД — спокойный тон: «идём посмотрим», а не «жми»
    ================================================================ */
 (function initGuide() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1176,68 +1242,58 @@ function submitForm() {
   const bubble = document.getElementById('gBubble');
   const wakerEl = document.getElementById('waker');
 
-  /* сценарий: [say, emo, pos%, hide?] для каждой section */
-  const script = [
-    {say: 'Привет! Я твой финансовый гид 👋', emo: 'e-wave', pos: 52},
-    {say: 'Деньги утекают тихо… вчитайся', emo: 'e-think', pos: 24},
-    {say: 'Подвигай слайдер — оживёт! 👇', emo: 'e-point', pos: 72},
-    {say: 'Чувствуешь разницу? 🤔', emo: 'e-think', pos: 28},
-    {say: 'Вот что у тебя появится 🎯', emo: 'e-happy', pos: 64},
-    {say: 'Жми play — всего 90 сек 👇', emo: 'e-point', pos: 38},
-    {say: 'Всего четыре шага', emo: 'e-happy', pos: 26},
-    {say: 'Реальные цифры клиентов', emo: 'e-happy', pos: 70},
-    {say: 'Сомнения? Тут ответы 💡', emo: 'e-think', pos: 34},
-    {say: 'Дальше сам. Удачи! 👋', emo: 'e-wave', pos: 56, hide: true}
-  ];
+  /* реплики по id секции: [say, emo, pos%, hide?] */
+  const SCRIPT = {
+    s0:      { say: 'Привет! Я Татьяна, идём посмотрим 👋', emo: 'e-wave', pos: 52 },
+    s1:      { say: 'Деньги уходят тихо… вглядитесь', emo: 'e-think', pos: 24 },
+    shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
+    core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
+    how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
+    tools:   { say: 'Всё открывается с телефона', emo: 'e-happy', pos: 66 },
+    pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
+    ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },
+    deliver: { say: 'Вот что у вас появится', emo: 'e-happy', pos: 30 },
+    process: { say: 'Спокойно, по шагам', emo: 'e-think', pos: 26 },
+    tariffs: { say: 'Цены — когда вы уже всё видели', emo: 'e-think', pos: 30 },
+    cases:   { say: 'Что вскрывается на диагностике', emo: 'e-think', pos: 70 },
+    faq:     { say: 'Тут ответы на сомнения 💡', emo: 'e-think', pos: 34 },
+    final:   { say: 'Посмотрите, когда удобно 👋', emo: 'e-wave', pos: 56, hide: true }
+  };
 
-  const sections = [...document.querySelectorAll('section')];
-  let active = -1, awake = false;
-  let bubbleHideTimer = null;
-
+  let activeId = null, awake = false, bubbleHideTimer = null;
   const EMOTIONS = ['e-point', 'e-think', 'e-happy', 'e-stomp', 'e-wave'];
-
-  function clearEmotions() {
-    EMOTIONS.forEach(e => guide.classList.remove(e));
-  }
+  const clearEmotions = () => EMOTIONS.forEach(e => guide.classList.remove(e));
 
   function showBubble(text, persistent) {
     bubble.textContent = text;
     guide.classList.add('show-bubble');
     clearTimeout(bubbleHideTimer);
-    if (!persistent) {
-      bubbleHideTimer = setTimeout(() => {
-        if (!guide.classList.contains('e-stomp')) guide.classList.remove('show-bubble');
-      }, 4000);
-    }
+    if (!persistent) bubbleHideTimer = setTimeout(() => {
+      if (!guide.classList.contains('e-stomp')) guide.classList.remove('show-bubble');
+    }, 4000);
   }
 
-  function go(i) {
-    if (!awake || i === active || !script[i]) return;
-    active = i;
-    const s = script[i];
-
+  function go(id) {
+    const s = SCRIPT[id];
+    if (!awake || !s || id === activeId) return;
+    activeId = id;
     guide.classList.remove('gone');
     guide.classList.add('walking');
     clearEmotions();
     guide.classList.toggle('flip', s.pos > 55);
     guide.style.left = s.pos + '%';
     showBubble(s.say, false);
-
     clearTimeout(guide._walkT);
     guide._walkT = setTimeout(() => {
       guide.classList.remove('walking');
       guide.classList.add(s.emo);
-      if (s.hide) {
-        /* финал: машет → прячется → при скролле вернётся */
-        setTimeout(() => {
-          guide.classList.add('gone');
-          guide.classList.remove('show-bubble');
-        }, 3200);
-      }
+      if (s.hide) setTimeout(() => {
+        guide.classList.add('gone'); guide.classList.remove('show-bubble');
+      }, 3200);
     }, 650);
   }
 
-  /* CTA-топот: когда CTA-кнопки в видимости — подъехать и топать */
+  /* у CTA-кнопок — спокойный жест, без «жми» */
   const ctaButtons = document.querySelectorAll('.btn');
   let stompActive = false;
   const ctaIO = new IntersectionObserver(entries => {
@@ -1245,7 +1301,6 @@ function submitForm() {
     const visible = entries.some(e => e.isIntersecting);
     if (visible && !stompActive && !guide.classList.contains('gone')) {
       stompActive = true;
-      /* немного сдвигаемся к ближайшей кнопке */
       const btn = [...ctaButtons].find(b => {
         const r = b.getBoundingClientRect();
         return r.top > 0 && r.top < window.innerHeight;
@@ -1257,48 +1312,37 @@ function submitForm() {
         guide.classList.toggle('flip', pct > 55);
       }
       clearEmotions();
-      guide.classList.add('e-stomp');
-      showBubble('Жми сюда! 👇', true);
+      guide.classList.add('e-point');
+      showBubble('Посмотрим вместе?', true);
     } else if (!visible) {
       stompActive = false;
-      if (guide.classList.contains('e-stomp')) {
-        clearEmotions();
-        guide.classList.remove('show-bubble');
-      }
+      if (guide.classList.contains('e-point')) { clearEmotions(); guide.classList.remove('show-bubble'); }
     }
   }, {threshold: .5});
   ctaButtons.forEach(b => ctaIO.observe(b));
 
-  /* пробуждение */
   function wake() {
     if (awake) return;
     awake = true;
     guide.classList.remove('asleep');
     wakerEl.style.display = 'none';
-    active = -1;
-    setTimeout(() => go(0), 300);
+    activeId = null;
+    setTimeout(() => go('s0'), 300);
   }
   wakerEl.addEventListener('click', wake);
   wakerEl.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wake(); }
   });
 
-  /* IntersectionObserver на секции */
   const sectionIO = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting || !awake) return;
-      const idx = sections.indexOf(entry.target);
-      /* если были в конце и скроллим обратно — оживить */
-      if (guide.classList.contains('gone')) {
-        guide.classList.remove('gone');
-        clearEmotions();
-      }
-      go(idx);
+      if (guide.classList.contains('gone')) { guide.classList.remove('gone'); clearEmotions(); }
+      go(entry.target.id);
     });
   }, {threshold: .45});
-  sections.forEach(s => sectionIO.observe(s));
+  document.querySelectorAll('section[id]').forEach(s => sectionIO.observe(s));
 
-  /* прятать бабл при простое */
   addEventListener('scroll', () => {
     if (!awake) return;
     if (!guide.classList.contains('e-stomp')) {
@@ -1311,7 +1355,7 @@ function submitForm() {
   }, {passive: true});
 })();
 
-/* инициализация калькулятора — вызывается последней */
+/* инициализация */
 recalc();
 </script>
 </body>

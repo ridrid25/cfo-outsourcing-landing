@@ -91,7 +91,7 @@ const shot = async (page, name) => {
   }
 
   // 4b) Тарифы и «что вскрывается на диагностике» (375)
-  for (const [sel, name] of [['#tariffs', 'tariffs-375'], ['#cases', 'scenarios-375'], ['#ai', 'ai-375']]) {
+  for (const [sel, name] of [['#tariffs', 'tariffs-375'], ['#cases', 'scenarios-375'], ['#ai', 'ai-375'], ['#final', 'cta-375']]) {
     page = await open(375);
     await page.locator(sel).scrollIntoViewIfNeeded();
     await page.waitForTimeout(300);

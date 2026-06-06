@@ -398,9 +398,6 @@
     #guide.show-bubble .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
     #guide.flip .g-bubble{left:50%;right:auto;transform:translateX(-50%) translateY(8px) scale(.6)}
     #guide.show-bubble.flip .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
-    /* спит/уходит — вниз за нижнюю кромку, а не вверх */
-    #guide.asleep{transform:translateX(-50%) translateY(120px)}
-    #guide.gone{transform:translateX(-50%) translateY(130px) scale(.5)}
   }
   #guide.e-happy .g-mouth{height:9px;border-radius:0 0 16px 16px}
   #guide.e-think .g-mouth{width:7px;height:0;border-bottom:2.5px solid #1a1206;border-radius:0}
@@ -412,6 +409,11 @@
   @keyframes stompanim{0%,100%{transform:rotate(0)}40%{transform:rotate(-35deg)}55%{transform:rotate(8deg)}}
   #guide.asleep{transform:translateX(-50%) translateY(-140px);opacity:0;pointer-events:none}
   #guide.gone{transform:translateX(-50%) translateY(-150px) scale(.5);opacity:0}
+  /* мобайл: спит/уходит ВНИЗ за нижнюю кромку — после базовых правил, чтобы перебить их */
+  @media(max-width:600px){
+    #guide.asleep{transform:translateX(-50%) translateY(120px)}
+    #guide.gone{transform:translateX(-50%) translateY(130px) scale(.5)}
+  }
   #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}

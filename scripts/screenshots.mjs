@@ -90,8 +90,8 @@ const shot = async (page, name) => {
     await page.close();
   }
 
-  // 4b) Тарифы и «что вскрывается на диагностике» (375)
-  for (const [sel, name] of [['#tariffs', 'tariffs-375'], ['#cases', 'scenarios-375'], ['#ai', 'ai-375'], ['#final', 'cta-375']]) {
+  // 4b) Секции по отдельности (375): объединённый блок, тарифы, сценарии, AI, CTA
+  for (const [sel, name] of [['#tools', 'get-375'], ['#tariffs', 'tariffs-375'], ['#cases', 'scenarios-375'], ['#ai', 'ai-375'], ['#final', 'cta-375']]) {
     page = await open(375);
     await page.locator(sel).scrollIntoViewIfNeeded();
     await page.waitForTimeout(300);
@@ -106,6 +106,16 @@ const shot = async (page, name) => {
   await page.waitForTimeout(1200);
   await page.screenshot({ path: resolve(outDir, 'bot-guide-1280.png') });
   console.log('  → bot-guide-1280.png');
+  await page.close();
+
+  // 5b) Бот-гид в НИЖНЕЙ полосе на мобиле (375) — гуляет, не загораживает контент
+  page = await open(375);
+  await page.locator('#waker').click();
+  await page.waitForTimeout(500);
+  await page.evaluate(() => document.getElementById('tools').scrollIntoView());
+  await page.waitForTimeout(1500); // бот доходит и показывает реплику
+  await page.screenshot({ path: resolve(outDir, 'bot-mobile-375.png') }); // только вьюпорт
+  console.log('  → bot-mobile-375.png');
   await page.close();
 
   await browser.close();

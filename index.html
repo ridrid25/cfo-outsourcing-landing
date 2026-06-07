@@ -86,6 +86,8 @@
   .reveal[data-rv="right"]{transform:translateX(52px)}
   .reveal[data-rv="scale"]{transform:scale(.9)}
   .reveal.in{opacity:1;transform:none}
+  /* на мобиле — только вертикальный въезд, чтобы скрытые блоки не торчали за край */
+  @media(max-width:600px){.reveal[data-rv="left"],.reveal[data-rv="right"]{transform:translateY(34px)}}
 
   /* ============ HERO ============ */
   .hero{min-height:100svh;display:flex;align-items:center;text-align:center;overflow:hidden;
@@ -100,9 +102,9 @@
     background-size:80px 80px;
     mask:radial-gradient(70% 60% at 50% 40%,#000,transparent);
     -webkit-mask:radial-gradient(70% 60% at 50% 40%,#000,transparent)}
-  .hero h1{font-size:clamp(23px,6.2vw,62px);font-weight:900;color:var(--cream);margin-bottom:6px;
-    overflow-wrap:break-word;word-break:break-word;padding:0 6px}
-  @media(max-width:360px){.wrap{padding:0 18px}}
+  .hero h1{font-size:clamp(22px,5.6vw,60px);font-weight:900;color:var(--cream);margin-bottom:6px;
+    overflow-wrap:break-word;word-break:break-word;padding:0 12px}
+  @media(max-width:360px){.wrap{padding:0 20px}}
   .hero h1 em{font-style:italic;font-weight:500}
   .type{display:inline;max-width:100%;border-right:3px solid var(--gold);padding-right:8px;
     overflow-wrap:break-word;animation:blink 1.05s step-end infinite}
@@ -325,8 +327,6 @@
   .tier-hook{font-size:13px;color:var(--muted);margin:4px 0 0;line-height:1.35;min-height:36px}
   .tier.best .tier-hook{color:var(--cream-dim)}
   .price-anchor{text-align:center;font-size:13px;color:var(--muted-2);margin-bottom:24px}
-  .tier-foot{text-align:center;margin-top:28px;font-size:13px;color:var(--muted);max-width:720px;
-    margin-left:auto;margin-right:auto;line-height:1.55}
 
   /* ============ FAQ ============ */
   .faq{border-bottom:1px solid var(--line)}
@@ -440,7 +440,7 @@
   .waker{display:inline-flex;align-items:center;gap:8px;cursor:pointer;margin:0 auto 22px;
     font-family:'Manrope';font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--gold);
     background:rgba(216,178,94,.08);border:1px solid rgba(216,178,94,.45);border-radius:30px;
-    padding:9px 18px;transition:transform .25s,border-color .25s,background .25s;
+    padding:12px 20px;transition:transform .25s,border-color .25s,background .25s;
     animation:wpulse 2.8s ease-in-out infinite}
   .waker:hover{border-color:var(--gold);background:rgba(216,178,94,.15);transform:translateY(-2px)}
   .waker:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -513,7 +513,7 @@
       <span class="waker-spark" aria-hidden="true">✦</span> Познакомьтесь с гидом
     </button>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
-    <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
+    <p class="hero-sub">Разбор по вашему профилю — покажу, где именно уходят деньги.</p>
     <div class="hero-cred">
       <span class="cred-exp">25 лет в реальном бизнесе — строительство, дорожная отрасль, производство</span>
       <span class="cred-badges"><b>DipIFR</b><b>ACCA</b><b>CIMA</b></span>
@@ -806,11 +806,6 @@
         <ul><li>Учёт и отчётность с нуля</li><li>AI-автоматизация под ваши зоны</li><li>Обучение вашей команды</li><li>Готовая система на руках</li></ul>
       </div>
     </div>
-
-    <p class="tier-foot reveal" data-rv="up">
-      Точную стоимость называю после бесплатной диагностики — зависит от размера бизнеса,
-      числа направлений и состояния учёта.
-    </p>
   </div>
 </section>
 
@@ -1210,11 +1205,11 @@ document.querySelectorAll('.faq-q').forEach(q => {
 
   /* реплики по id секции: [say, emo, pos%, hide?] */
   const SCRIPT = {
-    s0:      { say: 'Привет! Я Татьяна, идём посмотрим 👋', emo: 'e-wave', pos: 52 },
+    s0:      { say: 'Привет! Покажу, где теряются деньги 👋', emo: 'e-wave', pos: 52 },
     s1:      { say: 'Деньги уходят тихо… вглядитесь', emo: 'e-think', pos: 24 },
     shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
     core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
-    how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
+    how:     { say: 'Вот как проходит работа', emo: 'e-happy', pos: 28 },
     tools:   { say: 'Вот что вы получаете', emo: 'e-happy', pos: 66 },
     pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
     ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },

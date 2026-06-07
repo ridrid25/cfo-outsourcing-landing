@@ -42,6 +42,12 @@
     background:linear-gradient(90deg,transparent,rgba(216,178,94,.42) 50%,transparent)}
   .sep-top::before{content:"✦";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
     z-index:4;color:var(--gold);font-size:12px;opacity:.7;line-height:1}
+
+  /* ===== АКЦЕНТНЫЕ СЕКЦИИ — смысловые вершины: усиленное тёплое золото на тёмном ===== */
+  .accent{background:
+    radial-gradient(82% 52% at 50% 12%,rgba(243,214,144,.16),transparent 60%),
+    radial-gradient(135% 95% at 50% 44%,rgba(216,178,94,.10),transparent 70%),
+    var(--void)}
   .gold-text{background:linear-gradient(110deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .kick{font-family:'Manrope';font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
@@ -252,7 +258,7 @@
   .get span{font-size:12.5px;color:var(--muted);line-height:1.4}
 
   /* ============ В КАРМАНЕ + МОКАП ============ */
-  .pocket{background:var(--void);text-align:center}
+  .pocket{text-align:center}
   .pocket .kick{justify-content:center}
   .pocket-lead{font-family:'Playfair Display';font-size:clamp(19px,3.4vw,28px);font-weight:500;
     color:var(--cream-dim);margin-bottom:30px}
@@ -334,7 +340,10 @@
   .faq.open .faq-a{max-height:320px;padding-bottom:22px}
 
   /* ============ ФИНАЛ ============ */
-  .final{background:radial-gradient(120% 100% at 50% 100%,#1b1830,var(--void) 60%);text-align:center}
+  .final{text-align:center;background:
+    radial-gradient(88% 58% at 50% 86%,rgba(243,214,144,.17),transparent 60%),
+    radial-gradient(135% 100% at 50% 64%,rgba(216,178,94,.11),transparent 70%),
+    var(--void)}
   .final h2{font-size:clamp(32px,7vw,64px);font-weight:900;margin-bottom:18px}
   .final h2 em{font-style:italic;font-weight:500}
   .assure{display:inline-block;border:1px solid var(--line);color:var(--cream-dim);
@@ -670,7 +679,7 @@
 </section>
 
 <!-- ====== ВАШ БИЗНЕС — В КАРМАНЕ ====== -->
-<section class="pocket sep-top" id="pocket">
+<section class="pocket sep-top accent" id="pocket">
   <div class="wrap">
     <div class="kick">Главное</div>
     <h2 class="serif reveal" data-rv="up"
@@ -895,7 +904,7 @@
 </section>
 
 <!-- ====== ФИНАЛ ====== -->
-<section class="final" id="final">
+<section class="final sep-top" id="final">
   <div class="wrap narrow">
     <span class="assure reveal" data-rv="scale">
       Первый разбор бесплатный, потому что я уверена в его ценности

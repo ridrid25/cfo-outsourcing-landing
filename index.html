@@ -31,7 +31,23 @@
   h1,h2,h3,.serif{font-family:'Playfair Display',serif;line-height:1.02;letter-spacing:-.01em}
   .wrap{max-width:1080px;margin:0 auto;padding:0 26px;position:relative;z-index:3}
   .narrow{max-width:780px}
-  section{padding:clamp(70px,11vw,130px) 0;position:relative}
+  section{padding:clamp(54px,8.5vw,96px) 0;position:relative}
+
+  /* ===== РИТМ СЕКЦИЙ: чередование глубины тёмного + деликатные разделители ===== */
+  /* графитовая секция — заметно глубже void, но остаётся тёмной */
+  .tone-b{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
+  /* «дыхание» на стыке: золотой хайрлайн с затуханием к краям + засечка ✦ по центру */
+  .sep-top::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:min(440px,72%);height:1px;z-index:4;
+    background:linear-gradient(90deg,transparent,rgba(216,178,94,.42) 50%,transparent)}
+  .sep-top::before{content:"✦";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+    z-index:4;color:var(--gold);font-size:12px;opacity:.7;line-height:1}
+
+  /* ===== АКЦЕНТНЫЕ СЕКЦИИ — смысловые вершины: усиленное тёплое золото на тёмном ===== */
+  .accent{background:
+    radial-gradient(82% 52% at 50% 12%,rgba(243,214,144,.16),transparent 60%),
+    radial-gradient(135% 95% at 50% 44%,rgba(216,178,94,.10),transparent 70%),
+    var(--void)}
   .gold-text{background:linear-gradient(110deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .kick{font-family:'Manrope';font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
@@ -84,11 +100,11 @@
     background-size:80px 80px;
     mask:radial-gradient(70% 60% at 50% 40%,#000,transparent);
     -webkit-mask:radial-gradient(70% 60% at 50% 40%,#000,transparent)}
-  .hero h1{font-size:clamp(25px,7vw,72px);font-weight:900;color:var(--cream);margin-bottom:6px;
-    overflow-wrap:break-word;word-break:break-word}
+  .hero h1{font-size:clamp(23px,6.2vw,62px);font-weight:900;color:var(--cream);margin-bottom:6px;
+    overflow-wrap:break-word;word-break:break-word;padding:0 6px}
   @media(max-width:360px){.wrap{padding:0 18px}}
   .hero h1 em{font-style:italic;font-weight:500}
-  .type{display:inline;max-width:100%;border-right:3px solid var(--gold);padding-right:5px;
+  .type{display:inline;max-width:100%;border-right:3px solid var(--gold);padding-right:8px;
     overflow-wrap:break-word;animation:blink 1.05s step-end infinite}
   @keyframes blink{50%{border-color:transparent}}
   .hero-sub{font-size:clamp(16px,2.4vw,20px);color:var(--cream-dim);
@@ -115,13 +131,13 @@
   .manifesto .hl{font-style:italic}
 
   /* ============ СНЯТИЕ СТЫДА ============ */
-  .shame{background:linear-gradient(180deg,var(--coal),var(--void))}
+  .shame{background:var(--void)}
   .shame p{font-family:'Playfair Display';font-size:clamp(20px,3.4vw,32px);font-weight:500;
     line-height:1.42;color:var(--cream-dim);max-width:780px}
   .shame b{color:var(--cream);font-weight:700}
 
   /* ============ ЯДРО — МИНИ-АУДИТ ============ */
-  .core{background:linear-gradient(180deg,var(--void),var(--coal))}
+  .core{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .core-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media(max-width:880px){.core-grid{grid-template-columns:1fr;gap:36px}}
 
@@ -218,43 +234,41 @@
   .btn-text:hover{color:var(--gold);text-decoration-color:var(--gold)}
   .btn-text:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-  /* ============ КАК НАХОДИМ (БУХ vs ФИНДИР) ============ */
-  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
-  @media(max-width:680px){.vs{grid-template-columns:1fr;gap:14px}.vs .vs-mid{display:none}}
-  .vs-col{border:1px solid var(--line);border-radius:4px;padding:28px 24px}
-  .vs-col.cfo{background:radial-gradient(120% 100% at 50% 0,rgba(216,178,94,.08),transparent);
-    border-color:rgba(216,178,94,.4)}
-  .vs-col h4{font-family:'Playfair Display';font-size:21px;margin-bottom:6px}
-  .vs-col .role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:18px}
-  .vs-col p{font-size:14.5px;color:var(--cream-dim);padding:9px 0;border-top:1px solid var(--line)}
-  .vs-mid{font-family:'Playfair Display';font-style:italic;font-size:26px;color:var(--gold);
-    text-align:center}
-  .cfo h4{color:var(--gold)}
+  /* ============ КАК РАБОТАЮ (одна строка) ============ */
+  .how-line{font-family:'Playfair Display';font-size:clamp(22px,3.6vw,34px);font-weight:500;
+    line-height:1.3;color:var(--muted-2);max-width:780px}
+  .how-line b{color:var(--cream);font-weight:700}
 
-  /* ============ ИНСТРУМЕНТЫ ============ */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.cards{grid-template-columns:1fr}}
-  .tool{border:1px solid var(--line);border-radius:4px;padding:22px 20px;background:var(--ink);transition:.3s}
+  /* ============ КАРТОЧКИ (AI) ============ */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .tool{border:1px solid var(--line);border-radius:4px;padding:16px 15px;background:var(--ink);transition:.3s}
   .tool:hover{border-color:rgba(216,178,94,.45);transform:translateY(-3px)}
-  .tool .tag{font-size:11px;color:var(--gold);letter-spacing:.04em;margin-bottom:10px;
+  .tool .tag{font-size:10.5px;color:var(--gold);letter-spacing:.04em;margin-bottom:7px;
     display:inline-flex;align-items:center;gap:6px}
-  .tool b{display:block;font-family:'Playfair Display';font-size:18px;margin-bottom:6px}
-  .tool p{font-size:14px;color:var(--muted)}
-  .cards-cap{margin-top:26px;font-size:14px;color:var(--cream-dim);text-align:center}
-  .cards-cap b{color:var(--gold);font-weight:700}
+  .tool b{display:block;font-family:'Playfair Display';font-size:16px;margin-bottom:5px;line-height:1.15}
+  .tool p{font-size:13px;color:var(--muted);line-height:1.4}
+
+  /* ===== объединённый блок «что вы получаете» — плотная сетка 2 кол. ===== */
+  .get-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:700px){.get-grid{grid-template-columns:repeat(3,1fr)}}
+  .get{border:1px solid var(--line);border-radius:4px;padding:15px 14px;background:var(--ink);transition:.3s}
+  .get:hover{border-color:rgba(216,178,94,.45)}
+  .get b{display:block;font-family:'Playfair Display';font-size:15.5px;font-weight:700;
+    margin-bottom:4px;color:var(--cream);line-height:1.18}
+  .get span{font-size:12.5px;color:var(--muted);line-height:1.4}
 
   /* ============ В КАРМАНЕ + МОКАП ============ */
-  .pocket{background:linear-gradient(180deg,var(--coal),var(--void))}
-  .pocket-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-  @media(max-width:860px){.pocket-grid{grid-template-columns:1fr;gap:42px}}
-  .scn{border-top:1px solid var(--line);padding:17px 0}
-  .scn:first-child{border-top:none;padding-top:0}
-  .scn b{font-family:'Playfair Display';font-size:17px;display:block;margin-bottom:3px;color:var(--cream)}
-  .scn span{font-size:14px;color:var(--muted)}
+  .pocket{text-align:center}
+  .pocket .kick{justify-content:center}
+  .pocket-lead{font-family:'Playfair Display';font-size:clamp(19px,3.4vw,28px);font-weight:500;
+    color:var(--cream-dim);margin-bottom:30px}
+  .pocket-lead b{color:var(--cream);font-weight:700}
+  .scn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px;text-align:left}
+  .scn{border:1px solid var(--line);border-radius:4px;padding:14px 15px;background:rgba(255,255,255,.012)}
+  .scn b{font-family:'Playfair Display';font-size:15.5px;display:block;margin-bottom:3px;color:var(--cream);line-height:1.18}
+  .scn span{font-size:12.5px;color:var(--muted);line-height:1.4}
   .phone-col{display:flex;flex-direction:column;align-items:center}
-  .phone{width:272px;max-width:80vw;aspect-ratio:9/16.5;border-radius:36px;
+  .phone{width:300px;max-width:82vw;aspect-ratio:9/16.5;border-radius:36px;
     border:1px solid var(--line);background:linear-gradient(170deg,var(--ink-2),var(--coal));
     box-shadow:0 40px 90px -30px rgba(0,0,0,.85),var(--glow),inset 0 1px 0 rgba(255,255,255,.06);
     padding:14px 12px;position:relative}
@@ -276,19 +290,8 @@
   .ps-axis{display:flex;gap:5px;margin-top:6px}
   .ps-axis span{flex:1;text-align:center;font-size:8px;letter-spacing:.04em;color:var(--muted-2)}
   .phone-cap{margin-top:16px;font-size:12px;color:var(--muted-2);text-align:center}
-  .pocket-note{margin-top:34px;font-size:14px;color:var(--muted);max-width:780px;line-height:1.6}
+  .pocket-note{margin:26px auto 0;font-size:13.5px;color:var(--muted);max-width:680px;line-height:1.55}
   .pocket-note b{color:var(--cream-dim)}
-  /* лид-заметка внутри колонки сценариев — отделяем, чтобы не сливалась с последним сценарием */
-  .pocket-note--lead{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
-
-  /* ============ ЧТО ПОЛУЧАЕТЕ ============ */
-  .deliv{display:grid;grid-template-columns:1fr 1fr;gap:0}
-  @media(max-width:680px){.deliv{grid-template-columns:1fr}}
-  .d-item{padding:26px 24px;border-top:1px solid var(--line);position:relative;transition:.3s}
-  .d-item:hover{background:rgba(216,178,94,.04)}
-  .d-num{font-family:'Playfair Display';font-style:italic;font-size:16px;color:var(--gold);opacity:.7}
-  .d-item b{display:block;font-family:'Playfair Display';font-size:20px;font-weight:700;margin:6px 0 4px}
-  .d-item span{font-size:14px;color:var(--muted)}
 
   /* ============ ТАЙМЛАЙН ============ */
   .tl{position:relative;padding-left:30px}
@@ -337,7 +340,10 @@
   .faq.open .faq-a{max-height:320px;padding-bottom:22px}
 
   /* ============ ФИНАЛ ============ */
-  .final{background:radial-gradient(120% 100% at 50% 100%,#1b1830,var(--void) 60%);text-align:center}
+  .final{text-align:center;background:
+    radial-gradient(88% 58% at 50% 86%,rgba(243,214,144,.17),transparent 60%),
+    radial-gradient(135% 100% at 50% 64%,rgba(216,178,94,.11),transparent 70%),
+    var(--void)}
   .final h2{font-size:clamp(32px,7vw,64px);font-weight:900;margin-bottom:18px}
   .final h2 em{font-style:italic;font-weight:500}
   .assure{display:inline-block;border:1px solid var(--line);color:var(--cream-dim);
@@ -354,7 +360,7 @@
   #guide{position:fixed;top:10px;left:50%;z-index:900;transform:translateX(-50%);
     transition:left .9s cubic-bezier(.4,.1,.2,1),opacity .5s,transform .85s;
     width:64px;pointer-events:none;will-change:left,transform}
-  @media(max-width:600px){#guide{width:50px;top:6px}}
+  @media(max-width:600px){#guide{width:50px;top:auto;bottom:12px}}
   .g-body{position:relative;width:56px;height:56px;margin:0 auto;border-radius:18px 18px 16px 16px;
     background:radial-gradient(circle at 38% 30%,var(--gold-bright),var(--gold) 55%,var(--gold-deep));
     box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 2px 4px rgba(255,255,255,.4),0 0 26px rgba(216,178,94,.4);
@@ -401,8 +407,17 @@
     border-right:1px solid var(--gold);border-top:1px solid var(--gold)}
   #guide.show-bubble.flip .g-bubble{transform:translateY(-50%) scale(1)}
   @media(max-width:600px){
-    .g-bubble{font-size:11px;left:56px;white-space:normal;width:150px;max-width:150px}
-    #guide.flip .g-bubble{right:56px;left:auto}}
+    /* бабл раскрывается ВВЕРХ от бота — не перекрывает заголовки секций */
+    .g-bubble{font-size:11px;white-space:normal;width:160px;max-width:46vw;text-align:center;
+      left:50%;right:auto;top:auto;bottom:60px;
+      transform:translateX(-50%) translateY(8px) scale(.6);transform-origin:bottom center}
+    .g-bubble::before{left:50%;right:auto;top:auto;bottom:-6px;
+      transform:translateX(-50%) rotate(45deg);
+      border-left:none;border-top:none;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+    #guide.show-bubble .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
+    #guide.flip .g-bubble{left:50%;right:auto;transform:translateX(-50%) translateY(8px) scale(.6)}
+    #guide.show-bubble.flip .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
+  }
   #guide.e-happy .g-mouth{height:9px;border-radius:0 0 16px 16px}
   #guide.e-think .g-mouth{width:7px;height:0;border-bottom:2.5px solid #1a1206;border-radius:0}
   #guide.e-point .g-arm{opacity:1;animation:pointArm 1s ease-in-out infinite}
@@ -413,6 +428,11 @@
   @keyframes stompanim{0%,100%{transform:rotate(0)}40%{transform:rotate(-35deg)}55%{transform:rotate(8deg)}}
   #guide.asleep{transform:translateX(-50%) translateY(-140px);opacity:0;pointer-events:none}
   #guide.gone{transform:translateX(-50%) translateY(-150px) scale(.5);opacity:0}
+  /* мобайл: спит/уходит ВНИЗ за нижнюю кромку — после базовых правил, чтобы перебить их */
+  @media(max-width:600px){
+    #guide.asleep{transform:translateX(-50%) translateY(120px)}
+    #guide.gone{transform:translateX(-50%) translateY(130px) scale(.5)}
+  }
   #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
@@ -456,8 +476,7 @@
   .tier-price .free{color:var(--plus)}
   .tier-kind{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:6px 0 2px}
 
-  /* ===== AI-секция (2×2 на десктопе, 1 колонка на телефоне) ===== */
-  @media(min-width:561px){.ai-cards{grid-template-columns:repeat(2,1fr)}}
+  /* ===== AI-секция: 2 колонки на всех ширинах ===== */
   .tool .tag.ai{color:var(--gold-bright)}
 
   .contacts-sep{margin:0 10px;color:var(--muted-2)}
@@ -518,14 +537,12 @@
 </section>
 
 <!-- ====== БОЛЬ ====== -->
-<section class="manifesto" id="s1">
+<section class="manifesto tone-b" id="s1">
   <div class="wrap narrow">
     <p class="reveal" data-rv="up">
-      Деньги редко уходят разом.
-      <b>Они задерживаются тихо</b> — пока вы заняты делом.
-      <span class="hl gold-text">Склад, который не двигается. Дебиторка, которую не торопятся
-      гасить. Скидки без расчёта маржи.</span>
-      Это видно не сразу — и так устроено у большинства растущих компаний.
+      Деньги редко уходят разом. <b>Они задерживаются тихо</b>, пока вы заняты делом:
+      <span class="hl gold-text">склад не двигается, дебиторку не торопятся гасить, скидки без расчёта маржи.</span>
+      Так устроено у большинства растущих компаний.
     </p>
   </div>
 </section>
@@ -542,7 +559,7 @@
 </section>
 
 <!-- ====== ЯДРО: МИНИ-АУДИТ ====== -->
-<section class="core" id="core">
+<section class="core sep-top" id="core">
   <div class="wrap">
     <div class="kick">Экспресс-диагностика</div>
     <h2 class="serif reveal" data-rv="left"
@@ -550,9 +567,9 @@
       Где ваш бизнес теряет деньги
     </h2>
     <p class="reveal" data-rv="right"
-      style="color:var(--muted);max-width:580px;margin-bottom:46px">
-      Отметьте знакомое и ответьте на три вопроса. Ниже получите
-      <span class="gold-text">персональный разбор</span> — сразу, без заявки.
+      style="color:var(--muted);max-width:580px;margin-bottom:32px">
+      Отметьте знакомое, ответьте на три вопроса — и получите
+      <span class="gold-text">персональный разбор</span> сразу, без заявки.
     </p>
 
     <div class="core-grid">
@@ -628,176 +645,111 @@
   </div>
 </section>
 
-<!-- ====== КАК МЫ НАХОДИМ ДЕНЬГИ ====== -->
+<!-- ====== КАК Я РАБОТАЮ (одна строка) ====== -->
 <section id="how">
   <div class="wrap narrow">
     <div class="kick">Как я работаю</div>
-    <h2 class="serif reveal" data-rv="up"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
-      Бухгалтер закрывает прошлое. Я смотрю вперёд
-    </h2>
-    <p class="reveal" data-rv="up" style="color:var(--muted);max-width:600px;margin-bottom:36px">
-      Если у вас есть бухгалтер — отлично, он на своём месте. Как финдиректор я отвечаю
-      за другое. Вот в чём разница.
+    <p class="how-line reveal" data-rv="up">
+      <b>Бухгалтер считает прошлое для государства — я управляю вашим будущим:</b>
+      деньгами, прибылью и решениями вперёд.
     </p>
-    <div class="vs reveal" data-rv="scale">
-      <div class="vs-col">
-        <div class="role">Бухгалтер</div>
-        <h4>Смотрит назад</h4>
-        <p>Считает то, что уже случилось: налоги, отчётность</p>
-        <p>Его клиент — государство, и это правильно</p>
-        <p>Искать упущенную прибыль — не его задача</p>
-      </div>
-      <div class="vs-mid" aria-hidden="true">vs</div>
-      <div class="vs-col cfo">
-        <div class="role">Я — финдиректор</div>
-        <h4>Смотрю вперёд</h4>
-        <p>Прогноз денег и прибыли на месяцы вперёд</p>
-        <p>Помогаю вашим решениям и росту</p>
-        <p>Нахожу, где деньги задержались, и возвращаю в оборот</p>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ====== ИНСТРУМЕНТЫ КОНТРОЛЯ ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="tools">
+<!-- ====== ЧТО ВЫ ПОЛУЧАЕТЕ (объединённый блок) ====== -->
+<section class="tone-b" id="tools">
   <div class="wrap">
-    <div class="kick">Инструменты контроля</div>
+    <div class="kick">Результат</div>
     <h2 class="serif reveal" data-rv="left"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
-      Не отчёты раз в месяц, а контроль под рукой
+      Что вы получаете
     </h2>
-    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
-      Если проблема повторяется, её лучше не держать в голове. Под конкретную задачу я
-      внедряю небольшой прикладной инструмент — таблицу, мини-дашборд или простое
-      веб-приложение, которое показывает проблему вовремя.
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:600px;margin-bottom:30px">
+      Не отчёты раз в месяц, а рабочие инструменты под ваши зоны — каждый под рукой.
     </p>
-    <div class="cards reveal" data-rv="up">
-      <div class="tool"><div class="tag">📱 с телефона</div><b>Контроль дебиторки</b>
-        <p>Кто должен, сколько, с какого срока, где риск просрочки и какие суммы зависли.</p></div>
-      <div class="tool"><div class="tag">📱 с телефона</div><b>Кассовые разрывы</b>
-        <p>План поступлений и платежей, ближайшие провалы по деньгам и решения до того, как касса ушла в минус.</p></div>
-      <div class="tool"><div class="tag">📱 с телефона</div><b>Маржинальность проектов</b>
-        <p>Выручка, прямые расходы, валовая маржа и отклонения по каждому проекту, объекту или направлению.</p></div>
-      <div class="tool"><div class="tag">📱 с телефона</div><b>План-факт</b>
-        <p>Сравнение плана и факта по выручке, расходам, прибыли и денежному потоку.</p></div>
-      <div class="tool"><div class="tag">📱 с телефона</div><b>Контроль расходов</b>
-        <p>Регулярные расходы, отклонения, лишние платежи и зоны, где деньги уходят незаметно.</p></div>
-      <div class="tool"><div class="tag">📱 с телефона</div><b>Платёжный календарь</b>
-        <p>Что платить, когда платить, какие обязательства критичны и где нужен перенос или приоритизация.</p></div>
+    <div class="get-grid reveal" data-rv="up">
+      <div class="get"><b>Платёжный календарь</b><span>Кассовые разрывы видно за недели</span></div>
+      <div class="get"><b>ДДС и P&amp;L</b><span>Куда уходят деньги и сколько вы зарабатываете</span></div>
+      <div class="get"><b>Контроль дебиторки</b><span>Кто должен, сколько и где риск просрочки</span></div>
+      <div class="get"><b>Юнит-экономика</b><span>Что кормит бизнес, а что тянет вниз</span></div>
+      <div class="get"><b>Финансовый дашборд</b><span>Все ключевые цифры на одном экране</span></div>
+      <div class="get"><b>Бюджет и план-факт</b><span>Цель в цифрах и контроль отклонений</span></div>
     </div>
-    <p class="cards-cap reveal" data-rv="up">Любой инструмент открывается <b>с телефона</b> —
-      не нужно ждать отчёта или садиться за компьютер.</p>
   </div>
 </section>
 
 <!-- ====== ВАШ БИЗНЕС — В КАРМАНЕ ====== -->
-<section class="pocket" id="pocket">
+<section class="pocket sep-top accent" id="pocket">
   <div class="wrap">
-    <div class="kick">Кульминация</div>
-    <h2 class="serif reveal" data-rv="left"
-      style="font-size:clamp(28px,5.5vw,48px);font-weight:700;margin-bottom:36px">
+    <div class="kick">Главное</div>
+    <h2 class="serif reveal" data-rv="up"
+      style="font-size:clamp(28px,5.5vw,46px);font-weight:700;margin-bottom:12px">
       Ваш бизнес — в кармане
     </h2>
-    <div class="pocket-grid">
-      <div class="reveal" data-rv="left">
-        <div class="scn"><b>В очереди в аэропорту</b>
-          <span>проверили: хватает ли денег на зарплаты 10-го.</span></div>
-        <div class="scn"><b>Перед сделкой</b>
-          <span>за 10 секунд глянули свободный остаток.</span></div>
-        <div class="scn"><b>Клиент просит скидку</b>
-          <span>сразу видно, не уходите ли в минус по марже.</span></div>
-        <div class="scn"><b>Утром с кофе</b>
-          <span>один экран: деньги, долги, ближайшие платежи.</span></div>
-        <p class="pocket-note pocket-note--lead reveal" data-rv="up">
-          <b>Ничего не нужно устанавливать и осваивать</b> — открывается по ссылке,
-          как обычная страница. Захотели — посмотрели.
-        </p>
-      </div>
-      <div class="phone-col reveal" data-rv="right">
-        <div class="phone" aria-hidden="true">
-          <div class="phone-screen">
-            <div class="ps-cap">Свободные деньги</div>
-            <div class="ps-big tnum"><span class="ph">2 480 000 ₽</span></div>
-            <div class="ps-row"><span>Дебиторка</span><b class="warn ph">1 150 000 ₽</b></div>
-            <div class="ps-row"><span>Ближайший платёж · 10.06</span><b class="ph">640 000 ₽</b></div>
-            <div class="ps-row"><span>Прогноз на конец месяца</span><b class="ok ph">+310 000 ₽</b></div>
-            <div class="ps-chart-cap">Деньги по неделям</div>
-            <div class="ps-chart">
-              <i style="height:45%"></i><i style="height:62%"></i><i style="height:38%"></i>
-              <i style="height:74%"></i><i style="height:56%"></i><i style="height:88%"></i><i style="height:66%"></i>
-            </div>
-            <div class="ps-axis"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+    <p class="pocket-lead reveal" data-rv="up">
+      Любой инструмент — <b class="gold-text">с телефона.</b> Открыл ссылку — и сразу видно.
+    </p>
+    <div class="phone-col reveal" data-rv="scale">
+      <div class="phone" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="ps-cap">Свободные деньги</div>
+          <div class="ps-big tnum"><span class="ph">2 480 000 ₽</span></div>
+          <div class="ps-row"><span>Дебиторка</span><b class="warn ph">1 150 000 ₽</b></div>
+          <div class="ps-row"><span>Ближайший платёж · 10.06</span><b class="ph">640 000 ₽</b></div>
+          <div class="ps-row"><span>Прогноз на конец месяца</span><b class="ok ph">+310 000 ₽</b></div>
+          <div class="ps-chart-cap">Деньги по неделям</div>
+          <div class="ps-chart">
+            <i style="height:45%"></i><i style="height:62%"></i><i style="height:38%"></i>
+            <i style="height:74%"></i><i style="height:56%"></i><i style="height:88%"></i><i style="height:66%"></i>
           </div>
+          <div class="ps-axis"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
         </div>
-        <div class="phone-cap">цифры на экране — пример оформления</div>
       </div>
+      <div class="phone-cap">цифры на экране — пример оформления</div>
+    </div>
+    <div class="scn-grid reveal" data-rv="up">
+      <div class="scn"><b>В очереди в аэропорту</b><span>хватает ли денег на зарплаты 10-го.</span></div>
+      <div class="scn"><b>Перед сделкой</b><span>за 10 секунд — свободный остаток.</span></div>
+      <div class="scn"><b>Клиент просит скидку</b><span>видно, не уходите ли в минус по марже.</span></div>
+      <div class="scn"><b>Утром с кофе</b><span>один экран: деньги, долги, платежи.</span></div>
     </div>
     <p class="pocket-note reveal" data-rv="up">
-      Это <b>ключевые цифры и контроль конкретных зон</b> в телефоне — а не «весь учёт
-      в приложении на любой случай». Формат под задачу подбираю вместе с вами; это мой
-      практический инструмент как финдиректора, а не отдельный IT-сервис.
+      <b>Ничего не нужно устанавливать</b> — это ключевые цифры под вашу задачу,
+      мой инструмент как финдиректора, а не отдельный IT-сервис.
     </p>
   </div>
 </section>
 
 <!-- ====== AI-АВТОМАТИЗАЦИЯ ====== -->
-<section style="background:linear-gradient(180deg,var(--coal),var(--void))" id="ai">
+<section class="tone-b" id="ai">
   <div class="wrap">
     <div class="kick">AI-автоматизация</div>
     <h2 class="serif reveal" data-rv="left"
       style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:14px">
       Систему строю с AI — она считает за вас
     </h2>
-    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:620px;margin-bottom:42px">
-      Рутину забирает автоматизация: вы получаете не таблицы, а готовые выводы и
-      предупреждения — заранее, пока ещё можно повлиять.
+    <p class="reveal" data-rv="right" style="color:var(--muted);max-width:600px;margin-bottom:30px">
+      Рутину забирает автоматизация — вы получаете готовые выводы и предупреждения заранее.
     </p>
     <div class="cards ai-cards reveal" data-rv="up">
       <div class="tool"><div class="tag ai">✦ прогноз</div><b>Кассовые разрывы за 2–4 недели</b>
-        <p>Модель сводит поступления и платежи и заранее показывает день, где денег может не хватить.</p></div>
+        <p>Заранее вижу день, где денег не хватит.</p></div>
       <div class="tool"><div class="tag ai">✦ контроль</div><b>Дебиторка под присмотром</b>
-        <p>Кто должен, сколько, с какого срока и где риск просрочки — без ручного сведения отчётов.</p></div>
+        <p>Кто должен, сколько и где риск — без ручных отчётов.</p></div>
       <div class="tool"><div class="tag ai">✦ отчёты</div><b>Умные отчёты собственнику</b>
-        <p>Не выгрузка цифр, а короткий вывод на человеческом языке: что важно именно сейчас.</p></div>
+        <p>Короткий вывод, а не выгрузка цифр.</p></div>
       <div class="tool"><div class="tag ai">✦ сценарии</div><b>Сценарии «что если»</b>
-        <p>Подняли цену, взяли крупный контракт, отложили платёж — сразу видно, что будет с деньгами.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== ЧТО ПОЛУЧАЕТЕ ====== -->
-<section id="deliver">
-  <div class="wrap">
-    <div class="kick">Осязаемый результат</div>
-    <h2 class="serif reveal" data-rv="left"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:30px">
-      Что у вас появится в первый месяц
-    </h2>
-    <div class="deliv reveal" data-rv="up">
-      <div class="d-item"><div class="d-num">01</div><b>Платёжный календарь</b>
-        <span>Видите кассовые разрывы за недели до них</span></div>
-      <div class="d-item"><div class="d-num">02</div><b>Движение денег · ДДС</b>
-        <span>Куда реально уходят деньги</span></div>
-      <div class="d-item"><div class="d-num">03</div><b>Прибыли и убытки · P&amp;L</b>
-        <span>Сколько вы зарабатываете на самом деле</span></div>
-      <div class="d-item"><div class="d-num">04</div><b>Юнит-экономика</b>
-        <span>Что кормит бизнес, а что тянет вниз</span></div>
-      <div class="d-item"><div class="d-num">05</div><b>Финансовый дашборд</b>
-        <span>Все ключевые цифры на одном экране</span></div>
-      <div class="d-item"><div class="d-num">06</div><b>Бюджет и план-факт</b>
-        <span>Цель в цифрах и контроль отклонений</span></div>
+        <p>Цена, контракт, отсрочка — сразу виден эффект.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ====== КАК РАБОТАЕМ ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="process">
+<section id="process">
   <div class="wrap narrow">
     <div class="kick">Процесс</div>
     <h2 class="serif reveal" data-rv="left"
-      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:36px">
+      style="font-size:clamp(26px,5vw,42px);font-weight:700;margin-bottom:24px">
       Четыре шага, спокойно
     </h2>
     <div class="tl reveal" data-rv="up">
@@ -815,7 +767,7 @@
 </section>
 
 <!-- ====== ТАРИФЫ ====== -->
-<section id="tariffs">
+<section class="tone-b sep-top" id="tariffs">
   <div class="wrap">
     <div class="kick">Форматы работы</div>
     <h2 class="serif reveal" data-rv="left"
@@ -858,9 +810,8 @@
     </div>
 
     <p class="tier-foot reveal" data-rv="up">
-      Точную стоимость называю по итогам бесплатной диагностики: зависит от размера бизнеса,
-      числа направлений, состояния учёта и глубины вовлечения. Первый разбор бесплатный —
-      я уверена в его пользе.
+      Точную стоимость называю после бесплатной диагностики — зависит от размера бизнеса,
+      числа направлений и состояния учёта.
     </p>
   </div>
 </section>
@@ -907,7 +858,7 @@
 </section>
 
 <!-- ====== FAQ ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="faq">
+<section class="tone-b sep-top" id="faq">
   <div class="wrap narrow">
     <div class="kick">Сомнения</div>
     <h2 class="serif reveal" data-rv="left"
@@ -953,7 +904,7 @@
 </section>
 
 <!-- ====== ФИНАЛ ====== -->
-<section class="final" id="final">
+<section class="final sep-top" id="final">
   <div class="wrap narrow">
     <span class="assure reveal" data-rv="scale">
       Первый разбор бесплатный, потому что я уверена в его ценности
@@ -961,8 +912,7 @@
     <h2 class="reveal" data-rv="up">Посмотрим на ваши цифры<br><em>вместе</em></h2>
     <p class="reveal" data-rv="up"
       style="color:var(--cream-dim);max-width:460px;margin:0 auto 30px">
-      Напишите мне в Telegram — отвечу в течение рабочего дня и назначим бесплатный разбор.
-      Посмотрим, когда вам удобно.
+      Напишите в Telegram — отвечу в течение рабочего дня и назначим бесплатный разбор.
     </p>
 
     <div class="cta-final reveal" data-rv="scale">
@@ -1249,10 +1199,9 @@ document.querySelectorAll('.faq-q').forEach(q => {
     shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
     core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
     how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
-    tools:   { say: 'Всё открывается с телефона', emo: 'e-happy', pos: 66 },
+    tools:   { say: 'Вот что вы получаете', emo: 'e-happy', pos: 66 },
     pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
     ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },
-    deliver: { say: 'Вот что у вас появится', emo: 'e-happy', pos: 30 },
     process: { say: 'Спокойно, по шагам', emo: 'e-think', pos: 26 },
     tariffs: { say: 'Цены — когда вы уже всё видели', emo: 'e-think', pos: 30 },
     cases:   { say: 'Что вскрывается на диагностике', emo: 'e-think', pos: 70 },

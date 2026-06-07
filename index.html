@@ -356,90 +356,6 @@
   footer{text-align:center;padding:30px;font-size:12.5px;color:var(--muted-2);border-top:1px solid var(--line)}
   .ph{outline:1px dashed rgba(216,178,94,.5);outline-offset:2px;border-radius:2px}
 
-  /* ============ БОТ-ГИД ============ */
-  #guide{position:fixed;top:10px;left:50%;z-index:900;transform:translateX(-50%);
-    transition:left .9s cubic-bezier(.4,.1,.2,1),opacity .5s,transform .85s;
-    width:64px;pointer-events:none;will-change:left,transform}
-  @media(max-width:600px){#guide{width:50px;top:auto;bottom:12px}}
-  .g-body{position:relative;width:56px;height:56px;margin:0 auto;border-radius:18px 18px 16px 16px;
-    background:radial-gradient(circle at 38% 30%,var(--gold-bright),var(--gold) 55%,var(--gold-deep));
-    box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 2px 4px rgba(255,255,255,.4),0 0 26px rgba(216,178,94,.4);
-    animation:gbob 2.4s ease-in-out infinite}
-  @media(max-width:600px){.g-body{width:44px;height:44px;border-radius:14px 14px 12px 12px}}
-  @keyframes gbob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-1deg)}}
-  #guide.walking .g-body{animation:gwalk .4s ease-in-out infinite}
-  @keyframes gwalk{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-4px) rotate(3deg)}}
-  .g-ant{position:absolute;top:-13px;left:50%;width:2px;height:11px;background:var(--gold-deep);transform:translateX(-50%)}
-  .g-ant::after{content:"";position:absolute;top:-5px;left:-2.5px;width:7px;height:7px;
-    border-radius:50%;background:var(--gold-bright);box-shadow:0 0 8px var(--gold);animation:blinkled 1.6s infinite}
-  @keyframes blinkled{0%,100%{opacity:1}50%{opacity:.3}}
-  .g-eyes{position:absolute;top:19px;left:0;right:0;display:flex;justify-content:center;gap:11px}
-  @media(max-width:600px){.g-eyes{top:14px;gap:8px}}
-  .g-eye{width:9px;height:11px;background:#1a1206;border-radius:50%;animation:eyeblink 4s infinite}
-  @media(max-width:600px){.g-eye{width:7px;height:9px}}
-  @keyframes eyeblink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
-  .g-mouth{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);
-    width:14px;height:7px;border-bottom:2.5px solid #1a1206;border-radius:0 0 14px 14px;transition:.3s}
-  @media(max-width:600px){.g-mouth{bottom:8px;width:11px;height:5px}}
-  .g-legs{position:absolute;bottom:-9px;left:0;right:0;display:flex;justify-content:center;gap:13px}
-  @media(max-width:600px){.g-legs{bottom:-7px;gap:10px}}
-  .g-leg{width:4px;height:10px;background:var(--gold-deep);border-radius:0 0 3px 3px;transform-origin:top}
-  @media(max-width:600px){.g-leg{width:3px;height:8px}}
-  #guide.walking .g-leg:first-child{animation:step .4s infinite}
-  #guide.walking .g-leg:last-child{animation:step .4s infinite .2s}
-  @keyframes step{0%,100%{transform:rotate(18deg)}50%{transform:rotate(-18deg)}}
-  .g-arm{position:absolute;right:-10px;bottom:6px;width:16px;height:4px;
-    background:var(--gold-deep);border-radius:3px;transform-origin:left;
-    transform:rotate(20deg);opacity:0;transition:opacity .3s}
-  .g-arm::after{content:"👇";position:absolute;right:-14px;top:-7px;font-size:13px}
-  @media(max-width:600px){.g-arm{right:-8px;width:12px}}
-  .g-bubble{position:absolute;top:50%;left:72px;transform:translateY(-50%) scale(.6);transform-origin:left center;
-    background:var(--coal);border:1px solid var(--gold);color:var(--cream);
-    font-size:12.5px;font-weight:600;line-height:1.35;padding:9px 13px;border-radius:3px;white-space:nowrap;
-    box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transition:opacity .35s,transform .35s;
-    letter-spacing:.01em;pointer-events:none}
-  .g-bubble::before{content:"";position:absolute;left:-6px;top:50%;
-    transform:translateY(-50%) rotate(45deg);width:9px;height:9px;
-    background:var(--coal);border-left:1px solid var(--gold);border-bottom:1px solid var(--gold)}
-  #guide.show-bubble .g-bubble{opacity:1;transform:translateY(-50%) scale(1)}
-  #guide.flip .g-bubble{left:auto;right:72px;transform-origin:right center;transform:translateY(-50%) scale(.6)}
-  #guide.flip .g-bubble::before{left:auto;right:-6px;border-left:none;border-bottom:none;
-    border-right:1px solid var(--gold);border-top:1px solid var(--gold)}
-  #guide.show-bubble.flip .g-bubble{transform:translateY(-50%) scale(1)}
-  @media(max-width:600px){
-    /* бабл раскрывается ВВЕРХ от бота — не перекрывает заголовки секций */
-    .g-bubble{font-size:11px;white-space:normal;width:160px;max-width:46vw;text-align:center;
-      left:50%;right:auto;top:auto;bottom:60px;
-      transform:translateX(-50%) translateY(8px) scale(.6);transform-origin:bottom center}
-    .g-bubble::before{left:50%;right:auto;top:auto;bottom:-6px;
-      transform:translateX(-50%) rotate(45deg);
-      border-left:none;border-top:none;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold)}
-    #guide.show-bubble .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
-    #guide.flip .g-bubble{left:50%;right:auto;transform:translateX(-50%) translateY(8px) scale(.6)}
-    #guide.show-bubble.flip .g-bubble{transform:translateX(-50%) translateY(0) scale(1)}
-  }
-  #guide.e-happy .g-mouth{height:9px;border-radius:0 0 16px 16px}
-  #guide.e-think .g-mouth{width:7px;height:0;border-bottom:2.5px solid #1a1206;border-radius:0}
-  #guide.e-point .g-arm{opacity:1;animation:pointArm 1s ease-in-out infinite}
-  @keyframes pointArm{0%,100%{transform:rotate(20deg)}50%{transform:rotate(40deg)}}
-  #guide.e-stomp .g-body{animation:gstomp .5s ease-in-out infinite}
-  @keyframes gstomp{0%,100%{transform:translateY(0)}30%{transform:translateY(-9px) rotate(-4deg)}60%{transform:translateY(0) rotate(2deg)}}
-  #guide.e-stomp .g-leg:first-child{animation:stompanim .5s infinite}
-  @keyframes stompanim{0%,100%{transform:rotate(0)}40%{transform:rotate(-35deg)}55%{transform:rotate(8deg)}}
-  #guide.asleep{transform:translateX(-50%) translateY(-140px);opacity:0;pointer-events:none}
-  #guide.gone{transform:translateX(-50%) translateY(-150px) scale(.5);opacity:0}
-  /* мобайл: спит/уходит ВНИЗ за нижнюю кромку — после базовых правил, чтобы перебить их */
-  @media(max-width:600px){
-    #guide.asleep{transform:translateX(-50%) translateY(120px)}
-    #guide.gone{transform:translateX(-50%) translateY(130px) scale(.5)}
-  }
-  #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
-  #guide.e-wave .g-arm::after{content:"👋"}
-  @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
-  .waker{cursor:pointer;color:var(--gold);font-size:14px;vertical-align:super;margin-left:3px;
-    pointer-events:auto;animation:wpulse 2.2s infinite;display:inline-block;border-radius:2px}
-  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  @keyframes wpulse{0%,100%{opacity:.3}50%{opacity:1;text-shadow:0 0 12px var(--gold)}}
 
   /* печать «Сохранить разбор» */
   @media print{
@@ -449,7 +365,7 @@
     #verdict,#verdict *{visibility:visible}
     #verdict{position:absolute;left:0;top:0;width:100%;border:none;box-shadow:none;background:#fff;color:#000}
     .verdict-actions{display:none}
-    #guide,#prog{display:none}
+    #prog{display:none}
   }
 
   /* ===== БРЕНД: персона, регалии, специализация ===== */
@@ -483,27 +399,13 @@
 
   /* reduced-motion */
   @media(prefers-reduced-motion:reduce){
-    #guide{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
-    .g-body,.hero-glow,.scrolldown span,.type,
-    .g-ant::after,.g-eye{animation:none !important}
+    .hero-glow,.scrolldown span,.type{animation:none !important}
   }
 </style>
 </head>
 <body>
 <div id="prog" role="progressbar" aria-label="Прогресс чтения" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-
-<!-- ====== БОТ-ГИД ====== -->
-<div id="guide" class="asleep" aria-hidden="true" role="presentation">
-  <div class="g-bubble" id="gBubble"></div>
-  <div class="g-body">
-    <div class="g-ant"></div>
-    <div class="g-eyes"><div class="g-eye"></div><div class="g-eye"></div></div>
-    <div class="g-mouth"></div>
-    <div class="g-arm"></div>
-    <div class="g-legs"><div class="g-leg"></div><div class="g-leg"></div></div>
-  </div>
-</div>
 
 <!-- ====== HERO — диагностика-инструмент ====== -->
 <section class="hero" id="s0">
@@ -512,8 +414,6 @@
   <div class="wrap">
     <div class="kick" style="justify-content:center">
       Татьяна Рид · CFO на аутсорсе
-      <span class="waker" id="waker" role="button" tabindex="0"
-        aria-label="Разбудить гида" title="нажми ✦">✦</span>
     </div>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
     <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
@@ -1181,128 +1081,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
     q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 });
-
-/* ================================================================
-   БОТ-ГИД — спокойный тон: «идём посмотрим», а не «жми»
-   ================================================================ */
-(function initGuide() {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const guide = document.getElementById('guide');
-  const bubble = document.getElementById('gBubble');
-  const wakerEl = document.getElementById('waker');
-
-  /* реплики по id секции: [say, emo, pos%, hide?] */
-  const SCRIPT = {
-    s0:      { say: 'Привет! Я Татьяна, идём посмотрим 👋', emo: 'e-wave', pos: 52 },
-    s1:      { say: 'Деньги уходят тихо… вглядитесь', emo: 'e-think', pos: 24 },
-    shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
-    core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
-    how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
-    tools:   { say: 'Вот что вы получаете', emo: 'e-happy', pos: 66 },
-    pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
-    ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },
-    process: { say: 'Спокойно, по шагам', emo: 'e-think', pos: 26 },
-    tariffs: { say: 'Цены — когда вы уже всё видели', emo: 'e-think', pos: 30 },
-    cases:   { say: 'Что вскрывается на диагностике', emo: 'e-think', pos: 70 },
-    faq:     { say: 'Тут ответы на сомнения 💡', emo: 'e-think', pos: 34 },
-    final:   { say: 'Посмотрите, когда удобно 👋', emo: 'e-wave', pos: 56, hide: true }
-  };
-
-  let activeId = null, awake = false, bubbleHideTimer = null;
-  const EMOTIONS = ['e-point', 'e-think', 'e-happy', 'e-stomp', 'e-wave'];
-  const clearEmotions = () => EMOTIONS.forEach(e => guide.classList.remove(e));
-
-  function showBubble(text, persistent) {
-    bubble.textContent = text;
-    guide.classList.add('show-bubble');
-    clearTimeout(bubbleHideTimer);
-    if (!persistent) bubbleHideTimer = setTimeout(() => {
-      if (!guide.classList.contains('e-stomp')) guide.classList.remove('show-bubble');
-    }, 4000);
-  }
-
-  function go(id) {
-    const s = SCRIPT[id];
-    if (!awake || !s || id === activeId) return;
-    activeId = id;
-    guide.classList.remove('gone');
-    guide.classList.add('walking');
-    clearEmotions();
-    guide.classList.toggle('flip', s.pos > 55);
-    guide.style.left = s.pos + '%';
-    showBubble(s.say, false);
-    clearTimeout(guide._walkT);
-    guide._walkT = setTimeout(() => {
-      guide.classList.remove('walking');
-      guide.classList.add(s.emo);
-      if (s.hide) setTimeout(() => {
-        guide.classList.add('gone'); guide.classList.remove('show-bubble');
-      }, 3200);
-    }, 650);
-  }
-
-  /* у CTA-кнопок — спокойный жест, без «жми» */
-  const ctaButtons = document.querySelectorAll('.btn');
-  let stompActive = false;
-  const ctaIO = new IntersectionObserver(entries => {
-    if (!awake) return;
-    const visible = entries.some(e => e.isIntersecting);
-    if (visible && !stompActive && !guide.classList.contains('gone')) {
-      stompActive = true;
-      const btn = [...ctaButtons].find(b => {
-        const r = b.getBoundingClientRect();
-        return r.top > 0 && r.top < window.innerHeight;
-      });
-      if (btn) {
-        const bRect = btn.getBoundingClientRect();
-        const pct = Math.round((bRect.left + bRect.width / 2) / window.innerWidth * 100);
-        guide.style.left = Math.max(8, Math.min(92, pct)) + '%';
-        guide.classList.toggle('flip', pct > 55);
-      }
-      clearEmotions();
-      guide.classList.add('e-point');
-      showBubble('Посмотрим вместе?', true);
-    } else if (!visible) {
-      stompActive = false;
-      if (guide.classList.contains('e-point')) { clearEmotions(); guide.classList.remove('show-bubble'); }
-    }
-  }, {threshold: .5});
-  ctaButtons.forEach(b => ctaIO.observe(b));
-
-  function wake() {
-    if (awake) return;
-    awake = true;
-    guide.classList.remove('asleep');
-    wakerEl.style.display = 'none';
-    activeId = null;
-    setTimeout(() => go('s0'), 300);
-  }
-  wakerEl.addEventListener('click', wake);
-  wakerEl.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wake(); }
-  });
-
-  const sectionIO = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting || !awake) return;
-      if (guide.classList.contains('gone')) { guide.classList.remove('gone'); clearEmotions(); }
-      go(entry.target.id);
-    });
-  }, {threshold: .45});
-  document.querySelectorAll('section[id]').forEach(s => sectionIO.observe(s));
-
-  addEventListener('scroll', () => {
-    if (!awake) return;
-    if (!guide.classList.contains('e-stomp')) {
-      guide.classList.add('show-bubble');
-      clearTimeout(bubbleHideTimer);
-      bubbleHideTimer = setTimeout(() => {
-        if (!guide.classList.contains('e-stomp')) guide.classList.remove('show-bubble');
-      }, 2600);
-    }
-  }, {passive: true});
-})();
 
 /* инициализация */
 recalc();

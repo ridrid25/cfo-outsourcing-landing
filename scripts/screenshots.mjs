@@ -100,24 +100,6 @@ const shot = async (page, name) => {
     await page.close();
   }
 
-  // 5) Активный бот-гид (1280): разбудить искрой, дать дойти и показать бабл
-  page = await open(1280);
-  await page.locator('#waker').click();
-  await page.waitForTimeout(1200);
-  await page.screenshot({ path: resolve(outDir, 'bot-guide-1280.png') });
-  console.log('  → bot-guide-1280.png');
-  await page.close();
-
-  // 5b) Бот-гид в НИЖНЕЙ полосе на мобиле (375) — гуляет, не загораживает контент
-  page = await open(375);
-  await page.locator('#waker').click();
-  await page.waitForTimeout(500);
-  await page.evaluate(() => document.getElementById('tools').scrollIntoView());
-  await page.waitForTimeout(1500); // бот доходит и показывает реплику
-  await page.screenshot({ path: resolve(outDir, 'bot-mobile-375.png') }); // только вьюпорт
-  console.log('  → bot-mobile-375.png');
-  await page.close();
-
   await browser.close();
   console.log('Готово. Скриншоты в', outDir);
 })().catch(e => { console.error('Ошибка скриншотов:', e); process.exit(1); });

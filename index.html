@@ -31,7 +31,17 @@
   h1,h2,h3,.serif{font-family:'Playfair Display',serif;line-height:1.02;letter-spacing:-.01em}
   .wrap{max-width:1080px;margin:0 auto;padding:0 26px;position:relative;z-index:3}
   .narrow{max-width:780px}
-  section{padding:clamp(46px,8vw,88px) 0;position:relative}
+  section{padding:clamp(54px,8.5vw,96px) 0;position:relative}
+
+  /* ===== РИТМ СЕКЦИЙ: чередование глубины тёмного + деликатные разделители ===== */
+  /* графитовая секция — заметно глубже void, но остаётся тёмной */
+  .tone-b{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
+  /* «дыхание» на стыке: золотой хайрлайн с затуханием к краям + засечка ✦ по центру */
+  .sep-top::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:min(440px,72%);height:1px;z-index:4;
+    background:linear-gradient(90deg,transparent,rgba(216,178,94,.42) 50%,transparent)}
+  .sep-top::before{content:"✦";position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+    z-index:4;color:var(--gold);font-size:12px;opacity:.7;line-height:1}
   .gold-text{background:linear-gradient(110deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .kick{font-family:'Manrope';font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
@@ -115,13 +125,13 @@
   .manifesto .hl{font-style:italic}
 
   /* ============ СНЯТИЕ СТЫДА ============ */
-  .shame{background:linear-gradient(180deg,var(--coal),var(--void))}
+  .shame{background:var(--void)}
   .shame p{font-family:'Playfair Display';font-size:clamp(20px,3.4vw,32px);font-weight:500;
     line-height:1.42;color:var(--cream-dim);max-width:780px}
   .shame b{color:var(--cream);font-weight:700}
 
   /* ============ ЯДРО — МИНИ-АУДИТ ============ */
-  .core{background:linear-gradient(180deg,var(--void),var(--coal))}
+  .core{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .core-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media(max-width:880px){.core-grid{grid-template-columns:1fr;gap:36px}}
 
@@ -242,7 +252,7 @@
   .get span{font-size:12.5px;color:var(--muted);line-height:1.4}
 
   /* ============ В КАРМАНЕ + МОКАП ============ */
-  .pocket{background:linear-gradient(180deg,var(--coal),var(--void));text-align:center}
+  .pocket{background:var(--void);text-align:center}
   .pocket .kick{justify-content:center}
   .pocket-lead{font-family:'Playfair Display';font-size:clamp(19px,3.4vw,28px);font-weight:500;
     color:var(--cream-dim);margin-bottom:30px}
@@ -518,7 +528,7 @@
 </section>
 
 <!-- ====== БОЛЬ ====== -->
-<section class="manifesto" id="s1">
+<section class="manifesto tone-b" id="s1">
   <div class="wrap narrow">
     <p class="reveal" data-rv="up">
       Деньги редко уходят разом. <b>Они задерживаются тихо</b>, пока вы заняты делом:
@@ -540,7 +550,7 @@
 </section>
 
 <!-- ====== ЯДРО: МИНИ-АУДИТ ====== -->
-<section class="core" id="core">
+<section class="core sep-top" id="core">
   <div class="wrap">
     <div class="kick">Экспресс-диагностика</div>
     <h2 class="serif reveal" data-rv="left"
@@ -638,7 +648,7 @@
 </section>
 
 <!-- ====== ЧТО ВЫ ПОЛУЧАЕТЕ (объединённый блок) ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="tools">
+<section class="tone-b" id="tools">
   <div class="wrap">
     <div class="kick">Результат</div>
     <h2 class="serif reveal" data-rv="left"
@@ -660,7 +670,7 @@
 </section>
 
 <!-- ====== ВАШ БИЗНЕС — В КАРМАНЕ ====== -->
-<section class="pocket" id="pocket">
+<section class="pocket sep-top" id="pocket">
   <div class="wrap">
     <div class="kick">Главное</div>
     <h2 class="serif reveal" data-rv="up"
@@ -702,7 +712,7 @@
 </section>
 
 <!-- ====== AI-АВТОМАТИЗАЦИЯ ====== -->
-<section style="background:linear-gradient(180deg,var(--coal),var(--void))" id="ai">
+<section class="tone-b" id="ai">
   <div class="wrap">
     <div class="kick">AI-автоматизация</div>
     <h2 class="serif reveal" data-rv="left"
@@ -726,7 +736,7 @@
 </section>
 
 <!-- ====== КАК РАБОТАЕМ ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="process">
+<section id="process">
   <div class="wrap narrow">
     <div class="kick">Процесс</div>
     <h2 class="serif reveal" data-rv="left"
@@ -748,7 +758,7 @@
 </section>
 
 <!-- ====== ТАРИФЫ ====== -->
-<section id="tariffs">
+<section class="tone-b sep-top" id="tariffs">
   <div class="wrap">
     <div class="kick">Форматы работы</div>
     <h2 class="serif reveal" data-rv="left"
@@ -839,7 +849,7 @@
 </section>
 
 <!-- ====== FAQ ====== -->
-<section style="background:linear-gradient(180deg,var(--void),var(--coal))" id="faq">
+<section class="tone-b sep-top" id="faq">
   <div class="wrap narrow">
     <div class="kick">Сомнения</div>
     <h2 class="serif reveal" data-rv="left"

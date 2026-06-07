@@ -441,17 +441,6 @@
   .waker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   @keyframes wpulse{0%,100%{opacity:.3}50%{opacity:1;text-shadow:0 0 12px var(--gold)}}
 
-  /* печать «Сохранить разбор» */
-  @media print{
-    body{background:#fff;color:#000}
-    body::after{display:none}
-    body *{visibility:hidden}
-    #verdict,#verdict *{visibility:visible}
-    #verdict{position:absolute;left:0;top:0;width:100%;border:none;box-shadow:none;background:#fff;color:#000}
-    .verdict-actions{display:none}
-    #guide,#prog{display:none}
-  }
-
   /* ===== БРЕНД: персона, регалии, специализация ===== */
   .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
   .cred-exp{font-size:14.5px;color:var(--cream-dim);max-width:540px;line-height:1.5}
@@ -632,13 +621,14 @@
       <div class="verdict-actions">
         <p class="verdict-soft" id="vSoft"></p>
         <div class="cta-row">
-          <a href="#final" class="btn btn-sm">Разобрать на моих цифрах — 30 мин, бесплатно</a>
-          <button class="btn-text" id="savePdf" type="button">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          <a class="btn btn-sm" id="tgSend" target="_blank" rel="noopener"
+             href="https://t.me/RidFinance_bot">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
-            Сохранить разбор
-          </button>
+              <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Отправить разбор мне в Telegram
+          </a>
+          <a href="#final" class="btn-text">Или записаться на разбор</a>
         </div>
       </div>
     </div>
@@ -1105,6 +1095,25 @@ function choosePrimary(active, money) {
   })[0];
 }
 
+/* ─ Deep-link токен для @RidFinance_bot (открывается как ?start=ТОКЕН) ─
+   Формат (≤64 симв., только A-Za-z0-9_-):  d1_<зоны5>_<ответы3>_<оборот>_<приоритет>
+   • зоны5     — маска 0/1 в порядке: deadstock,receivables,discounts,profitability,cashgap
+   • ответы3   — q1q2q3, каждый 0|1|2, либо '-' если не отвечен (q1→cashgap, q2→profitability, q3→discounts)
+   • оборот    — млн ₽/мес (5–80)
+   • приоритет — индекс главной зоны 0..4 в том же порядке, либо 'x' (острых зон нет)
+   Пример: d1_01001_2-1_30_4 — бот раскодирует и покажет Татьяне отмеченные зоны и контекст. */
+const ZONE_ORDER = ['deadstock', 'receivables', 'discounts', 'profitability', 'cashgap'];
+function buildStartToken(primaryKey) {
+  const mask = ZONE_ORDER.map(z => leaks.some(l => l.dataset.zone === z && l.classList.contains('on')) ? '1' : '0').join('');
+  const ans = ['q1', 'q2', 'q3'].map(id => (id in qAnswers ? qAnswers[id] : '-')).join('');
+  const pri = primaryKey ? ZONE_ORDER.indexOf(primaryKey) : 'x';
+  return 'd1_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
+}
+function updateTgLink(primaryKey) {
+  const el = document.getElementById('tgSend');
+  if (el) el.href = 'https://t.me/RidFinance_bot?start=' + buildStartToken(primaryKey);
+}
+
 function renderVerdict(zoneKey) {
   const z = AUDIT.zones[zoneKey];
   document.getElementById('vClass').textContent = z.cls;
@@ -1116,7 +1125,8 @@ function renderVerdict(zoneKey) {
     '<div class="vp"><div class="vp-lbl">Проверьте на этой неделе</div><ul class="vp-check">' +
       z.check.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
   document.getElementById('vSoft').textContent =
-    'Вы уже видите направление. Разбор на ваших реальных цифрах покажет точный масштаб и план действий — 30 минут, бесплатно.';
+    'Отправьте разбор мне в Telegram — я заранее увижу ваши зоны и приду на встречу подготовленной. Это бесплатно.';
+  updateTgLink(zoneKey);
   verdictEl.classList.add('show');
 }
 
@@ -1126,7 +1136,8 @@ function renderEmpty() {
   document.getElementById('vBody').innerHTML =
     '<div class="vp"><div class="vp-txt">' + AUDIT.empty + '</div></div>';
   document.getElementById('vSoft').textContent =
-    'Бесплатный разбор поможет сверить ощущение с реальными данными — 30 минут, без обязательств.';
+    'Отправьте ответы мне в Telegram — сверю ваше ощущение с реальными данными на бесплатном разборе.';
+  updateTgLink();
   verdictEl.classList.add('show');
 }
 
@@ -1170,9 +1181,6 @@ function roll(from, to) {
     if (p < 1) requestAnimationFrame(step);
   })(t0);
 }
-
-/* «Сохранить разбор» — печать в PDF */
-document.getElementById('savePdf').addEventListener('click', () => window.print());
 
 /* FAQ */
 document.querySelectorAll('.faq-q').forEach(q => {

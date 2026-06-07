@@ -436,10 +436,16 @@
   #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
-  .waker{cursor:pointer;color:var(--gold);font-size:14px;vertical-align:super;margin-left:3px;
-    pointer-events:auto;animation:wpulse 2.2s infinite;display:inline-block;border-radius:2px}
-  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  @keyframes wpulse{0%,100%{opacity:.3}50%{opacity:1;text-shadow:0 0 12px var(--gold)}}
+  /* приглашение запустить гида — явная кликабельная плашка, а не декор */
+  .waker{display:inline-flex;align-items:center;gap:8px;cursor:pointer;margin:0 auto 22px;
+    font-family:'Manrope';font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--gold);
+    background:rgba(216,178,94,.08);border:1px solid rgba(216,178,94,.45);border-radius:30px;
+    padding:9px 18px;transition:transform .25s,border-color .25s,background .25s;
+    animation:wpulse 2.8s ease-in-out infinite}
+  .waker:hover{border-color:var(--gold);background:rgba(216,178,94,.15);transform:translateY(-2px)}
+  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .waker-spark{font-size:13px;line-height:1}
+  @keyframes wpulse{0%,100%{box-shadow:0 0 0 0 rgba(216,178,94,0)}50%{box-shadow:0 0 22px -6px rgba(216,178,94,.55)}}
 
   /* ===== БРЕНД: персона, регалии, специализация ===== */
   .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
@@ -472,7 +478,7 @@
 
   /* reduced-motion */
   @media(prefers-reduced-motion:reduce){
-    #guide{display:none}
+    #guide,.waker{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
     .g-body,.hero-glow,.scrolldown span,.type,
     .g-ant::after,.g-eye{animation:none !important}
@@ -501,9 +507,11 @@
   <div class="wrap">
     <div class="kick" style="justify-content:center">
       Татьяна Рид · CFO на аутсорсе
-      <span class="waker" id="waker" role="button" tabindex="0"
-        aria-label="Разбудить гида" title="нажми ✦">✦</span>
     </div>
+    <button class="waker" id="waker" type="button"
+      aria-label="Познакомьтесь с гидом — покажу, где теряются деньги">
+      <span class="waker-spark" aria-hidden="true">✦</span> Познакомьтесь с гидом
+    </button>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
     <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
     <div class="hero-cred">

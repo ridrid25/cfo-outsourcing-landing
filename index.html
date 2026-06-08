@@ -437,15 +437,18 @@
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
   /* приглашение запустить гида — явная кликабельная плашка, а не декор */
-  .waker{display:inline-flex;align-items:center;gap:8px;cursor:pointer;margin:0 auto 22px;
-    font-family:'Manrope';font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--gold);
-    background:rgba(216,178,94,.08);border:1px solid rgba(216,178,94,.45);border-radius:30px;
-    padding:12px 20px;transition:transform .25s,border-color .25s,background .25s;
-    animation:wpulse 2.8s ease-in-out infinite}
-  .waker:hover{border-color:var(--gold);background:rgba(216,178,94,.15);transform:translateY(-2px)}
-  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-  .waker-spark{font-size:13px;line-height:1}
-  @keyframes wpulse{0%,100%{box-shadow:0 0 0 0 rgba(216,178,94,0)}50%{box-shadow:0 0 22px -6px rgba(216,178,94,.55)}}
+  .waker{display:inline-flex;align-items:center;gap:9px;cursor:pointer;margin:0 auto 22px;
+    font-family:'Manrope';font-weight:700;font-size:14px;letter-spacing:.02em;color:#1a1206;
+    background:linear-gradient(110deg,var(--gold-bright),var(--gold));border:0;border-radius:30px;
+    padding:13px 24px;transition:transform .25s,box-shadow .25s;
+    box-shadow:0 0 0 1px rgba(243,214,144,.6),0 8px 28px -8px rgba(216,178,94,.7);
+    animation:wpulse 2.6s ease-in-out infinite}
+  .waker:hover{transform:translateY(-2px)}
+  .waker:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .waker-spark{font-size:15px;line-height:1}
+  @keyframes wpulse{
+    0%,100%{box-shadow:0 0 0 1px rgba(243,214,144,.5),0 0 18px -2px rgba(216,178,94,.45)}
+    50%{box-shadow:0 0 0 1px rgba(243,214,144,.9),0 0 32px 4px rgba(216,178,94,.78)}}
 
   /* ===== БРЕНД: персона, регалии, специализация ===== */
   .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
@@ -509,8 +512,8 @@
       Татьяна Рид · CFO на аутсорсе
     </div>
     <button class="waker" id="waker" type="button"
-      aria-label="Познакомьтесь с гидом — покажу, где теряются деньги">
-      <span class="waker-spark" aria-hidden="true">✦</span> Познакомьтесь с гидом
+      aria-label="Запустить гида — покажет, где теряются деньги">
+      <span class="waker-spark" aria-hidden="true">✦</span> Запустить гида
     </button>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
     <p class="hero-sub">Разбор по вашему профилю — покажу, где именно уходят деньги.</p>
@@ -645,7 +648,7 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            Отправить разбор Татьяне
+            Отправить запрос
           </a>
           <a href="#final" class="btn-text">Или записаться на разбор</a>
         </div>
@@ -1141,9 +1144,20 @@ function buildStartToken(primaryKey) {
   const pri = primaryKey ? ZONE_ORDER.indexOf(primaryKey) : 'x';
   return 'd3_' + niche + '_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
 }
+const tgSendEl = document.getElementById('tgSend');
+let lastPrimary = null;
+function tgHref() { return 'https://t.me/RidFinance_bot?start=' + buildStartToken(lastPrimary); }
 function updateTgLink(primaryKey) {
-  const el = document.getElementById('tgSend');
-  if (el) el.href = 'https://t.me/RidFinance_bot?start=' + buildStartToken(primaryKey);
+  lastPrimary = primaryKey || null;
+  if (tgSendEl) tgSendEl.href = tgHref();
+}
+/* Подстраховка: пересобираем токен прямо перед переходом — start-параметр
+   всегда актуален и не может «потеряться» при открытии t.me. Ссылка остаётся
+   обычным <a> (надёжнее всего для deep-link в приложение Telegram). */
+if (tgSendEl) {
+  const sync = () => { tgSendEl.href = tgHref(); };
+  tgSendEl.addEventListener('pointerdown', sync);
+  tgSendEl.addEventListener('click', sync);
 }
 
 function renderVerdict(zoneKey) {

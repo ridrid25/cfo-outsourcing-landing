@@ -26,7 +26,7 @@ You verify the technical contract. You report; you do not rewrite.
   rule exists and meaningfully reduces motion (animations/transitions/the
   guide walk). Verify nothing breaks or leaves a dead control when motion is
   reduced (e.g. the guide pill should not be a dead button there).
-- **Telegram links work**: all point to `https://t.me/RidFinance_bot`
+- **Telegram links work**: all point to `https://t.me/RidFinancebot_bot`
   (deep-link `?start=` allowed), well-formed, `target="_blank"
   rel="noopener"`. The `?start=` token is URL-safe (`A-Za-z0-9_-`) and ≤64
   chars.

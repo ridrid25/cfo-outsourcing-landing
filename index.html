@@ -644,7 +644,7 @@
         <p class="verdict-soft" id="vSoft"></p>
         <div class="cta-row">
           <a class="btn btn-sm" id="tgSend" target="_blank" rel="noopener"
-             href="https://t.me/RidFinance_bot">
+             href="https://t.me/RidFinancebot_bot">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -923,12 +923,12 @@
     </p>
 
     <div class="cta-final reveal" data-rv="scale">
-      <a href="https://t.me/RidFinance_bot" class="btn" target="_blank" rel="noopener">Написать в @RidFinance_bot</a>
+      <a href="https://t.me/RidFinancebot_bot" class="btn" target="_blank" rel="noopener">Написать в @RidFinancebot_bot</a>
       <p class="micro">30 минут · без обязательств · ответ в течение рабочего дня</p>
     </div>
 
     <div class="contacts">
-      <a href="https://t.me/RidFinance_bot" target="_blank" rel="noopener">Личный бот · @RidFinance_bot</a>
+      <a href="https://t.me/RidFinancebot_bot" target="_blank" rel="noopener">Личный бот · @RidFinancebot_bot</a>
       <span class="contacts-sep" aria-hidden="true">·</span>
       <a href="https://t.me/Rid_Finance" target="_blank" rel="noopener">Канал · @Rid_Finance</a>
     </div>
@@ -1126,7 +1126,7 @@ function choosePrimary(active, money) {
   })[0];
 }
 
-/* ─ Deep-link токен для @RidFinance_bot (открывается как ?start=ТОКЕН) ─
+/* ─ Deep-link токен для @RidFinancebot_bot (открывается как ?start=ТОКЕН) ─
    Полная спецификация для доработки Apps Script: TOKEN-SPEC.md
    Формат (≤64 симв., только A-Za-z0-9_-):  d3_<ниша>_<зоны5>_<ответы3>_<оборот>_<приоритет>
    • ниша      — 1 символ: t=торговля, p=производство, u=услуги, s=строительство,
@@ -1146,7 +1146,7 @@ function buildStartToken(primaryKey) {
 }
 const tgSendEl = document.getElementById('tgSend');
 let lastPrimary = null;
-function tgHref() { return 'https://t.me/RidFinance_bot?start=' + buildStartToken(lastPrimary); }
+function tgHref() { return 'https://t.me/RidFinancebot_bot?start=' + buildStartToken(lastPrimary); }
 function updateTgLink(primaryKey) {
   lastPrimary = primaryKey || null;
   if (tgSendEl) tgSendEl.href = tgHref();

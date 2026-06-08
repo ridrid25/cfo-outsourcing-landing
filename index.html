@@ -648,7 +648,7 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            Отправить разбор Татьяне
+            Отправить запрос
           </a>
           <a href="#final" class="btn-text">Или записаться на разбор</a>
         </div>
@@ -1144,9 +1144,20 @@ function buildStartToken(primaryKey) {
   const pri = primaryKey ? ZONE_ORDER.indexOf(primaryKey) : 'x';
   return 'd3_' + niche + '_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
 }
+const tgSendEl = document.getElementById('tgSend');
+let lastPrimary = null;
+function tgHref() { return 'https://t.me/RidFinance_bot?start=' + buildStartToken(lastPrimary); }
 function updateTgLink(primaryKey) {
-  const el = document.getElementById('tgSend');
-  if (el) el.href = 'https://t.me/RidFinance_bot?start=' + buildStartToken(primaryKey);
+  lastPrimary = primaryKey || null;
+  if (tgSendEl) tgSendEl.href = tgHref();
+}
+/* Подстраховка: пересобираем токен прямо перед переходом — start-параметр
+   всегда актуален и не может «потеряться» при открытии t.me. Ссылка остаётся
+   обычным <a> (надёжнее всего для deep-link в приложение Telegram). */
+if (tgSendEl) {
+  const sync = () => { tgSendEl.href = tgHref(); };
+  tgSendEl.addEventListener('pointerdown', sync);
+  tgSendEl.addEventListener('click', sync);
 }
 
 function renderVerdict(zoneKey) {

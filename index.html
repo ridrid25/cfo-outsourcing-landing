@@ -133,6 +133,16 @@
   .core-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media(max-width:880px){.core-grid{grid-template-columns:1fr;gap:36px}}
 
+  .niche{margin-bottom:18px}
+  .niche-lbl{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:10px;letter-spacing:.01em}
+  .niche-opts{display:flex;flex-wrap:wrap;gap:8px}
+  .niche-opt{font-family:'Manrope';font-size:13px;font-weight:600;color:var(--muted);
+    background:rgba(255,255,255,.012);border:1px solid var(--line);border-radius:30px;
+    padding:12px 16px;cursor:pointer;transition:border-color .25s,background .25s,color .25s}
+  .niche-opt:hover{border-color:rgba(216,178,94,.45);color:var(--cream-dim)}
+  .niche-opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .niche-opt.on{border-color:var(--gold);background:rgba(216,178,94,.12);color:var(--cream)}
+
   .leak{display:flex;align-items:center;gap:15px;padding:17px 18px;
     border:1px solid var(--line);border-radius:3px;margin-bottom:11px;
     cursor:pointer;user-select:none;transition:.3s;background:rgba(255,255,255,.012)}
@@ -554,7 +564,7 @@
     </h2>
     <p class="reveal" data-rv="right"
       style="color:var(--muted);max-width:580px;margin-bottom:32px">
-      Отметьте знакомое, ответьте на три вопроса — и получите
+      Выберите нишу, отметьте знакомое и ответьте на три вопроса — получите
       <span class="gold-text">персональный разбор</span> сразу, без заявки.
     </p>
 
@@ -562,6 +572,17 @@
       <!-- утечки + вопросы + слайдер -->
       <div class="reveal" data-rv="left">
         <!-- data-rate — консервативная оценка для вторичной цифры; data-zone — ключ зоны -->
+        <div class="niche" id="niche" role="group" aria-label="Ниша бизнеса (шаг 1)">
+          <div class="niche-lbl">Ниша бизнеса</div>
+          <div class="niche-opts">
+            <button type="button" class="niche-opt" data-niche="s">Строительство</button>
+            <button type="button" class="niche-opt" data-niche="d">Дорожная отрасль</button>
+            <button type="button" class="niche-opt" data-niche="p">Производство</button>
+            <button type="button" class="niche-opt" data-niche="t">Торговля</button>
+            <button type="button" class="niche-opt" data-niche="u">Услуги</button>
+            <button type="button" class="niche-opt" data-niche="o">Другое</button>
+          </div>
+        </div>
         <div class="leak" data-zone="deadstock" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Мёртвый склад, зависшие остатки</span>
@@ -623,7 +644,7 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            Отправить разбор мне в Telegram
+            Отправить разбор Татьяне
           </a>
           <a href="#final" class="btn-text">Или записаться на разбор</a>
         </div>
@@ -1037,7 +1058,7 @@ const foundEl = document.getElementById('found');
 const foundYEl = document.getElementById('foundYear');
 const verdictEl = document.getElementById('verdict');
 const qAnswers = {};          // id вопроса → баллы
-let touched = false, shownMonth = 0;
+let touched = false, shownMonth = 0, nicheKey = '';   // nicheKey: код ниши для токена
 
 const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
 
@@ -1076,6 +1097,18 @@ leaks.forEach(l => {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleLeak(l); }
   });
 });
+
+/* выбор ниши (шаг 1) — одиночный выбор, кодируется в токен; на диагноз не влияет */
+[...document.querySelectorAll('.niche-opt')].forEach(b => {
+  b.addEventListener('click', () => {
+    const opts = b.parentElement.querySelectorAll('.niche-opt');
+    const already = b.classList.contains('on');
+    opts.forEach(o => o.classList.remove('on'));
+    if (already) { nicheKey = ''; }
+    else { b.classList.add('on'); nicheKey = b.dataset.niche; }
+    recalc();
+  });
+});
 turnoverEl.addEventListener('input', () => { touched = true; recalc(); });
 
 /* выбор главной зоны: максимум остроты, тай-брейк — сумма денег */
@@ -1088,18 +1121,22 @@ function choosePrimary(active, money) {
 }
 
 /* ─ Deep-link токен для @RidFinance_bot (открывается как ?start=ТОКЕН) ─
-   Формат (≤64 симв., только A-Za-z0-9_-):  d1_<зоны5>_<ответы3>_<оборот>_<приоритет>
+   Полная спецификация для бота: docs/telegram-token-spec.md
+   Формат (≤64 симв., только A-Za-z0-9_-):  d2_<ниша>_<зоны5>_<ответы3>_<оборот>_<приоритет>
+   • ниша      — 1 символ: s=строительство, d=дорожная отрасль, p=производство,
+                 t=торговля, u=услуги, o=другое, x=не выбрана
    • зоны5     — маска 0/1 в порядке: deadstock,receivables,discounts,profitability,cashgap
    • ответы3   — q1q2q3, каждый 0|1|2, либо '-' если не отвечен (q1→cashgap, q2→profitability, q3→discounts)
    • оборот    — млн ₽/мес (5–80)
    • приоритет — индекс главной зоны 0..4 в том же порядке, либо 'x' (острых зон нет)
-   Пример: d1_01001_2-1_30_4 — бот раскодирует и покажет Татьяне отмеченные зоны и контекст. */
+   Пример: d2_s_01001_2-1_30_1 — бот раскодирует и покажет Татьяне нишу, оборот, зоны и диагноз. */
 const ZONE_ORDER = ['deadstock', 'receivables', 'discounts', 'profitability', 'cashgap'];
 function buildStartToken(primaryKey) {
+  const niche = nicheKey || 'x';
   const mask = ZONE_ORDER.map(z => leaks.some(l => l.dataset.zone === z && l.classList.contains('on')) ? '1' : '0').join('');
   const ans = ['q1', 'q2', 'q3'].map(id => (id in qAnswers ? qAnswers[id] : '-')).join('');
   const pri = primaryKey ? ZONE_ORDER.indexOf(primaryKey) : 'x';
-  return 'd1_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
+  return 'd2_' + niche + '_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
 }
 function updateTgLink(primaryKey) {
   const el = document.getElementById('tgSend');

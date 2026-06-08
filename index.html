@@ -1106,7 +1106,9 @@ leaks.forEach(l => {
     opts.forEach(o => o.classList.remove('on'));
     if (already) { nicheKey = ''; }
     else { b.classList.add('on'); nicheKey = b.dataset.niche; }
-    recalc();
+    /* пересобираем токен при каждом изменении ниши: если вердикт открыт —
+       перерисовываем с верным приоритетом, иначе просто освежаем ссылку */
+    if (touched) recalc(); else updateTgLink();
   });
 });
 turnoverEl.addEventListener('input', () => { touched = true; recalc(); });

@@ -86,6 +86,8 @@
   .reveal[data-rv="right"]{transform:translateX(52px)}
   .reveal[data-rv="scale"]{transform:scale(.9)}
   .reveal.in{opacity:1;transform:none}
+  /* на мобиле — только вертикальный въезд, чтобы скрытые блоки не торчали за край */
+  @media(max-width:600px){.reveal[data-rv="left"],.reveal[data-rv="right"]{transform:translateY(34px)}}
 
   /* ============ HERO ============ */
   .hero{min-height:100svh;display:flex;align-items:center;text-align:center;overflow:hidden;
@@ -100,9 +102,9 @@
     background-size:80px 80px;
     mask:radial-gradient(70% 60% at 50% 40%,#000,transparent);
     -webkit-mask:radial-gradient(70% 60% at 50% 40%,#000,transparent)}
-  .hero h1{font-size:clamp(23px,6.2vw,62px);font-weight:900;color:var(--cream);margin-bottom:6px;
-    overflow-wrap:break-word;word-break:break-word;padding:0 6px}
-  @media(max-width:360px){.wrap{padding:0 18px}}
+  .hero h1{font-size:clamp(22px,5.6vw,60px);font-weight:900;color:var(--cream);margin-bottom:6px;
+    overflow-wrap:break-word;word-break:break-word;padding:0 12px}
+  @media(max-width:360px){.wrap{padding:0 20px}}
   .hero h1 em{font-style:italic;font-weight:500}
   .type{display:inline;max-width:100%;border-right:3px solid var(--gold);padding-right:8px;
     overflow-wrap:break-word;animation:blink 1.05s step-end infinite}
@@ -114,16 +116,6 @@
   .hp-ico{flex-shrink:0;color:var(--gold)}
   .hero .btn{min-width:300px}
   @media(max-width:380px){.hero .btn{min-width:0;width:100%}}
-  .scrolldown{margin-top:56px;font-size:11px;letter-spacing:.3em;color:var(--muted);
-    text-transform:uppercase}
-  .scrolldown span{display:block;width:1px;height:42px;margin:14px auto 0;
-    background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
-  @keyframes drop{
-    0%{transform:scaleY(0);transform-origin:top}
-    50%{transform:scaleY(1);transform-origin:top}
-    50.1%{transform-origin:bottom}
-    100%{transform:scaleY(0);transform-origin:bottom}}
-
   /* ============ МАНИФЕСТ ============ */
   .manifesto p{font-family:'Playfair Display';font-size:clamp(26px,4.6vw,46px);font-weight:500;
     line-height:1.28;color:var(--muted-2);max-width:900px}
@@ -140,6 +132,16 @@
   .core{background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .core-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
   @media(max-width:880px){.core-grid{grid-template-columns:1fr;gap:36px}}
+
+  .niche{margin-bottom:18px}
+  .niche-lbl{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:10px;letter-spacing:.01em}
+  .niche-opts{display:flex;flex-wrap:wrap;gap:8px}
+  .niche-opt{font-family:'Manrope';font-size:13px;font-weight:600;color:var(--muted);
+    background:rgba(255,255,255,.012);border:1px solid var(--line);border-radius:30px;
+    padding:12px 16px;cursor:pointer;transition:border-color .25s,background .25s,color .25s}
+  .niche-opt:hover{border-color:rgba(216,178,94,.45);color:var(--cream-dim)}
+  .niche-opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .niche-opt.on{border-color:var(--gold);background:rgba(216,178,94,.12);color:var(--cream)}
 
   .leak{display:flex;align-items:center;gap:15px;padding:17px 18px;
     border:1px solid var(--line);border-radius:3px;margin-bottom:11px;
@@ -325,8 +327,6 @@
   .tier-hook{font-size:13px;color:var(--muted);margin:4px 0 0;line-height:1.35;min-height:36px}
   .tier.best .tier-hook{color:var(--cream-dim)}
   .price-anchor{text-align:center;font-size:13px;color:var(--muted-2);margin-bottom:24px}
-  .tier-foot{text-align:center;margin-top:28px;font-size:13px;color:var(--muted);max-width:720px;
-    margin-left:auto;margin-right:auto;line-height:1.55}
 
   /* ============ FAQ ============ */
   .faq{border-bottom:1px solid var(--line)}
@@ -436,21 +436,16 @@
   #guide.e-wave .g-arm{opacity:1;animation:wave .55s ease-in-out infinite}
   #guide.e-wave .g-arm::after{content:"👋"}
   @keyframes wave{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(22deg)}}
-  .waker{cursor:pointer;color:var(--gold);font-size:14px;vertical-align:super;margin-left:3px;
-    pointer-events:auto;animation:wpulse 2.2s infinite;display:inline-block;border-radius:2px}
-  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-  @keyframes wpulse{0%,100%{opacity:.3}50%{opacity:1;text-shadow:0 0 12px var(--gold)}}
-
-  /* печать «Сохранить разбор» */
-  @media print{
-    body{background:#fff;color:#000}
-    body::after{display:none}
-    body *{visibility:hidden}
-    #verdict,#verdict *{visibility:visible}
-    #verdict{position:absolute;left:0;top:0;width:100%;border:none;box-shadow:none;background:#fff;color:#000}
-    .verdict-actions{display:none}
-    #guide,#prog{display:none}
-  }
+  /* приглашение запустить гида — явная кликабельная плашка, а не декор */
+  .waker{display:inline-flex;align-items:center;gap:8px;cursor:pointer;margin:0 auto 22px;
+    font-family:'Manrope';font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--gold);
+    background:rgba(216,178,94,.08);border:1px solid rgba(216,178,94,.45);border-radius:30px;
+    padding:12px 20px;transition:transform .25s,border-color .25s,background .25s;
+    animation:wpulse 2.8s ease-in-out infinite}
+  .waker:hover{border-color:var(--gold);background:rgba(216,178,94,.15);transform:translateY(-2px)}
+  .waker:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .waker-spark{font-size:13px;line-height:1}
+  @keyframes wpulse{0%,100%{box-shadow:0 0 0 0 rgba(216,178,94,0)}50%{box-shadow:0 0 22px -6px rgba(216,178,94,.55)}}
 
   /* ===== БРЕНД: персона, регалии, специализация ===== */
   .hero-cred{display:flex;flex-direction:column;align-items:center;gap:11px;margin:2px auto 20px}
@@ -483,9 +478,9 @@
 
   /* reduced-motion */
   @media(prefers-reduced-motion:reduce){
-    #guide{display:none}
+    #guide,.waker{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
-    .g-body,.hero-glow,.scrolldown span,.type,
+    .g-body,.hero-glow,.type,
     .g-ant::after,.g-eye{animation:none !important}
   }
 </style>
@@ -512,11 +507,13 @@
   <div class="wrap">
     <div class="kick" style="justify-content:center">
       Татьяна Рид · CFO на аутсорсе
-      <span class="waker" id="waker" role="button" tabindex="0"
-        aria-label="Разбудить гида" title="нажми ✦">✦</span>
     </div>
+    <button class="waker" id="waker" type="button"
+      aria-label="Познакомьтесь с гидом — покажу, где теряются деньги">
+      <span class="waker-spark" aria-hidden="true">✦</span> Познакомьтесь с гидом
+    </button>
     <h1>Экспресс-диагностика:<br><span class="type gold-text" id="type"></span></h1>
-    <p class="hero-sub">2 минуты. Разбор по вашему профилю. Без заявки и звонков. Покажу, где именно.</p>
+    <p class="hero-sub">Разбор по вашему профилю — покажу, где именно уходят деньги.</p>
     <div class="hero-cred">
       <span class="cred-exp">25 лет в реальном бизнесе — строительство, дорожная отрасль, производство</span>
       <span class="cred-badges"><b>DipIFR</b><b>ACCA</b><b>CIMA</b></span>
@@ -532,7 +529,6 @@
     <a href="#core" class="btn">Пройти диагностику</a>
     <p class="micro">2 минуты · бесплатно · без заявки</p>
     <p class="hero-spec">Строительство · дорожная отрасль · производство · удалённо по всей России</p>
-    <div class="scrolldown" aria-hidden="true">прокрутите<span></span></div>
   </div>
 </section>
 
@@ -568,7 +564,7 @@
     </h2>
     <p class="reveal" data-rv="right"
       style="color:var(--muted);max-width:580px;margin-bottom:32px">
-      Отметьте знакомое, ответьте на три вопроса — и получите
+      Выберите нишу, отметьте знакомое и ответьте на три вопроса — получите
       <span class="gold-text">персональный разбор</span> сразу, без заявки.
     </p>
 
@@ -576,6 +572,18 @@
       <!-- утечки + вопросы + слайдер -->
       <div class="reveal" data-rv="left">
         <!-- data-rate — консервативная оценка для вторичной цифры; data-zone — ключ зоны -->
+        <div class="niche" id="niche" role="group" aria-label="Ниша бизнеса (шаг 1)">
+          <div class="niche-lbl">Ниша бизнеса</div>
+          <div class="niche-opts">
+            <button type="button" class="niche-opt" data-niche="t">Торговля</button>
+            <button type="button" class="niche-opt" data-niche="p">Производство</button>
+            <button type="button" class="niche-opt" data-niche="u">Услуги</button>
+            <button type="button" class="niche-opt" data-niche="s">Строительство</button>
+            <button type="button" class="niche-opt" data-niche="m">Маркетплейсы</button>
+            <button type="button" class="niche-opt" data-niche="f">Общепит</button>
+            <button type="button" class="niche-opt" data-niche="o">Другое</button>
+          </div>
+        </div>
         <div class="leak" data-zone="deadstock" data-rate="0.015" role="checkbox" aria-checked="false" tabindex="0">
           <span class="box" aria-hidden="true"></span>
           <span class="leak-txt">Мёртвый склад, зависшие остатки</span>
@@ -632,13 +640,14 @@
       <div class="verdict-actions">
         <p class="verdict-soft" id="vSoft"></p>
         <div class="cta-row">
-          <a href="#final" class="btn btn-sm">Разобрать на моих цифрах — 30 мин, бесплатно</a>
-          <button class="btn-text" id="savePdf" type="button">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          <a class="btn btn-sm" id="tgSend" target="_blank" rel="noopener"
+             href="https://t.me/RidFinance_bot">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg>
-            Сохранить разбор
-          </button>
+              <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Отправить разбор Татьяне
+          </a>
+          <a href="#final" class="btn-text">Или записаться на разбор</a>
         </div>
       </div>
     </div>
@@ -668,9 +677,9 @@
       Не отчёты раз в месяц, а рабочие инструменты под ваши зоны — каждый под рукой.
     </p>
     <div class="get-grid reveal" data-rv="up">
-      <div class="get"><b>Платёжный календарь</b><span>Кассовые разрывы видно за недели</span></div>
+      <div class="get"><b>Платёжный календарь</b><span>Кто и когда платит — на недели вперёд</span></div>
       <div class="get"><b>ДДС и P&amp;L</b><span>Куда уходят деньги и сколько вы зарабатываете</span></div>
-      <div class="get"><b>Контроль дебиторки</b><span>Кто должен, сколько и где риск просрочки</span></div>
+      <div class="get"><b>Контроль дебиторки</b><span>Сроки оплат и системная работа с долгами</span></div>
       <div class="get"><b>Юнит-экономика</b><span>Что кормит бизнес, а что тянет вниз</span></div>
       <div class="get"><b>Финансовый дашборд</b><span>Все ключевые цифры на одном экране</span></div>
       <div class="get"><b>Бюджет и план-факт</b><span>Цель в цифрах и контроль отклонений</span></div>
@@ -714,8 +723,8 @@
       <div class="scn"><b>Утром с кофе</b><span>один экран: деньги, долги, платежи.</span></div>
     </div>
     <p class="pocket-note reveal" data-rv="up">
-      <b>Ничего не нужно устанавливать</b> — это ключевые цифры под вашу задачу,
-      мой инструмент как финдиректора, а не отдельный IT-сервис.
+      Это ключевые цифры под вашу задачу — <b>мой инструмент как финдиректора</b>,
+      а не отдельный IT-сервис.
     </p>
   </div>
 </section>
@@ -808,11 +817,6 @@
         <ul><li>Учёт и отчётность с нуля</li><li>AI-автоматизация под ваши зоны</li><li>Обучение вашей команды</li><li>Готовая система на руках</li></ul>
       </div>
     </div>
-
-    <p class="tier-foot reveal" data-rv="up">
-      Точную стоимость называю после бесплатной диагностики — зависит от размера бизнеса,
-      числа направлений и состояния учёта.
-    </p>
   </div>
 </section>
 
@@ -876,9 +880,9 @@
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>Это дорого?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Первый разбор бесплатный — посмотрите цифры и решите сами.
-          Точную стоимость я называю по итогам диагностики: есть постоянное партнёрство и
-          разовый проект «система под ключ». Дальше зависит от объёма работы и состояния учёта.</div>
+        <div class="faq-a">Первый разбор бесплатный — сначала видите цифры, потом решаете.
+          Форматов два: постоянное партнёрство и разовый проект «система под ключ». Платите
+          за результат и порядок в финансах, а не за присутствие сотрудника в штате.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
@@ -889,9 +893,9 @@
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>У меня есть бухгалтер — зачем финдир?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Бухгалтер закрывает налоги и отчётность для государства — и хорошо,
-          если вы справлялись с этим сами. Как финдиректор я отвечаю за другое: прибыль, деньги
-          и решения вперёд. Я усиливаю бухгалтера, а не заменяю.</div>
+        <div class="faq-a">Это разные роли. Бухгалтер остаётся на своём месте — я не заменяю его,
+          а подключаюсь сверху как финдиректор и работаю с ним в связке. Вы получаете не вторую
+          бухгалтерию, а взгляд на бизнес целиком.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
@@ -1055,7 +1059,7 @@ const foundEl = document.getElementById('found');
 const foundYEl = document.getElementById('foundYear');
 const verdictEl = document.getElementById('verdict');
 const qAnswers = {};          // id вопроса → баллы
-let touched = false, shownMonth = 0;
+let touched = false, shownMonth = 0, nicheKey = '';   // nicheKey: код ниши для токена
 
 const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
 
@@ -1094,6 +1098,20 @@ leaks.forEach(l => {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleLeak(l); }
   });
 });
+
+/* выбор ниши (шаг 1) — одиночный выбор, кодируется в токен; на диагноз не влияет */
+[...document.querySelectorAll('.niche-opt')].forEach(b => {
+  b.addEventListener('click', () => {
+    const opts = b.parentElement.querySelectorAll('.niche-opt');
+    const already = b.classList.contains('on');
+    opts.forEach(o => o.classList.remove('on'));
+    if (already) { nicheKey = ''; }
+    else { b.classList.add('on'); nicheKey = b.dataset.niche; }
+    /* пересобираем токен при каждом изменении ниши: если вердикт открыт —
+       перерисовываем с верным приоритетом, иначе просто освежаем ссылку */
+    if (touched) recalc(); else updateTgLink();
+  });
+});
 turnoverEl.addEventListener('input', () => { touched = true; recalc(); });
 
 /* выбор главной зоны: максимум остроты, тай-брейк — сумма денег */
@@ -1103,6 +1121,29 @@ function choosePrimary(active, money) {
     if (sd !== 0) return sd;
     return (money[b] || 0) - (money[a] || 0);
   })[0];
+}
+
+/* ─ Deep-link токен для @RidFinance_bot (открывается как ?start=ТОКЕН) ─
+   Полная спецификация для доработки Apps Script: TOKEN-SPEC.md
+   Формат (≤64 симв., только A-Za-z0-9_-):  d3_<ниша>_<зоны5>_<ответы3>_<оборот>_<приоритет>
+   • ниша      — 1 символ: t=торговля, p=производство, u=услуги, s=строительство,
+                 m=маркетплейсы, f=общепит, o=другое, x=не выбрана
+   • зоны5     — маска 0/1 в порядке: deadstock,receivables,discounts,profitability,cashgap
+   • ответы3   — q1q2q3, каждый 0|1|2, либо '-' если не отвечен (q1→cashgap, q2→profitability, q3→discounts)
+   • оборот    — млн ₽/мес (5–80)
+   • приоритет — индекс главной зоны 0..4 в том же порядке, либо 'x' (острых зон нет)
+   Пример: d3_s_01001_2--_30_1 — бот раскодирует и покажет Татьяне нишу, оборот, зоны и диагноз. */
+const ZONE_ORDER = ['deadstock', 'receivables', 'discounts', 'profitability', 'cashgap'];
+function buildStartToken(primaryKey) {
+  const niche = nicheKey || 'x';
+  const mask = ZONE_ORDER.map(z => leaks.some(l => l.dataset.zone === z && l.classList.contains('on')) ? '1' : '0').join('');
+  const ans = ['q1', 'q2', 'q3'].map(id => (id in qAnswers ? qAnswers[id] : '-')).join('');
+  const pri = primaryKey ? ZONE_ORDER.indexOf(primaryKey) : 'x';
+  return 'd3_' + niche + '_' + mask + '_' + ans + '_' + (+turnoverEl.value) + '_' + pri;
+}
+function updateTgLink(primaryKey) {
+  const el = document.getElementById('tgSend');
+  if (el) el.href = 'https://t.me/RidFinance_bot?start=' + buildStartToken(primaryKey);
 }
 
 function renderVerdict(zoneKey) {
@@ -1116,7 +1157,8 @@ function renderVerdict(zoneKey) {
     '<div class="vp"><div class="vp-lbl">Проверьте на этой неделе</div><ul class="vp-check">' +
       z.check.map(c => '<li>' + c + '</li>').join('') + '</ul></div>';
   document.getElementById('vSoft').textContent =
-    'Вы уже видите направление. Разбор на ваших реальных цифрах покажет точный масштаб и план действий — 30 минут, бесплатно.';
+    'Отправьте разбор мне в Telegram — я заранее увижу ваши зоны и приду на встречу подготовленной. Это бесплатно.';
+  updateTgLink(zoneKey);
   verdictEl.classList.add('show');
 }
 
@@ -1126,7 +1168,8 @@ function renderEmpty() {
   document.getElementById('vBody').innerHTML =
     '<div class="vp"><div class="vp-txt">' + AUDIT.empty + '</div></div>';
   document.getElementById('vSoft').textContent =
-    'Бесплатный разбор поможет сверить ощущение с реальными данными — 30 минут, без обязательств.';
+    'Отправьте ответы мне в Telegram — сверю ваше ощущение с реальными данными на бесплатном разборе.';
+  updateTgLink();
   verdictEl.classList.add('show');
 }
 
@@ -1171,9 +1214,6 @@ function roll(from, to) {
   })(t0);
 }
 
-/* «Сохранить разбор» — печать в PDF */
-document.getElementById('savePdf').addEventListener('click', () => window.print());
-
 /* FAQ */
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
@@ -1194,11 +1234,11 @@ document.querySelectorAll('.faq-q').forEach(q => {
 
   /* реплики по id секции: [say, emo, pos%, hide?] */
   const SCRIPT = {
-    s0:      { say: 'Привет! Я Татьяна, идём посмотрим 👋', emo: 'e-wave', pos: 52 },
+    s0:      { say: 'Привет! Покажу, где теряются деньги 👋', emo: 'e-wave', pos: 52 },
     s1:      { say: 'Деньги уходят тихо… вглядитесь', emo: 'e-think', pos: 24 },
     shame:   { say: 'Это нормально. Правда.', emo: 'e-happy', pos: 40 },
     core:    { say: 'Ответьте честно — это для вас', emo: 'e-point', pos: 70 },
-    how:     { say: 'Вот как я работаю', emo: 'e-happy', pos: 28 },
+    how:     { say: 'Вот как проходит работа', emo: 'e-happy', pos: 28 },
     tools:   { say: 'Вот что вы получаете', emo: 'e-happy', pos: 66 },
     pocket:  { say: 'Ваш бизнес — в кармане 📱', emo: 'e-happy', pos: 40 },
     ai:      { say: 'А считает за вас — AI ✦', emo: 'e-happy', pos: 64 },

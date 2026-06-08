@@ -116,16 +116,6 @@
   .hp-ico{flex-shrink:0;color:var(--gold)}
   .hero .btn{min-width:300px}
   @media(max-width:380px){.hero .btn{min-width:0;width:100%}}
-  .scrolldown{margin-top:56px;font-size:11px;letter-spacing:.3em;color:var(--muted);
-    text-transform:uppercase}
-  .scrolldown span{display:block;width:1px;height:42px;margin:14px auto 0;
-    background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
-  @keyframes drop{
-    0%{transform:scaleY(0);transform-origin:top}
-    50%{transform:scaleY(1);transform-origin:top}
-    50.1%{transform-origin:bottom}
-    100%{transform:scaleY(0);transform-origin:bottom}}
-
   /* ============ МАНИФЕСТ ============ */
   .manifesto p{font-family:'Playfair Display';font-size:clamp(26px,4.6vw,46px);font-weight:500;
     line-height:1.28;color:var(--muted-2);max-width:900px}
@@ -480,7 +470,7 @@
   @media(prefers-reduced-motion:reduce){
     #guide,.waker{display:none}
     .reveal{transition:opacity .4s !important;transform:none !important}
-    .g-body,.hero-glow,.scrolldown span,.type,
+    .g-body,.hero-glow,.type,
     .g-ant::after,.g-eye{animation:none !important}
   }
 </style>
@@ -529,7 +519,6 @@
     <a href="#core" class="btn">Пройти диагностику</a>
     <p class="micro">2 минуты · бесплатно · без заявки</p>
     <p class="hero-spec">Строительство · дорожная отрасль · производство · удалённо по всей России</p>
-    <div class="scrolldown" aria-hidden="true">прокрутите<span></span></div>
   </div>
 </section>
 
@@ -666,9 +655,9 @@
       Не отчёты раз в месяц, а рабочие инструменты под ваши зоны — каждый под рукой.
     </p>
     <div class="get-grid reveal" data-rv="up">
-      <div class="get"><b>Платёжный календарь</b><span>Кассовые разрывы видно за недели</span></div>
+      <div class="get"><b>Платёжный календарь</b><span>Кто и когда платит — на недели вперёд</span></div>
       <div class="get"><b>ДДС и P&amp;L</b><span>Куда уходят деньги и сколько вы зарабатываете</span></div>
-      <div class="get"><b>Контроль дебиторки</b><span>Кто должен, сколько и где риск просрочки</span></div>
+      <div class="get"><b>Контроль дебиторки</b><span>Сроки оплат и системная работа с долгами</span></div>
       <div class="get"><b>Юнит-экономика</b><span>Что кормит бизнес, а что тянет вниз</span></div>
       <div class="get"><b>Финансовый дашборд</b><span>Все ключевые цифры на одном экране</span></div>
       <div class="get"><b>Бюджет и план-факт</b><span>Цель в цифрах и контроль отклонений</span></div>
@@ -712,8 +701,8 @@
       <div class="scn"><b>Утром с кофе</b><span>один экран: деньги, долги, платежи.</span></div>
     </div>
     <p class="pocket-note reveal" data-rv="up">
-      <b>Ничего не нужно устанавливать</b> — это ключевые цифры под вашу задачу,
-      мой инструмент как финдиректора, а не отдельный IT-сервис.
+      Это ключевые цифры под вашу задачу — <b>мой инструмент как финдиректора</b>,
+      а не отдельный IT-сервис.
     </p>
   </div>
 </section>
@@ -869,9 +858,9 @@
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>Это дорого?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Первый разбор бесплатный — посмотрите цифры и решите сами.
-          Точную стоимость я называю по итогам диагностики: есть постоянное партнёрство и
-          разовый проект «система под ключ». Дальше зависит от объёма работы и состояния учёта.</div>
+        <div class="faq-a">Первый разбор бесплатный — сначала видите цифры, потом решаете.
+          Форматов два: постоянное партнёрство и разовый проект «система под ключ». Платите
+          за результат и порядок в финансах, а не за присутствие сотрудника в штате.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
@@ -882,9 +871,9 @@
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
           <span>У меня есть бухгалтер — зачем финдир?</span><i aria-hidden="true">+</i></button>
-        <div class="faq-a">Бухгалтер закрывает налоги и отчётность для государства — и хорошо,
-          если вы справлялись с этим сами. Как финдиректор я отвечаю за другое: прибыль, деньги
-          и решения вперёд. Я усиливаю бухгалтера, а не заменяю.</div>
+        <div class="faq-a">Это разные роли. Бухгалтер остаётся на своём месте — я не заменяю его,
+          а подключаюсь сверху как финдиректор и работаю с ним в связке. Вы получаете не вторую
+          бухгалтерию, а взгляд на бизнес целиком.</div>
       </div>
       <div class="faq">
         <button class="faq-q" aria-expanded="false">
